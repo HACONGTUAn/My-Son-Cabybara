@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f221bd147d7a04f9cc40416cd24c28, type: 3}
+  m_Name: BuildList
+  m_EditorClassIdentifier: 
+  buildPrefabHierarchies:
+  - IsBuild: 1
+    parentPrefab: {fileID: 4514015327796819356, guid: ff1deb5190e47124ebd099d65284e5e7, type: 3}
+    childPrefabStates:
+    - childPrefab: {fileID: 8201413380238646839, guid: ff1deb5190e47124ebd099d65284e5e7, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 4971722965765128673, guid: ff1deb5190e47124ebd099d65284e5e7, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 6999081399724900702, guid: ff1deb5190e47124ebd099d65284e5e7, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 5005065346436931159, guid: ff1deb5190e47124ebd099d65284e5e7, type: 3}
+      isActive: 0
+  - IsBuild: 0
+    parentPrefab: {fileID: 4514015327796819356, guid: 6f9cab42ac2f76d4e8b098efa12bb9ec, type: 3}
+    childPrefabStates:
+    - childPrefab: {fileID: 8201413380238646839, guid: 6f9cab42ac2f76d4e8b098efa12bb9ec, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 4971722965765128673, guid: 6f9cab42ac2f76d4e8b098efa12bb9ec, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 6999081399724900702, guid: 6f9cab42ac2f76d4e8b098efa12bb9ec, type: 3}
+      isActive: 0
+    - childPrefab: {fileID: 5005065346436931159, guid: 6f9cab42ac2f76d4e8b098efa12bb9ec, type: 3}
+      isActive: 0
