@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e761e550d315064ba6c579fc870a836, type: 3}
+  m_Name: FruitContainer
+  m_EditorClassIdentifier: 
+  container:
+  - assetPath: Fruits/1
+    fruitType: 0
+    color: {r: 0.40784317, g: 0.015686275, b: 0.41960788, a: 0}
+    scale: 0.27
+  - assetPath: Fruits/2
+    fruitType: 1
+    color: {r: 0.227451, g: 0.2784314, b: 0.81568635, a: 0}
+    scale: 0.32
+  - assetPath: Fruits/3
+    fruitType: 2
+    color: {r: 1, g: 0.19215688, b: 0.28627452, a: 0}
+    scale: 0.4
+  - assetPath: Fruits/4
+    fruitType: 3
+    color: {r: 0.19215688, g: 0.8588236, b: 0.2392157, a: 0}
+    scale: 0.44
+  - assetPath: Fruits/5
+    fruitType: 4
+    color: {r: 1, g: 0.5803922, b: 0.08235294, a: 0}
+    scale: 0.5
+  - assetPath: Fruits/6
+    fruitType: 5
+    color: {r: 0.65882355, g: 0.37254903, b: 0.14509805, a: 0}
+    scale: 0.55
+  - assetPath: Fruits/7
+    fruitType: 6
+    color: {r: 0.48235297, g: 0.75294125, b: 0.20392159, a: 0}
+    scale: 0.57
+  - assetPath: Fruits/8
+    fruitType: 7
+    color: {r: 0.6313726, g: 0.1137255, b: 0.07058824, a: 0}
+    scale: 0.67
+  - assetPath: Fruits/9
+    fruitType: 8
+    color: {r: 0.38431376, g: 0.8078432, b: 0.19607845, a: 0}
+    scale: 0.73
+  - assetPath: Fruits/10
+    fruitType: 9
+    color: {r: 0.97647065, g: 0.7019608, b: 0.6784314, a: 0}
+    scale: 0.75

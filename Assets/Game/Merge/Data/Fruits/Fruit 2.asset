@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9714841078b072a4d95080747095691a, type: 3}
+  m_Name: Fruit 2
+  m_EditorClassIdentifier: 
+  itemID: 2
+  itemName: Fruit 2
+  itemType: 0
+  icon: {fileID: 21300000, guid: 15eb6bc1e7b7e334a9e86b205c0630e6, type: 3}
+  assetPath: Fruits/2
+  fruitType: 1
+  color: {r: 0.26666668, g: 0.3254902, b: 0.87843144, a: 0}
+  fxScale: 0.32
+  fruitSkins:
+  - fruitSkin: {fileID: 21300000, guid: 15eb6bc1e7b7e334a9e86b205c0630e6, type: 3}
+    spriteScale: 0.32
+    fxColor: {r: 0.26666668, g: 0.3254902, b: 0.87843144, a: 0}

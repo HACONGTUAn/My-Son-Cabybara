@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31605ce28b21010449ada02b5063273a, type: 3}
+  m_Name: ItemContainer
+  m_EditorClassIdentifier: 
+  fruits: []
+  container:
+  - {fileID: 11400000, guid: 16a428caf7e0ad54298e230e6adfc342, type: 2}
+  - {fileID: 11400000, guid: a699f3c9bf155a841bf8eec297b6e859, type: 2}
+  - {fileID: 11400000, guid: ce837d25ece65984ba1ec28af14beb76, type: 2}
+  - {fileID: 11400000, guid: b7bbe458fdd70fb42a2075d60e655177, type: 2}
+  - {fileID: 11400000, guid: 251d5fb3ed9fed24c99c1bf94646978f, type: 2}
+  - {fileID: 11400000, guid: 3842f98afc66e354bb494be29c2d477c, type: 2}
+  - {fileID: 11400000, guid: 99337c1b60700fe409d2a29aea6611fb, type: 2}
+  - {fileID: 11400000, guid: 8e9bb2f7a0fa1cb4c96d0a5d98a4fa06, type: 2}
+  - {fileID: 11400000, guid: 084c98a89ade3a14489fed11a710483f, type: 2}
+  - {fileID: 11400000, guid: d6e6cab459a190a43bb7fb0ff7fa93e6, type: 2}

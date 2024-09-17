@@ -10,26 +10,19 @@ using UnityEditor;
 namespace Capybara
 {
     [System.Serializable]
-    public class ChildPrefabState
-    {
-        public GameObject childPrefab;
-        public bool isActive = false;
-    }
-
-    [System.Serializable]
     public class PrefabHierarchy
     {
         public bool IsBuild;
         public GameObject parentPrefab;
-        public List<ChildPrefabState> childPrefabStates = new List<ChildPrefabState>();
+        public Chapter chapterPrefab;
 
-        public void UpdateChildStates()
+        public void UpdateChapter()
         {
             if (!IsBuild)
             {
-                foreach (var childState in childPrefabStates)
+                foreach (var chapterdetail in chapterPrefab.buildChapterDetail)
                 {
-                    childState.isActive = false;
+                    chapterdetail.isActive = false;
                 }
             }
         }
@@ -77,20 +70,8 @@ namespace Capybara
                     if (existingHierarchy != null)
                     {
                         newHierarchy.IsBuild = existingHierarchy.IsBuild;
-                        
-                        if (newHierarchy.IsBuild)
-                        {
-                            foreach (var newChildState in newHierarchy.childPrefabStates)
-                            {
-                                var existingChildState = existingHierarchy.childPrefabStates.FirstOrDefault(c => c.childPrefab == newChildState.childPrefab);
-                                if (existingChildState != null)
-                                {
-                                    newChildState.isActive = existingChildState.isActive;
-                                }
-                            }
-                        }
                     }
-                    newHierarchy.UpdateChildStates();
+                    newHierarchy.UpdateChapter();
                 }
 
                 buildPrefabHierarchies = newBuildPrefabHierarchies;
@@ -126,28 +107,12 @@ namespace Capybara
                     PrefabHierarchy hierarchy = new PrefabHierarchy
                     {
                         parentPrefab = mainPrefab,
-                        childPrefabStates = GetChildPrefabStates(mainPrefab)
                     };
                     prefabHierarchies.Add(hierarchy);
                 }
             }
 
             return prefabHierarchies;
-        }
-
-        private List<ChildPrefabState> GetChildPrefabStates(GameObject parentPrefab)
-        {
-            List<ChildPrefabState> childPrefabStates = new List<ChildPrefabState>();
-
-            foreach (Transform child in parentPrefab.transform)
-            {
-                if (child != null)
-                {
-                    childPrefabStates.Add(new ChildPrefabState { childPrefab = child.gameObject, isActive = false });
-                }
-            }
-
-            return childPrefabStates;
         }
 
         private List<PrefabHierarchy> SortBuildList(List<PrefabHierarchy> buildPrefabHierarchies)
