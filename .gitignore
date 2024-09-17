@@ -1,0 +1,12 @@
+# Bỏ thư mục
+Library/
+Logs/
+Temp/
+UserSettings/
+
+# Bỏ qua tất cả các tệp tin có đuôi `.tmp`
+*.tmp
+*.sln
+
+# Bỏ qua một tệp tin cụ thể
+secret.txt
