@@ -8,8 +8,8 @@ using mygame.sdk;
 using Spine.Unity;
 public class UILoseScreen : ScreenUI
 {
-    [SerializeField] SkeletonGraphic highScoreTitle;
-    [SerializeField] SkeletonGraphic loseTitle;
+    // [SerializeField] SkeletonGraphic highScoreTitle;
+    // [SerializeField] SkeletonGraphic loseTitle;
     [SerializeField] Button continueButton;
     [SerializeField] Button restartButton;
     [SerializeField] Text scoreText;
@@ -59,13 +59,13 @@ public class UILoseScreen : ScreenUI
         }
         scoreText.text = score.ToString();
         highScoreText.text = DataManager.HighScoreClassicMode.ToString();
-        highScoreTitle.gameObject.SetActive(score > highScore);
-        loseTitle.gameObject.SetActive(score <= highScore);
-        if (score > highScore)
-        {
-            highScoreTitle.AnimationState.AddAnimation(0, "Show", false, 0.25f);
-            highScoreTitle.AnimationState.AddAnimation(0, "Idle", true, -1);
-        }
+        // highScoreTitle.gameObject.SetActive(score > highScore);
+        // loseTitle.gameObject.SetActive(score <= highScore);
+        // if (score > highScore)
+        // {
+        //     highScoreTitle.AnimationState.AddAnimation(0, "Show", false, 0.25f);
+        //     highScoreTitle.AnimationState.AddAnimation(0, "Idle", true, -1);
+        // }
     }
     private void Restart()
     {
