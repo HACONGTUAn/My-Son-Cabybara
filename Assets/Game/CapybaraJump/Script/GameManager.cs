@@ -23,13 +23,19 @@ namespace CapybaraJump
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(StartPlay());
+            //StartCoroutine(StartPlay());
+            Time.timeScale = 0f;
             
         }
 
         private  IEnumerator StartPlay(){
+            Time.timeScale = 1f;
             yield return new WaitForSeconds(4);
             SpawnCarpet.Instance.SpawnNewCarpet();
+            
+        }
+        public void StartGame(){
+            StartCoroutine(StartPlay());
         }
 
         // Update is called once per frame
@@ -45,7 +51,8 @@ namespace CapybaraJump
 
         public void PlayAgain(){
             SceneManager.LoadScene(0);
-             Time.timeScale = 1f;
+           /*  StartGame();
+            Time.timeScale = 1f; */
         }
 
 
