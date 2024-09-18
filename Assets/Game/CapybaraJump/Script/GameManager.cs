@@ -13,6 +13,7 @@ namespace CapybaraJump
         public  float angleCollisonEnterThreshHole = 45f;
         public  float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
+        public CountDown countDown;
         
 
         void Awake(){
@@ -30,9 +31,11 @@ namespace CapybaraJump
 
         private  IEnumerator StartPlay(){
             Time.timeScale = 1f;
-            yield return new WaitForSeconds(4);
-            SpawnCarpet.Instance.SpawnNewCarpet();
-            
+            yield return new WaitForSeconds(1);
+            countDown.gameObject.SetActive(true);
+            countDown.StartCountdown();
+
+
         }
         public void StartGame(){
             StartCoroutine(StartPlay());
