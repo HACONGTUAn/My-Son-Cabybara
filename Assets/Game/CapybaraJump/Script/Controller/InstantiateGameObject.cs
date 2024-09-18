@@ -27,8 +27,6 @@ namespace CapybaraJump
         {
             
             carpetHeight = carpetPrefab.transform.GetChild(1).gameObject.GetComponent<Renderer>().bounds.size.y;
-            Debug.Log(carpetHeight);
-            
         }
 
         // Update is called once per frame

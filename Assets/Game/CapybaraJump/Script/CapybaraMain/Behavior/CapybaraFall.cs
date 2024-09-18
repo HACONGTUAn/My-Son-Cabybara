@@ -17,7 +17,7 @@ namespace CapybaraJump
             .SetEase(this.easeType)
             .OnComplete(() =>
             {
-                Debug.Log("Fall complete!");
+              //  Debug.Log("Fall complete!");
                 animator.SetTrigger("touchGround");
                
                
@@ -26,11 +26,9 @@ namespace CapybaraJump
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            Debug.Log("Exit Fall");
+           // Debug.Log("Exit Fall");
             animator.transform.DOKill();
-            CameraFollowController.Instance.MoveUpperOneTime();
-             SpawnCarpet.Instance.UpdatePos();
-            SpawnCarpet.Instance.SpawnNewCarpet();
+          
         }
     }
 }

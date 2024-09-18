@@ -15,7 +15,7 @@ namespace CapybaraJump
             animator.transform.DOMoveY(newYPos, jumpTime).SetEase(this.easeType)
             .OnComplete(() =>
             {
-                Debug.Log("Movement complete!");
+            //    Debug.Log("Movement complete!");
                 animator.SetTrigger("fall");
             });;
         }

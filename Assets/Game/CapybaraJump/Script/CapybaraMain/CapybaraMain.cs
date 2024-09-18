@@ -23,6 +23,17 @@ namespace CapybaraJump
         {
             
         }
+        private void LandingSuccessful(){
+            
+            this.StopMove();
+            Debug.Log("success! next");
+            animator.SetTrigger("touchGround");
+            
+            
+            CameraFollowController.Instance.MoveUpperOneTime();
+            SpawnCarpet.Instance.UpdatePos();
+            SpawnCarpet.Instance.SpawnNewCarpet();
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -33,9 +44,15 @@ namespace CapybaraJump
                 float angle = Vector2.Angle(playerDirection, Vector2.up);
                 if(angle <= GameManager.Instance.angleCollisonEnterThreshHole)
                 {
-                    this.StopMove();
-                    Debug.Log("success! next");
-                    animator.SetTrigger("touchGround");
+                    if(angle <= GameManager.Instance.perfectJumpThreshHole){
+                        ScoreController.Instance.AddScore(2);
+                        Debug.Log("Perfect!");
+                    }
+                    else {
+                        ScoreController.Instance.AddScore(1);
+                    }
+                    ScoreController.Instance.CheckGift(this.transform.position + Vector3.up*InstantiateGameObject.Instance.carpetHeight*1.5f);
+                    LandingSuccessful();
                    // SpawnCarpet.Instance.UpdatePos();
                 }
                 else
