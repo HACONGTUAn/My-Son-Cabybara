@@ -30,8 +30,6 @@ namespace Merge
             {
                 r[i].gameObject.layer = LayerMask.NameToLayer("UI");
             }
-            skeletonGraphic.AnimationState.AddAnimation(0, "Show", false, 0.1f);
-            skeletonGraphic.AnimationState.AddAnimation(0, "Idle", true, -1);
             glowObj.DORotate(new Vector3(0, 0, 180), 2f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear).SetId(this);
         }
         public override void Hide()
