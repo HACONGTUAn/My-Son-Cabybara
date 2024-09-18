@@ -10,7 +10,7 @@ namespace CapybaraJump
         public int CapybaraMain_LayerIndex = 7;
         public int CapybaraCarpet_LayerIndex = 6;
         public static GameManager Instance;
-        public  float angleCollisonEnterThreshHole = 45f;
+        public  float angleCollisonEnterThreshHole = 35f;
         public  float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
         public CountDown countDown;

@@ -37,7 +37,7 @@ namespace CapybaraJump
                 Debug.Log("spawnPos is Null");
                 return;
             }
-            GameObject newCarpet = InstantiateGameObject.Instance.GetObject(1, spawnPosList[index]);
+            GameObject newCarpet = InstantiateGameObject.Instance.GetObject(0, spawnPosList[index]);
             Vector3 startPos = spawnPosList[index].position;
             
             Vector3 targetPos = new Vector3(0f, startPos.y, startPos.z);

@@ -28,8 +28,6 @@ namespace CapybaraJump
             this.StopMove();
             Debug.Log("success! next");
             animator.SetTrigger("touchGround");
-            
-            
             CameraFollowController.Instance.MoveUpperOneTime();
             SpawnCarpet.Instance.UpdatePos();
             SpawnCarpet.Instance.SpawnNewCarpet();
