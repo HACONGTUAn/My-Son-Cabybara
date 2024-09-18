@@ -18,14 +18,14 @@ namespace CapybaraJump
             
         }
 
-         private void OnTriggerEnter2D(Collider2D other){
-            Debug.Log("gifttttt");
+        private void OnTriggerEnter2D(Collider2D other){
             if (other.gameObject.layer == GameManager.Instance.CapybaraMain_LayerIndex)
             {
-                Debug.Log("gift");
                 this.gameObject.SetActive(false);
+                GameManager.Instance.isBoost = true;
             }
         }
+        
     }
     
 }

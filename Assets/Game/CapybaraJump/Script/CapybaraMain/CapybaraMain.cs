@@ -28,7 +28,7 @@ namespace CapybaraJump
             this.StopMove();
             Debug.Log("success! next");
             animator.SetTrigger("touchGround");
-            CameraFollowController.Instance.MoveUpperOneTime();
+            CameraFollowController.Instance.MoveUpperOneTime(1, CameraFollowController.Instance.moveTime);
             SpawnCarpet.Instance.UpdatePos();
             SpawnCarpet.Instance.SpawnNewCarpet();
         }
@@ -42,6 +42,7 @@ namespace CapybaraJump
                 float angle = Vector2.Angle(playerDirection, Vector2.up);
                 if(angle <= GameManager.Instance.angleCollisonEnterThreshHole)
                 {
+                    
                     if(angle <= GameManager.Instance.perfectJumpThreshHole){
                         ScoreController.Instance.AddScore(2);
                         Debug.Log("Perfect!");
@@ -50,7 +51,11 @@ namespace CapybaraJump
                         ScoreController.Instance.AddScore(1);
                     }
                     ScoreController.Instance.CheckGift(this.transform.position + Vector3.up*InstantiateGameObject.Instance.carpetHeight*1.5f);
-                    LandingSuccessful();
+                    if(GameManager.Instance.isBoost){
+                        StopMove();
+                        MoveUpBooster(5);
+                    }
+                    else LandingSuccessful();
                    // SpawnCarpet.Instance.UpdatePos();
                 }
                 else
@@ -58,9 +63,36 @@ namespace CapybaraJump
                     Debug.Log("Lose");
                     GameManager.Instance.GameOver();
                 }
-                Debug.Log(angle);
+               // Debug.Log(angle);
             }
         }
+
+         private void MoveUpBooster(int steps){
+             Debug.Log("boóst");
+            float jumpTime = 0.2f;
+           // animator.SetTrigger("Jump");
+            float newYPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight*2;
+            transform.DOMoveY(newYPos, jumpTime*0.5f).SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                Debug.Log("đây");
+                Debug.Log(newYPos);
+                 Debug.Log(InstantiateGameObject.Instance.carpetHeight*steps);
+                CameraFollowController.Instance.MoveUpperOneTime(steps , jumpTime*3);
+                float boostPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight*steps;
+                Debug.Log(boostPos);
+                transform.DOMoveY(boostPos, jumpTime*3).SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    Debug.Log("true");
+                    GameManager.Instance.isBoost = false;
+                    
+                });
+                
+                
+            });
+        
+        } 
 
 
         private void StopMove(){

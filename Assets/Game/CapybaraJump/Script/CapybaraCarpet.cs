@@ -44,8 +44,8 @@ namespace CapybaraJump
             }
         }
 
-        public void MoveToCenter(Vector3 startPos, Vector3 targetPos){
-            moveTime = Random.Range(3f, 6f);
+        public void MoveToCenter(Vector3 startPos, Vector3 targetPos, float step){
+            moveTime = Random.Range(GameManager.Instance.startTime*step, GameManager.Instance.endTime*step);
             this.transform.position = startPos;
             transform.DOLocalMove(targetPos, moveTime)
             .SetEase(this.easeType)
@@ -63,7 +63,7 @@ namespace CapybaraJump
         {
             Transform stick = transform.GetChild(0);
             Vector3 oldPos = new Vector3(stick.localPosition.x + 5f, stick.localPosition.y, stick.localPosition.z);
-            transform.GetChild(0).DOLocalMove(oldPos, this.moveTime)
+            transform.GetChild(0).DOLocalMove(oldPos, this.moveTime*0.3f)
             .SetEase(this.easeType);
         }
 

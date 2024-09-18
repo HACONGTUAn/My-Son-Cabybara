@@ -39,7 +39,7 @@ namespace CapybaraJump
 
 
         public void CheckGift(Vector3 position){
-            if (score > 5){
+            if (score == 5){
                 gift.transform.position = position;
                 gift.SetActive(true);
                 

@@ -13,7 +13,8 @@ namespace CapybaraJump
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             float newYPos = animator.transform.position.y - InstantiateGameObject.Instance.carpetHeight*3;
-            animator.transform.DOMoveY(newYPos, fallTime)
+            fallTime = GameManager.Instance.fallTime;
+            animator.transform.DOMoveY(newYPos, fallTime*1.5f)
             .SetEase(this.easeType)
             .OnComplete(() =>
             {

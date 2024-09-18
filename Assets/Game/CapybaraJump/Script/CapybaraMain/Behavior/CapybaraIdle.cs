@@ -12,7 +12,7 @@ namespace CapybaraJump
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !GameManager.Instance.isBoost)
                 animator.SetTrigger("Jump");
             
         }

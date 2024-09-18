@@ -14,6 +14,10 @@ namespace CapybaraJump
         public  float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
         public CountDown countDown;
+        public float startTime = 1f;
+        public float endTime = 2f;
+        public float fallTime = 0.5f;
+        public bool isBoost = false;
         
 
         void Awake(){

@@ -10,7 +10,7 @@ namespace CapybaraJump
     {
         // Start is called before the first frame update
         public static CameraFollowController Instance { get; private set;}
-        [SerializeField] private float moveTime;
+        public float moveTime;
         [SerializeField] private Ease easeType;
         private Vector3 targetPos;
 
@@ -25,9 +25,9 @@ namespace CapybaraJump
             
         }
 
-        public void MoveUpperOneTime(){
-            this.targetPos += Vector3.up * InstantiateGameObject.Instance.carpetHeight;
-            transform.DOMove(this.targetPos, this.moveTime)
+        public void MoveUpperOneTime(int step, float time){
+            this.targetPos += Vector3.up * InstantiateGameObject.Instance.carpetHeight*step;
+            transform.DOMove(this.targetPos, time)
                 .SetEase(this.easeType);
         }
 

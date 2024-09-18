@@ -41,7 +41,7 @@ namespace CapybaraJump
             Vector3 startPos = spawnPosList[index].position;
             
             Vector3 targetPos = new Vector3(0f, startPos.y, startPos.z);
-            newCarpet.GetComponent<CapybaraCarpet>().MoveToCenter(startPos, targetPos);
+            newCarpet.GetComponent<CapybaraCarpet>().MoveToCenter(startPos, targetPos, 2f);
             
         }
 

@@ -10,19 +10,23 @@ namespace CapybaraJump
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            float newYPos = animator.transform.position.y + InstantiateGameObject.Instance.carpetHeight*3;
+            if(!GameManager.Instance.isBoost){
+                float newYPos = animator.transform.position.y + InstantiateGameObject.Instance.carpetHeight*3;
             
-            animator.transform.DOMoveY(newYPos, jumpTime).SetEase(this.easeType)
-            .OnComplete(() =>
-            {
-            //    Debug.Log("Movement complete!");
-                animator.SetTrigger("fall");
-            });;
-        }
+                animator.transform.DOMoveY(newYPos, jumpTime).SetEase(this.easeType)
+                .OnComplete(() =>
+                {
+                    /* if(!GameManager.Instance.isBoost){ */
+                        Debug.Log("this");
+                        animator.SetTrigger("fall");
 
-        /* public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
-            animator.transform.DOKill();
-        } */
+                    //}
+                    
+                });
+            }
+          
+            
+        }
+        
     }
 }
