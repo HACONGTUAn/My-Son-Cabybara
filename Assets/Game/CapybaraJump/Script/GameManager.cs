@@ -13,6 +13,7 @@ namespace CapybaraJump
         public  float angleCollisonEnterThreshHole = 45f;
         public  float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
+        
 
         void Awake(){
            if(Instance == null){
