@@ -1,48 +1,51 @@
 using System.Collections.Generic;
 
-public static class Observer
+namespace Merge
 {
-    public delegate void CallBackObserver(object data);
-
-    static Dictionary<string, HashSet<CallBackObserver>> dictObserver = new Dictionary<string, HashSet<CallBackObserver>>();
-    // Use this for initialization
-    public static void AddObserver(string topicName, CallBackObserver callbackObserver)
+    public static class Observer
     {
-        HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
-        listObserver.Add(callbackObserver);
-    }
+        public delegate void CallBackObserver(object data);
 
-    public static void RemoveObserver(string topicName, CallBackObserver callbackObserver)
-    {
-        HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
-        if (listObserver.Contains(callbackObserver))
+        static Dictionary<string, HashSet<CallBackObserver>> dictObserver = new Dictionary<string, HashSet<CallBackObserver>>();
+        // Use this for initialization
+        public static void AddObserver(string topicName, CallBackObserver callbackObserver)
         {
-            listObserver.Remove(callbackObserver);
+            HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
+            listObserver.Add(callbackObserver);
         }
-    }
 
-    public static void Notify(string topicName, object Data)
-    {
-        HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
-        foreach (CallBackObserver observer in new HashSet<CallBackObserver>(listObserver))
+        public static void RemoveObserver(string topicName, CallBackObserver callbackObserver)
         {
-            observer(Data);
+            HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
+            if (listObserver.Contains(callbackObserver))
+            {
+                listObserver.Remove(callbackObserver);
+            }
         }
-    }
 
-    public static void Notify(string topicName)
-    {
-        HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
-        foreach (CallBackObserver observer in listObserver)
+        public static void Notify(string topicName, object Data)
         {
-            observer(null);
+            HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
+            foreach (CallBackObserver observer in new HashSet<CallBackObserver>(listObserver))
+            {
+                observer(Data);
+            }
         }
-    }
 
-    private static HashSet<CallBackObserver> CreateListObserverForTopic(string topicName)
-    {
-        if (!dictObserver.ContainsKey(topicName))
-            dictObserver.Add(topicName, new HashSet<CallBackObserver>());
-        return dictObserver[topicName];
+        public static void Notify(string topicName)
+        {
+            HashSet<CallBackObserver> listObserver = CreateListObserverForTopic(topicName);
+            foreach (CallBackObserver observer in listObserver)
+            {
+                observer(null);
+            }
+        }
+
+        private static HashSet<CallBackObserver> CreateListObserverForTopic(string topicName)
+        {
+            if (!dictObserver.ContainsKey(topicName))
+                dictObserver.Add(topicName, new HashSet<CallBackObserver>());
+            return dictObserver[topicName];
+        }
     }
 }

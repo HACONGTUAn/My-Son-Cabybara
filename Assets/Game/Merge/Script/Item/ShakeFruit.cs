@@ -2,45 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShakeFruit : MonoBehaviour
+namespace Merge
 {
-    [SerializeField] public float shakeDuration = 1f;
-    [SerializeField] public float shakeAmount;
-    [SerializeField] public float decreaseFactor = 1.0f;
-    private Vector3 originalPosition;
-    private bool isshaking = false;
-
-    void Start()
+    public class ShakeFruit : MonoBehaviour
     {
-        originalPosition = transform.position;
-    }
+        [SerializeField] public float shakeDuration = 1f;
+        [SerializeField] public float shakeAmount;
+        [SerializeField] public float decreaseFactor = 1.0f;
+        private Vector3 originalPosition;
+        private bool isshaking = false;
 
-    private void Update()
-    {
-        if (isshaking)
+        void Start()
         {
-            ChangeWallPosition();
+            originalPosition = transform.position;
         }
-    }
 
-    public void ChangeWallPosition()
-    {
-        if (shakeDuration > 0)
+        private void Update()
         {
-            transform.position = originalPosition + Random.insideUnitSphere * shakeAmount;
-            shakeDuration -= Time.deltaTime * decreaseFactor;
+            if (isshaking)
+            {
+                ChangeWallPosition();
+            }
         }
-        else
-        {
-            shakeDuration = 0f;
-            transform.position = originalPosition;
-            isshaking = false;
-        }
-    }
 
-    public void ShakeButton()
-    {
-        isshaking = true;
-        shakeDuration = 1f;
+        public void ChangeWallPosition()
+        {
+            if (shakeDuration > 0)
+            {
+                transform.position = originalPosition + Random.insideUnitSphere * shakeAmount;
+                shakeDuration -= Time.deltaTime * decreaseFactor;
+            }
+            else
+            {
+                shakeDuration = 0f;
+                transform.position = originalPosition;
+                isshaking = false;
+            }
+        }
+
+        public void ShakeButton()
+        {
+            isshaking = true;
+            shakeDuration = 1f;
+        }
     }
 }

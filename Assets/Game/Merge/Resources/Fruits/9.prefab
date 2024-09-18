@@ -137,7 +137,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4aeea4e1c3613924eafab475a7bdb346, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -200,10 +200,8 @@ MonoBehaviour:
   fruitType: 8
   fruitItem: {fileID: 11400000, guid: 084c98a89ade3a14489fed11a710483f, type: 2}
   highlightObj: {fileID: 1847239061956216672}
-  neutralState: {fileID: 0}
-  fallingState: {fileID: 0}
-  hotState: {fileID: 0}
-  fruitCollisions: []
+  fruitCollisions:
+  - {fileID: 194574975952730547}
   hasCollided: 0
   hasContacted: 0
 --- !u!114 &194574975952730547

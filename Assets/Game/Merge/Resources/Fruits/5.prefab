@@ -45,7 +45,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3526822938522258159}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9ca6ed1eed5ca8343bbeb518b876627c, type: 2}
+  m_Material: {fileID: 6200000, guid: 4aeea4e1c3613924eafab475a7bdb346, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -115,10 +115,8 @@ MonoBehaviour:
   fruitType: 4
   fruitItem: {fileID: 11400000, guid: 251d5fb3ed9fed24c99c1bf94646978f, type: 2}
   highlightObj: {fileID: 3709634173515629150}
-  neutralState: {fileID: 0}
-  fallingState: {fileID: 0}
-  hotState: {fileID: 0}
-  fruitCollisions: []
+  fruitCollisions:
+  - {fileID: -5173729384609495935}
   hasCollided: 0
   hasContacted: 0
 --- !u!114 &-5173729384609495935

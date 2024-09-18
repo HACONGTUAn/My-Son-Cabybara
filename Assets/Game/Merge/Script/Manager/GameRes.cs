@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace mygame.sdk
+namespace Merge
 {
     public enum Level_type
     {

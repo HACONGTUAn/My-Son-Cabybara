@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : Singleton<CameraManager>
+namespace Merge
 {
-    public Camera mainCamera;
-    public Camera uiCamera;
-    public void SetView(Bounds bounds)
+    public class CameraManager : Singleton<CameraManager>
     {
-        float sizeX = bounds.size.x;
-        float orthographicSize = sizeX * Screen.height / Screen.width * 0.5f;
-        mainCamera.orthographicSize = orthographicSize;
+        public Camera mainCamera;
+        public Camera uiCamera;
+        public void SetView(Bounds bounds)
+        {
+            float sizeX = bounds.size.x;
+            float orthographicSize = sizeX * Screen.height / Screen.width * 0.5f;
+            mainCamera.orthographicSize = orthographicSize;
+        }
     }
 }

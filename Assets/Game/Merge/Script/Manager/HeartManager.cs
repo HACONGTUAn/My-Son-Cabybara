@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Twisted
+namespace Merge
 {
     public class HeartManager : Singleton<HeartManager>
     {
