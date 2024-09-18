@@ -2574,7 +2574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2e58843b22cdd4f8f35406d0e47e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  index: 1
 --- !u!1 &1351547098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,6 +4226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144794939}
   - component: {fileID: 2144794940}
+  - component: {fileID: 2144794941}
   m_Layer: 0
   m_Name: ==MainHome==
   m_TagString: Untagged
@@ -4262,6 +4263,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathMiniGameInResources: MiniGame
+  id:
+  - {fileID: -743874216502121150, guid: f091ecb3425014d40a6053891e573590, type: 3}
+  - {fileID: -5808163373599901343, guid: ea16996390be229498cf4173449f8187, type: 3}
+  - {fileID: 7897102489814242130, guid: 5a9fb0a82d8cfa0498d4314d0f8971f8, type: 3}
+--- !u!114 &2144794941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144794938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5102f5dcd0667045989abcaaa5c4b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

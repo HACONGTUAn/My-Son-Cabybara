@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8FA9180B-D009-82EE-AACE-07D34C430DD6}</ProjectGuid>
+    <ProjectGuid>{F967F85A-1C67-6975-6D3D-B0A70206D200}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,7 +55,7 @@
     <UnityVersion>2022.3.32f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -73,6 +73,7 @@
     <Compile Include="Assets\Game\MainGame\Script\ShopUI.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\PopupUI.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo_Rotate.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\DataManager.cs" />
     <Compile Include="Assets\Game\MainGame\Script\LoadingResources.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseUI.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Helper.cs" />
@@ -90,8 +91,10 @@
     <Compile Include="Assets\Game\Merge\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\FruitContainerSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\BaseID.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\DataManager.cs" />
     <Compile Include="Assets\Game\MainGame\Script\UIManager.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\Manager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\FruitType.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Observer.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo_RandomText.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Assets\Game\Merge\Script\Item\Fruit.cs" />
     <Compile Include="Assets\Game\Merge\Script\Base\Items\BoxItem.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\IDamage.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\MiniGame1.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectSO.cs" />
     <Compile Include="Assets\Game\MainGame\Script\TPRLSingleton.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\Kino Bloom\Bloom.cs" />
@@ -116,7 +120,9 @@
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\BetterOutline.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UISettingPopup.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameRes.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\MiniGame3.cs" />
     <Compile Include="Assets\Game\Merge\Script\Base\PlayerPrefsUtil.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\MiniGame2.cs" />
     <Compile Include="Assets\Game\Merge\Script\Base\PlayerPrefsBase.cs" />
     <Compile Include="Assets\Game\Merge\Script\Audio\AudioContainerSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\GradientColor.cs" />
@@ -1168,31 +1174,31 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="spine-csharp.csproj">
-      <Project>{37F91371-C3A8-5367-5C09-4B0A161EB5AB}</Project>
+      <Project>{86A941CD-60A6-CDC8-C459-00D0D0B35E9C}</Project>
       <Name>spine-csharp</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-examples.csproj">
-      <Project>{47870896-4FA2-DB7B-C5C7-67DF7E5AD4D1}</Project>
+      <Project>{67050E3D-FF18-154A-F0F1-44E123643D30}</Project>
       <Name>spine-unity-examples</Name>
     </ProjectReference>
     <ProjectReference Include="baracuda.thread-dispatcher.csproj">
-      <Project>{081A4ADB-B3B2-5F7E-1ABA-3EB6A57166BC}</Project>
+      <Project>{FD01CCEB-2635-41B1-48E3-F0E500A394A3}</Project>
       <Name>baracuda.thread-dispatcher</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-examples-editor.csproj">
-      <Project>{5DF55267-D0B9-C311-9A83-FBA7B61411EA}</Project>
+      <Project>{7C232555-C8D5-AF0A-751A-6B0135691038}</Project>
       <Name>spine-unity-examples-editor</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity.csproj">
-      <Project>{E4992D7A-E2BC-1549-DF2B-3CE34B2BC9F2}</Project>
+      <Project>{A7FCB773-D5ED-7D29-0049-64D975815667}</Project>
       <Name>spine-unity</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-editor.csproj">
-      <Project>{4B4D9096-0968-B63F-DA97-5DA15D886E7F}</Project>
+      <Project>{C6E897E9-26E2-CD1C-BA79-2C4D73A87770}</Project>
       <Name>spine-unity-editor</Name>
     </ProjectReference>
     <ProjectReference Include="DOTween.Modules.csproj">
-      <Project>{89CEA24D-DD54-6A10-AA9E-B799F5775FD5}</Project>
+      <Project>{65CB43F7-2B19-2056-6D68-8FFC4ECA2779}</Project>
       <Name>DOTween.Modules</Name>
     </ProjectReference>
   </ItemGroup>

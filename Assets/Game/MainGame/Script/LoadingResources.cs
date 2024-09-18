@@ -10,6 +10,7 @@ namespace CapybaraMain
         // Start is called before the first frame update
         [SerializeField] private string pathMiniGameInResources = "MiniGame";
         public Dictionary<int,GameObject> keyValuePairs = new Dictionary<int,GameObject>();
+        public List<BaseID> id;
         void Start()
          {
             LoadingAllGameObjectInResources();
@@ -27,6 +28,10 @@ namespace CapybaraMain
             for(int i = 0; i < allObject.Length; i++)
             {
                 keyValuePairs.Add(i, allObject[i]);
+                if(allObject[i].name == id[i].name)
+                {
+                    id[i].id = i;
+                }
             }
           }
     }
