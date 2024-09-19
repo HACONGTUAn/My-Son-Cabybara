@@ -13,9 +13,10 @@ namespace CapybaraMain
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
         [SerializeField] private GameObject daiLyUp;
+        [SerializeField] private GameObject Setting
+            ;
 
-
-       private int currentIndex = 0;
+        private int currentIndex = 0;
         private float itemWidth;
         private GameObject currentGameObject = null;
         private void Start()
@@ -56,22 +57,18 @@ namespace CapybaraMain
                 Debug.Log("No key");
                 return;
             }
-            if(currentGameObject == null)
-            {
-                currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
-            }
-            else
-            {
-                currentGameObject.SetActive(true);
-            }
+            
+            currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+            
+          
             this.gameObject.SetActive(false);
             backHome.gameObject.SetActive(true);
         }
 
         public void BackHome()
         {
-            currentGameObject.SetActive(false);
-           // Destroy(currentGameObject);
+           // currentGameObject.SetActive(false);
+            Destroy(currentGameObject);
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
         }
@@ -83,6 +80,15 @@ namespace CapybaraMain
         public void exitDaily()
         {
             daiLyUp.SetActive(false);
+        }
+
+        public void SettingOpen()
+        {
+            Setting.SetActive(true);
+        }
+        public void exitSetting()
+        {
+            Setting.SetActive(false);
         }
     }
 }
