@@ -16,11 +16,8 @@ namespace CapybaraJump
                 animator.transform.DOMoveY(newYPos, jumpTime).SetEase(this.easeType)
                 .OnComplete(() =>
                 {
-                    /* if(!GameManager.Instance.isBoost){ */
                         Debug.Log("this");
                         animator.SetTrigger("fall");
-
-                    //}
                     
                 });
             }

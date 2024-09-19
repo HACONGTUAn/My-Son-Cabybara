@@ -15,13 +15,12 @@ namespace CapybaraJump
             float newYPos = animator.transform.position.y - InstantiateGameObject.Instance.carpetHeight*3;
             fallTime = GameManager.Instance.fallTime;
             animator.transform.DOMoveY(newYPos, fallTime*1.5f)
+
             .SetEase(this.easeType)
             .OnComplete(() =>
             {
-              //  Debug.Log("Fall complete!");
+                Debug.Log("Fall complete!");
                 animator.SetTrigger("touchGround");
-               
-               
             });
         }
 

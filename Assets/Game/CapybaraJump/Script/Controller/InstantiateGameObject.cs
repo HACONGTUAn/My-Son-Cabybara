@@ -38,18 +38,22 @@ namespace CapybaraJump
 
         public GameObject GetObject(int index, Transform trans){
             
-            if(carpetList.Count == count){
+            if(carpetList.Count >= count && !carpetList.Peek().GetComponent<CapybaraCarpet>().isMoving)
+            {
                 GameObject carpet = carpetList.Dequeue();
-                if(trans.gameObject.name == "leftPos"){
+                
+                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
+                carpetList.Enqueue(carpet);
+                if (trans.gameObject.name == "leftPos"){
                    carpet.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 }
                 else {
                     carpet.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 }
-                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
+               
                 carpet.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
                 //obj.SetActive(true);
-                carpetList.Enqueue(carpet);
+                
                 return carpet;
             }
             GameObject obj = Instantiate(carpetPrefab, this.transform);
@@ -57,6 +61,7 @@ namespace CapybaraJump
                 obj.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
             }
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
+            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
             carpetList.Enqueue(obj);
             return obj;
         }

@@ -11,6 +11,7 @@ namespace CapybaraJump
         // Start is called before the first frame update
         [SerializeField] private Ease easeType;
         [SerializeField] private float moveTime;
+        public bool isMoving = false;
        
         
         void Start()
@@ -45,18 +46,24 @@ namespace CapybaraJump
         }
 
         public void MoveToCenter(Vector3 startPos, Vector3 targetPos, float step){
+            isMoving = true;
+
             moveTime = Random.Range(GameManager.Instance.startTime*step, GameManager.Instance.endTime*step);
             this.transform.position = startPos;
             transform.DOLocalMove(targetPos, moveTime)
             .SetEase(this.easeType)
-            /* .OnComplete(()=> {
-                SpawnCarpet.Instance.UpdatePos();
-            }) */;
-           
+             .OnComplete(() =>
+             {
+                 isMoving = false;
+                 StopMove();
+             });
+
         }
         public void StopMove(){
             transform.DOKill();
             StickMoveBack();
+            isMoving = false;
+
         }
 
         private void StickMoveBack()

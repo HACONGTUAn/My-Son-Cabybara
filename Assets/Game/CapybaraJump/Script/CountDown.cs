@@ -48,7 +48,7 @@ namespace CapybaraJump
         void OnCountdownFinished()
         {
             // Logic for when the countdown finishes
-            SpawnCarpet.Instance.SpawnNewCarpet();
+            SpawnCarpet.Instance.SpawnNewCarpet(2f);
             Debug.Log("Countdown Finished!");
             this.gameObject.SetActive(false);
         }
