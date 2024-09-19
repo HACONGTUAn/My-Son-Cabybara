@@ -14,7 +14,7 @@ namespace Merge
         private void Awake()
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             counters = new List<Counter>();
         }
         private void Update()

@@ -13,8 +13,8 @@ namespace CapybaraMain
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
         [SerializeField] private GameObject daiLyUp;
-        [SerializeField] private GameObject Setting
-            ;
+        [SerializeField] private GameObject Setting ;
+        [SerializeField] private Transform test;
 
         private int currentIndex = 0;
         private float itemWidth;
@@ -58,7 +58,7 @@ namespace CapybaraMain
                 return;
             }
             
-            currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+            currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex], test);
             
           
             this.gameObject.SetActive(false);

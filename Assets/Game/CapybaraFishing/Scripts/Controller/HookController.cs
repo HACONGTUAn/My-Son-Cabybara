@@ -27,7 +27,7 @@ namespace Fishing
         private float totalMass = 0.2f;
 
 
-        void Start()
+        void Awake()
         {           
             lineRenderer = gameObject.GetComponent<LineRenderer>();
             GameManager.Instance.fishingEvent += OnFishingHandle;

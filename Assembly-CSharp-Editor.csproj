@@ -56,8 +56,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\Admin\Documents\capybara\My-Son-Cabybara\Assets\Game\Plugins\Demigiant\DOTween\DOTween.dll" />
-    <Analyzer Include="C:\Users\Admin\Documents\capybara\My-Son-Cabybara\Assets\Game\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -1178,13 +1176,13 @@
       <Project>{F967F85A-1C67-6975-6D3D-B0A70206D200}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="spine-unity-examples.csproj">
-      <Project>{67050E3D-FF18-154A-F0F1-44E123643D30}</Project>
-      <Name>spine-unity-examples</Name>
-    </ProjectReference>
     <ProjectReference Include="spine-csharp.csproj">
       <Project>{86A941CD-60A6-CDC8-C459-00D0D0B35E9C}</Project>
       <Name>spine-csharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="spine-unity-examples.csproj">
+      <Project>{67050E3D-FF18-154A-F0F1-44E123643D30}</Project>
+      <Name>spine-unity-examples</Name>
     </ProjectReference>
     <ProjectReference Include="baracuda.thread-dispatcher.csproj">
       <Project>{FD01CCEB-2635-41B1-48E3-F0E500A394A3}</Project>
