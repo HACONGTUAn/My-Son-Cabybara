@@ -14,66 +14,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listTasks:
   - tasks:
-    - taskName: "N\xF4i"
-      isUnlocked: 0
+    - taskName: 1
+      isUnlocked: 1
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "\u0110\xE8n ch\xF9m n\xF4i"
-      isUnlocked: 0
+    - taskName: 2
+      isUnlocked: 1
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "Th\u1EA3m"
-      isUnlocked: 0
+    - taskName: 3
+      isUnlocked: 1
       type: 1
       price: 0
       height: 20
       mergeType: 0
       fishingPrefab: {fileID: 0}
   - tasks:
-    - taskName: "B\u1EE9c tranh"
-      isUnlocked: 0
+    - taskName: 4
+      isUnlocked: 1
       type: 0
       price: 3
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "T\u1EE7 "
-      isUnlocked: 0
+    - taskName: 5
+      isUnlocked: 1
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "B\u1EC9m"
-      isUnlocked: 0
+    - taskName: 6
+      isUnlocked: 1
       type: 3
       price: 0
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
   - tasks:
-    - taskName: "S\xE0n "
-      isUnlocked: 0
+    - taskName: 7
+      isUnlocked: 1
       type: 0
       price: 3
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "T\u01B0\u1EDDng "
-      isUnlocked: 0
+    - taskName: 8
+      isUnlocked: 1
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
-    - taskName: "ti gi\u1EA3"
-      isUnlocked: 0
+    - taskName: 9
+      isUnlocked: 1
       type: 2
       price: 0
       height: 0

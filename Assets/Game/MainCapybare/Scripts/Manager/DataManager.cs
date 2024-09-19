@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Capybara
 {
-    public class GameManager : Singleton<GameManager>
+    public class DataManager : Singleton<DataManager>
     {
-        public Follow followChapter;
+        
     }
 }
