@@ -1,0 +1,14 @@
+Congratulations.png
+size:1024,176
+filter:Linear,Linear
+pma:true
+Ribbon
+bounds:2,7,595,166
+offsets:0,0,596,166
+Shine_txt
+bounds:599,2,301,64
+offsets:2,2,305,67
+txt_1
+bounds:599,68,412,46
+txt_2
+bounds:599,116,421,57

@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Booster", menuName = "Data/Booster")]
-public class BoosterSO : ScriptableObject
+namespace Merge
 {
-    [Serializable]
-    public class BoosterEntry
+    [CreateAssetMenu(fileName = "Booster", menuName = "Data/Booster")]
+    public class BoosterSO : ScriptableObject
     {
-        public EBoosterType type;
-        public int price;
-    }
-
-    public List<BoosterEntry> boosterPrices = new List<BoosterEntry>();
-
-
-    public int GetBoosterPrice(EBoosterType type)
-    {
-        foreach (var entry in boosterPrices)
+        [Serializable]
+        public class BoosterEntry
         {
-            if (entry.type == type)
-            {
-                return entry.price;
-            }
+            public EBoosterType type;
+            public int price;
         }
-        return -1; 
+
+        public List<BoosterEntry> boosterPrices = new List<BoosterEntry>();
+
+
+        public int GetBoosterPrice(EBoosterType type)
+        {
+            foreach (var entry in boosterPrices)
+            {
+                if (entry.type == type)
+                {
+                    return entry.price;
+                }
+            }
+            return -1; 
+        }
     }
 }

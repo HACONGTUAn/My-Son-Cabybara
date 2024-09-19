@@ -115,10 +115,8 @@ MonoBehaviour:
   fruitType: 0
   fruitItem: {fileID: 11400000, guid: 16a428caf7e0ad54298e230e6adfc342, type: 2}
   highlightObj: {fileID: 8991792849645988952}
-  neutralState: {fileID: 0}
-  fallingState: {fileID: 0}
-  hotState: {fileID: 0}
-  fruitCollisions: []
+  fruitCollisions:
+  - {fileID: 6050634828356172767}
   hasCollided: 0
   hasContacted: 0
 --- !u!114 &6050634828356172767

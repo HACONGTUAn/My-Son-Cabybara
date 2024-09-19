@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.40000004, y: 0.40000004, z: 0.40000004}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7816078995865678484}
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.5
-  m_Material: {fileID: 6200000, guid: 9ca6ed1eed5ca8343bbeb518b876627c, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -182,7 +182,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.35
 --- !u!114 &1113604088273038239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +200,8 @@ MonoBehaviour:
   fruitType: 2
   fruitItem: {fileID: 11400000, guid: ce837d25ece65984ba1ec28af14beb76, type: 2}
   highlightObj: {fileID: 165726497350535990}
-  neutralState: {fileID: 0}
-  fallingState: {fileID: 0}
-  hotState: {fileID: 0}
-  fruitCollisions: []
+  fruitCollisions:
+  - {fileID: -3661739338964309003}
   hasCollided: 0
   hasContacted: 0
 --- !u!114 &-3661739338964309003

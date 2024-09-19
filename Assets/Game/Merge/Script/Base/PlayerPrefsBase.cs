@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
-namespace mygame.sdk
+namespace Merge
 {
     public class PlayerPrefsBase
     {

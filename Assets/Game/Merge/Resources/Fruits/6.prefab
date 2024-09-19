@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.57, y: 0.57, z: 0.57}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1425314390458657679}
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2955524878316771217}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9ca6ed1eed5ca8343bbeb518b876627c, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -182,7 +182,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.81
 --- !u!114 &4184887918845598094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +200,8 @@ MonoBehaviour:
   fruitType: 5
   fruitItem: {fileID: 11400000, guid: 3842f98afc66e354bb494be29c2d477c, type: 2}
   highlightObj: {fileID: 9075657951935435309}
-  neutralState: {fileID: 0}
-  fallingState: {fileID: 0}
-  hotState: {fileID: 0}
-  fruitCollisions: []
+  fruitCollisions:
+  - {fileID: 7718732204064092395}
   hasCollided: 0
   hasContacted: 0
 --- !u!114 &7718732204064092395

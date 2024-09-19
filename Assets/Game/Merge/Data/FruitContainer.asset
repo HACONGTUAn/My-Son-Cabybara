@@ -24,32 +24,32 @@ MonoBehaviour:
   - assetPath: Fruits/3
     fruitType: 2
     color: {r: 1, g: 0.19215688, b: 0.28627452, a: 0}
-    scale: 0.4
+    scale: 0.35
   - assetPath: Fruits/4
     fruitType: 3
     color: {r: 0.19215688, g: 0.8588236, b: 0.2392157, a: 0}
-    scale: 0.44
+    scale: 0.32
   - assetPath: Fruits/5
     fruitType: 4
     color: {r: 1, g: 0.5803922, b: 0.08235294, a: 0}
-    scale: 0.5
+    scale: 0.47
   - assetPath: Fruits/6
     fruitType: 5
     color: {r: 0.65882355, g: 0.37254903, b: 0.14509805, a: 0}
-    scale: 0.55
+    scale: 0.6
   - assetPath: Fruits/7
     fruitType: 6
     color: {r: 0.48235297, g: 0.75294125, b: 0.20392159, a: 0}
-    scale: 0.57
+    scale: 0.65
   - assetPath: Fruits/8
     fruitType: 7
     color: {r: 0.6313726, g: 0.1137255, b: 0.07058824, a: 0}
-    scale: 0.67
+    scale: 0.75
   - assetPath: Fruits/9
     fruitType: 8
     color: {r: 0.38431376, g: 0.8078432, b: 0.19607845, a: 0}
-    scale: 0.73
+    scale: 0.8
   - assetPath: Fruits/10
     fruitType: 9
     color: {r: 0.97647065, g: 0.7019608, b: 0.6784314, a: 0}
-    scale: 0.75
+    scale: 0.9

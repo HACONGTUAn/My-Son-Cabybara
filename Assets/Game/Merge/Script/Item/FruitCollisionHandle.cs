@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FruitCollisionHandle : MonoBehaviour
+namespace Merge
 {
-    [SerializeField] public Fruit owner { get; private set; }
-    public void Initialize(Fruit fruit)
+    public class FruitCollisionHandle : MonoBehaviour
     {
-        owner = fruit;
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        owner.OnCollision(other);
+        [SerializeField] public Fruit owner { get; private set; }
+        public void Initialize(Fruit fruit)
+        {
+            owner = fruit;
+        }
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            owner.OnCollision(other);
+        }
     }
 }
