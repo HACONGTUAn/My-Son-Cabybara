@@ -84,7 +84,7 @@ namespace CapybaraJump
         public void MoveUpBooster(int steps)
         {
 
-            float jumpTime = 0.2f;
+            float jumpTime = GameManager.Instance.jumpTime;
 
             float newYPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight * 2;
             transform.DOMoveY(newYPos, jumpTime * 0.5f).SetEase(Ease.Linear)

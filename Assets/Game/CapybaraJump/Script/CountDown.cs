@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace CapybaraJump
 {
@@ -20,6 +21,7 @@ namespace CapybaraJump
 
         private IEnumerator Countdown()
         {
+           
             float currentTime = countdownTime;
 
             while (currentTime > 0)
@@ -51,6 +53,16 @@ namespace CapybaraJump
             SpawnCarpet.Instance.SpawnNewCarpet(2f);
             Debug.Log("Countdown Finished!");
             this.gameObject.SetActive(false);
+            OnRaycast();
+        }
+        public void OnRaycast()
+        {
+            transform.parent.GetComponent<GraphicRaycaster>().enabled = true;
+        }
+
+        public void OffRaycast()
+        {
+            transform.parent.GetComponent<GraphicRaycaster>().enabled = false;
         }
     }
 }

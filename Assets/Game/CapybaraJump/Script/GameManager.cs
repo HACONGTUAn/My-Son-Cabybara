@@ -21,6 +21,7 @@ namespace CapybaraJump
         public bool isBoost = false;
         public bool isShield = false;
         public float jumpF = 10f;
+        public float jumpTime = 0.1f;
 
 
         void Awake()
