@@ -8,14 +8,16 @@ namespace CapybaraMain
     public class HomeUI : BaseUI
     {
         
-        public Button next;
-        public Button back;
-        public ScrollRect scrollSelectionGame;
-        public Button backHome;
+        [SerializeField]private Button next;
+        [SerializeField] private Button back;
+        [SerializeField] private ScrollRect scrollSelectionGame;
+        [SerializeField] private Button backHome;
+        [SerializeField] private GameObject daiLyUp;
 
-        private int currentIndex = 0;
+
+       private int currentIndex = 0;
         private float itemWidth;
-        private GameObject currentGameObject;
+        private GameObject currentGameObject = null;
         private void Start()
         {
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
@@ -54,16 +56,33 @@ namespace CapybaraMain
                 Debug.Log("No key");
                 return;
             }
-            currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+            if(currentGameObject == null)
+            {
+                currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+            }
+            else
+            {
+                currentGameObject.SetActive(true);
+            }
             this.gameObject.SetActive(false);
             backHome.gameObject.SetActive(true);
         }
 
         public void BackHome()
         {
-            Destroy(currentGameObject);
+            currentGameObject.SetActive(false);
+           // Destroy(currentGameObject);
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
+        }
+
+        public void DailyOpen()
+        {
+            daiLyUp.SetActive(true);
+        }
+        public void exitDaily()
+        {
+            daiLyUp.SetActive(false);
         }
     }
 }
