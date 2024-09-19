@@ -4,12 +4,8 @@ using UnityEngine;
 
 namespace Capybara
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
-        public DataChapter chapter;
-        void Start()
-        {
-            chapter.listTasks[0].tasks[1].isUnlocked = true;
-        }
+        public Follow followChapter;
     }
 }
