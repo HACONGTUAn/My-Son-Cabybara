@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 1812959633}
   - component: {fileID: 1812959634}
   m_Layer: 0
-  m_Name: UIBuildButton
+  m_Name: UIBuild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1812959632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3a864a828ab00d448c5c4b462792f7d, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1caac274c09e74b8f7cefc2cd5afc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSpawn: {fileID: 1812959633}

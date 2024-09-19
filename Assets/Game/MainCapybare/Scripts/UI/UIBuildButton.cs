@@ -7,76 +7,21 @@ namespace Capybara
 {
     public class UIBuildButton : MonoBehaviour
     {
-        public Transform buttonSpawn;
-        public Transform chapterSpawn;
-        private Follow follow;
-        private void Start()
+        public Image Icon;
+        public Text Heart;
+        public Button Build;
+        public void SpawnBuildButton(TaskChapter task, GameObject taskObj)
         {
-            follow = GameManager.Instance.followChapter;
-            LoadChapter();
+            Icon.sprite = taskObj.GetComponent<SpriteRenderer>().sprite;
+            Heart.text = "X" + task.price.ToString();
+            Build.onClick.AddListener(() => TaskButtonClick(task, taskObj));
         }
-        private void Update() 
-        {
-            CheckChapter();
-        }
-        private void LoadChapter()
-        {
-            GameObject chapterObj = chapterSpawn.transform.Find(follow.listChapter.chapter[follow.chapter].chapterName)?.gameObject;
-            GameObject chapterPrefab;
-            if(chapterObj == null)
-            {  
-                chapterPrefab = Instantiate(follow.listChapter.chapter[follow.chapter].chapterPrefab, chapterSpawn);
-                chapterPrefab.name = follow.listChapter.chapter[follow.chapter].chapterName;
-            }
-            else
-            {
-                chapterPrefab = chapterObj;
-            }
-            DataChapter dataChapter = follow.listChapter.chapter[follow.chapter].dataChapter;
-            for(int i=0; i<dataChapter.listTasks.Count; i++)
-            {
-                ListTaskChapter listTask = dataChapter.listTasks[i];
-                foreach (var task in listTask.tasks)
-                {
-                    GameObject taskObj = chapterPrefab.transform.Find(task.taskName)?.gameObject;
-                    taskObj.SetActive(task.isUnlocked);
-                    if(!task.isUnlocked && follow.task == i)
-                    {
-                        GameObject buttonPrefab = Instantiate(Resources.Load<GameObject>("UI/Button"), buttonSpawn);
-                        Button button = buttonPrefab.GetComponent<Button>();
-                        button.onClick.AddListener(() => TaskButtonClick(task, button, taskObj));
-                    }
-                }
-            }
-        }
-        private void TaskButtonClick(TaskChapter task, Button button, GameObject taskObj)
+        private void TaskButtonClick(TaskChapter task, GameObject taskObj)
         {
             task.isUnlocked = true;
-            button.gameObject.SetActive(!task.isUnlocked);
-            Destroy(button.gameObject);
+            gameObject.SetActive(!task.isUnlocked);
+            Destroy(gameObject);
             taskObj.SetActive(task.isUnlocked);
-        }
-        private void CheckChapter()
-        {
-            DataChapter dataChapter = follow.listChapter.chapter[follow.chapter].dataChapter;
-            ListTaskChapter listTask = dataChapter.listTasks[follow.task];
-            foreach (var task in listTask.tasks)
-            {
-                if(!task.isUnlocked)
-                {
-                    return;
-                }
-            }
-            follow.task++;
-            if(follow.task >= dataChapter.listTasks.Count)
-            {
-                follow.chapter++;
-                follow.task = 0;
-            }
-            Helper.CreateCounter(0.1f, () =>
-            {
-                LoadChapter();
-            });
         }
     }
 }

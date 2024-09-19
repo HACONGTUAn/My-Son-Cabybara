@@ -15,21 +15,21 @@ MonoBehaviour:
   listTasks:
   - tasks:
     - taskName: 1
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 2
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 3
-      isUnlocked: 1
+      isUnlocked: 0
       type: 1
       price: 0
       height: 20
@@ -37,21 +37,21 @@ MonoBehaviour:
       fishingPrefab: {fileID: 0}
   - tasks:
     - taskName: 4
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 3
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 5
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 6
-      isUnlocked: 1
+      isUnlocked: 0
       type: 3
       price: 0
       height: 0
@@ -59,21 +59,21 @@ MonoBehaviour:
       fishingPrefab: {fileID: 0}
   - tasks:
     - taskName: 7
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 3
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 8
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 9
-      isUnlocked: 1
+      isUnlocked: 0
       type: 2
       price: 0
       height: 0
