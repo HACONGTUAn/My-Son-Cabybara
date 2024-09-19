@@ -19,8 +19,8 @@ MonoBehaviour:
   assetPath: Fruits/3
   fruitType: 2
   color: {r: 1, g: 0.19215688, b: 0.28627452, a: 0}
-  fxScale: 0.4
+  fxScale: 0.35
   fruitSkins:
   - fruitSkin: {fileID: 21300000, guid: 99a2927c9d303cb458f3248665dabfcd, type: 3}
-    spriteScale: 0.4
+    spriteScale: 0.35
     fxColor: {r: 1, g: 0.19215688, b: 0.28627452, a: 0}

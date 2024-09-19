@@ -13,6 +13,7 @@ namespace Merge
         public List<FruitType> fruitUnlocked;
         public FruitContainerSO fruitContainer;
         public Transform line;
+        public Transform container;
         public GameObject instruction;
         private UIIngameScreen ingameScreen;
         private Camera mainCamera;
@@ -34,6 +35,7 @@ namespace Merge
         private bool ready;
         private bool isStart;
         private float saveTimer;
+        private float tutorialTime;
         private int showRate;
         private float timer;
         private static bool isFirstNative;
@@ -97,6 +99,7 @@ namespace Merge
             gameObject.SetActive(true);
             ingameScreen = UIManager.Instance.ShowScreen<UIIngameScreen>();
             timer = 0;
+            tutorialTime = 0;
             listFruit.Clear();
             listCombo.Clear();
             isEnded = false;
@@ -169,6 +172,13 @@ namespace Merge
                     comboCount = 0;
                 }
             }
+            tutorialTime += Time.deltaTime;
+            if(tutorialTime >= 10)
+            {
+                UIStartTutorial uIStartTutorial = UIManager.Instance.popupHolder.GetComponentInChildren<UIStartTutorial>(true);
+                uIStartTutorial.gameObject.SetActive(true);
+                tutorialTime = 0;
+            }
             for (int i = 0; i < listCombo.Count; i++)
             {
                 listCombo[i].UpdateCombo(Time.deltaTime);
@@ -227,6 +237,7 @@ namespace Merge
                     fruitCurrent.transform.position = new Vector3(mousePos.x, fruitCurrent.transform.position.y, 0);
                 }
                 isSelected = true;
+                tutorialTime = 0;
             }
             if (Input.GetMouseButtonUp(0) && fruitCurrent && isSelected)
             {
@@ -473,7 +484,7 @@ namespace Merge
         private Fruit SpawnFruit(FruitType fruitType, Vector3 spawnPosition, bool enablePhysic, bool animationSpawn)
         {
             FruitInfo info = fruitContainer.GetFruit(fruitType);
-            Fruit newFruit = Instantiate(info.GetObject(), transform);
+            Fruit newFruit = Instantiate(info.GetObject(), container);
             if (animationSpawn)
             {
                 newFruit.OnSpawn();

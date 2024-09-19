@@ -94,15 +94,12 @@ namespace Merge
                 NewFruitSystem[i] = Convert.ToInt32(arx[i]);
             }
             BackToMenu();
-            // if (!isFirstTime)
+            UIStartTutorial uIStartTutorial = UIManager.Instance.ShowPopup<UIStartTutorial>(null);
+            // if (isFirstTime)
             // {
-            //     BackToMenu();
-            // }
-            // else
-            // {
+            //     UIStartTutorial uIStartTutorial = UIManager.Instance.ShowPopup<UIStartTutorial>(null);
             //     PlayerPrefs.SetInt("IsFirstTime", 0);
             //     PlayerPrefs.Save();
-            //     PlayAdventureMode();
             // }
             // if (MGTime.Instance.IsNewDay(DataManager.Instance.userData.lastTimeLogin))
             // {
