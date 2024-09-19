@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8075a7bace79f741a1b14365a042fa9, type: 3}
-  m_Name: Booster
+  m_Script: {fileID: 11500000, guid: 48c00bf1dcb8e904397e70681ddffda6, type: 3}
+  m_Name: Chapter 6
   m_EditorClassIdentifier: 
-  boosterPrices:
-  - type: 0
-    price: 10
-  - type: 6
-    price: 10
+  listTasks: []

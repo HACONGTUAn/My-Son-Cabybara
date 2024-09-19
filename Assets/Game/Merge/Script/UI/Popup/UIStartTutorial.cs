@@ -9,6 +9,7 @@ namespace Merge
     {
         [SerializeField] Transform hand;
         [SerializeField] GameObject tutorialPanel;
+        public GameObject txtTutorial;
 
         public override void Initialize(UIManager manager)
         {

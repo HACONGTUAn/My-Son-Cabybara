@@ -95,6 +95,7 @@ namespace Merge
             }
             BackToMenu();
             UIStartTutorial uIStartTutorial = UIManager.Instance.ShowPopup<UIStartTutorial>(null);
+            // uIStartTutorial.txtTutorial.SetActive(true);
             // if (isFirstTime)
             // {
             //     UIStartTutorial uIStartTutorial = UIManager.Instance.ShowPopup<UIStartTutorial>(null);

@@ -245,7 +245,7 @@ MonoBehaviour:
   isCache: 0
   hand: {fileID: 5108690675675475641}
   tutorialPanel: {fileID: 1615610164121780251}
-  trigger: {fileID: 2915138703767883720}
+  txtTutorial: {fileID: 692173974568397856}
 --- !u!1 &2437431457218444177
 GameObject:
   m_ObjectHideFlags: 0

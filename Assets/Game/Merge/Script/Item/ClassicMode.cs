@@ -177,6 +177,7 @@ namespace Merge
             {
                 UIStartTutorial uIStartTutorial = UIManager.Instance.popupHolder.GetComponentInChildren<UIStartTutorial>(true);
                 uIStartTutorial.gameObject.SetActive(true);
+                uIStartTutorial.txtTutorial.SetActive(false);
                 tutorialTime = 0;
             }
             for (int i = 0; i < listCombo.Count; i++)
