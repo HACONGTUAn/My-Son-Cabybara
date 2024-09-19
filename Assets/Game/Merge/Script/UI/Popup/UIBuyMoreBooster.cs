@@ -52,14 +52,9 @@ namespace Merge
         }
         private void BuyAD()
         {
-            // AdsHelperWrapper.ShowGift("Buy more", (cb) =>
-            // {
-            //     if(cb == AD_State.AD_REWARD_OK)
-            //     {
-            //         GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), 1, "Buy by AD");
-            //         Observer.Notify(UIBoosterPanel.RefreshUseBoosterKey);
-            //     }
-            // });        
+
+            GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), 1, "Buy by AD");
+            Observer.Notify(UIBoosterPanel.RefreshUseBoosterKey);     
         }
 
         private void AnimatedUI()
