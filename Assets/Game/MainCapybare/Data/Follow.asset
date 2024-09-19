@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Follow
   m_EditorClassIdentifier: 
   task: 0
-  chapter: 0
+  chapter: 2
   listChapter: {fileID: 11400000, guid: 1b9580e4ca1501a43a715f81df643888, type: 2}
