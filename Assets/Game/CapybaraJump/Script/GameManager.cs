@@ -26,6 +26,10 @@ namespace CapybaraJump
         public bool isJustShield = false;
         public GameObject oldCarpet;
         public GameObject floorCarpet;
+        [SerializeField] private Vector3 camearaInitPosition;
+        [SerializeField] private Vector3 capybaraInitPosition;
+
+        
        /// <summary>
        /// /
        /// </summary>
