@@ -26,7 +26,7 @@ namespace Fishing
                     yield return new WaitForSeconds(Random.Range(1f, 1.5f));
                     GameObject fish = transform.GetChild(i).gameObject;                  
                     Rigidbody2D rb = fish.AddComponent<Rigidbody2D>();
-                    rb.drag = 1;
+                    rb.linearDamping = 1;
                     rb.gravityScale = 0.8f;              
                     fish.transform.GetChild(0).gameObject.SetActive(true);
                     //Logic can bang ban ca

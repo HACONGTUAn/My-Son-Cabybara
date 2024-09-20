@@ -67,7 +67,7 @@ namespace Fishing
 
             foreach (Rigidbody2D slice in slices)
             {            
-                slice.velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+                slice.linearVelocity = gameObject.GetComponent<Rigidbody2D>().linearVelocity;
                 slice.AddForceAtPosition(d * direction * force, position, ForceMode2D.Impulse);
                 d += 2;
             }

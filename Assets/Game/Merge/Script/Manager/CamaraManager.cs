@@ -6,8 +6,12 @@ namespace Merge
 {
     public class CameraManager : Singleton<CameraManager>
     {
-        public Camera mainCamera;
+        [HideInInspector] public Camera mainCamera;
         public Camera uiCamera;
+        private void Start() 
+        {
+            mainCamera = Camera.main;
+        }
         public void SetView(Bounds bounds)
         {
             float sizeX = bounds.size.x;

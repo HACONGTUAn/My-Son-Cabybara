@@ -52,7 +52,7 @@ namespace Fishing
                     originalPosition = transform.localPosition;
                     rb = gameObject.AddComponent<Rigidbody2D>();
                     rb.gravityScale = 0;
-                    rb.drag = 0.5f;
+                    rb.linearDamping = 0.5f;
                     rb.interpolation = RigidbodyInterpolation2D.Interpolate;
                     rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
                     rb.AddForce(transform.up * -hookForce);
@@ -69,7 +69,7 @@ namespace Fishing
                     if (Vector2.Distance(transform.position, transform.parent.position) < 0.5f)
                     {
                         transform.localPosition = originalPosition;
-                        rb.velocity = Vector2.zero;
+                        rb.linearVelocity = Vector2.zero;
                         Destroy(rb);
                         totalMass = 0.2f;
                         if (itemHolder.transform.childCount > 0)
@@ -106,7 +106,7 @@ namespace Fishing
         {
             yield return new WaitForSeconds(returnTime);          
             isReturning = true;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         private IEnumerator CatchFishAnim()
