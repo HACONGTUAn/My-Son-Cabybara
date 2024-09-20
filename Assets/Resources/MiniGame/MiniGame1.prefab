@@ -813,7 +813,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3882213384428782050}
   - component: {fileID: 7753271301236228924}
-  - component: {fileID: 8087853223560310760}
   m_Layer: 0
   m_Name: '[===GameManager===]'
   m_TagString: Untagged
@@ -856,20 +855,6 @@ MonoBehaviour:
   currentMode: {fileID: 0}
   currentTheme: 0
   levelItemsContainer: {fileID: 1858167473262894690}
---- !u!114 &8087853223560310760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958725007849561272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5838b443a100e14408d8540067ab134c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  uiCamera: {fileID: 7965083512451310165}
 --- !u!1 &8232577554026489876
 GameObject:
   m_ObjectHideFlags: 0
