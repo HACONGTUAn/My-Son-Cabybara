@@ -41,7 +41,7 @@ namespace CapybaraJump
                 Debug.Log("spawnPos is Null");
                 return;
             }
-            GameObject newCarpet = InstantiateGameObject.Instance.GetObject(1, spawnPosList[index]);
+            GameObject newCarpet = InstantiateGameObject.Instance.GetObject(1, spawnPosList[index]); // fill carpet sprite
             Vector3 startPos = spawnPosList[index].position;
             Vector3 targetPos = new Vector3(0f, startPos.y, startPos.z);
             newCarpet.GetComponent<CapybaraCarpet>().MoveToCenter(startPos, targetPos, step);
