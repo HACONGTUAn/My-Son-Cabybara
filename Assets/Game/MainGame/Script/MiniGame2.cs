@@ -6,7 +6,7 @@ namespace CapybaraMain
 {
     public class MiniGame2 : BaseID
     {
-
+        
     }
 
 }

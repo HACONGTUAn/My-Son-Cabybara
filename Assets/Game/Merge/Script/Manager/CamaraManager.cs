@@ -6,6 +6,7 @@ namespace Merge
 {
     public class CameraManager : Singleton<CameraManager>
     {
+       
         public Camera mainCamera;
         public Camera uiCamera;
         public void SetView(Bounds bounds)
