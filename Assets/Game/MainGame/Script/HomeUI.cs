@@ -7,6 +7,9 @@ namespace CapybaraMain
 { 
     public class HomeUI : BaseUI
     {
+        [SerializeField] private Text heartText;
+        [SerializeField] private Text ticket;
+
         [SerializeField]private Button next;
         [SerializeField] private Button back;
 
@@ -21,6 +24,7 @@ namespace CapybaraMain
         private GameObject currentGameObject = null;
         private GameObject saveGameObject = null;
         private bool checkGame = false;
+        
         private void Start()
         {
            
@@ -117,7 +121,7 @@ namespace CapybaraMain
         {
             if (obj is MiniGame1)
             {
-                Debug.Log(" Mini1");
+              //  Debug.Log(" Mini1");
                 MiniGame1 miniGame = (MiniGame1)obj;
                 miniGame.UserItemInMiniGame();
             }
@@ -125,13 +129,13 @@ namespace CapybaraMain
             {
                 MiniGame2 miniGame = (MiniGame2)obj;
                 miniGame.UserItemInMiniGame();
-                Debug.Log(" Mini2");
+              //  Debug.Log(" Mini2");
             }
             else if (obj is MiniGame3)
             {
                 MiniGame3 miniGame = (MiniGame3)obj;
                 miniGame.UserItemInMiniGame();
-                Debug.Log("Mini3");
+              //  Debug.Log("Mini3");
             }
         }
         // daily
