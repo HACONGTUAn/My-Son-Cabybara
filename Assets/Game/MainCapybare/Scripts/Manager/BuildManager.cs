@@ -62,6 +62,7 @@ namespace Capybara
             follow.task++;
             if(follow.task >= dataChapter.listTasks.Count)
             {
+                follow.listChapter.chapter[follow.chapter].isUnlocked = true;
                 follow.chapter++;
                 follow.task = 0;
             }

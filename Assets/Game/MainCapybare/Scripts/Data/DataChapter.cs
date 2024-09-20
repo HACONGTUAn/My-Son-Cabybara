@@ -53,7 +53,6 @@ namespace Capybara
                     EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("fishingPrefab"), new GUIContent("Fishing Prefab"));
                     break;
             }
-
             EditorGUI.EndProperty();
         }
 
@@ -62,6 +61,39 @@ namespace Capybara
             return EditorGUIUtility.singleLineHeight * 4 + EditorGUIUtility.standardVerticalSpacing * 3;
         }
     }
+    [CustomEditor(typeof(DataChapter))]
+    public class DataChapterEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            DataChapter dataChapter = (DataChapter)target;
+
+            if (GUILayout.Button("Reset All Tasks"))
+            {
+                ResetTasks(dataChapter);
+            }
+        }
+
+        private void ResetTasks(DataChapter dataChapter)
+        {
+            Undo.RecordObject(dataChapter, "Reset All Tasks");
+            foreach (ListTaskChapter listTasks in dataChapter.listTasks)
+            {
+                foreach (TaskChapter tasks in listTasks.tasks)
+                {
+                    tasks.isUnlocked = false;
+                }
+            }
+
+            EditorUtility.SetDirty(dataChapter);
+            AssetDatabase.SaveAssets();
+
+            Debug.Log("All Tasks Unlocked.");
+        }
+    }
+    
 #endif
 
     [CreateAssetMenu(fileName = "Chapter", menuName = "Data/Capybara/Chapter")]

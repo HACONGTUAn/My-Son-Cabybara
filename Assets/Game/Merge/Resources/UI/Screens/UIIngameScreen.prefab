@@ -317,7 +317,6 @@ MonoBehaviour:
   unlock: {fileID: 0}
   button: {fileID: 3712705432229879614}
   boosterBG: {fileID: 0}
-  minigane1: {fileID: 0}
 --- !u!1 &1838929872940638307
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +978,6 @@ MonoBehaviour:
   unlock: {fileID: 0}
   button: {fileID: 6624077300129104059}
   boosterBG: {fileID: 0}
-  minigane1: {fileID: -277019257886501207, guid: 2ccc39648f8ec824ba412be1ff529f5c, type: 3}
 --- !u!1 &2889237696585591541
 GameObject:
   m_ObjectHideFlags: 0

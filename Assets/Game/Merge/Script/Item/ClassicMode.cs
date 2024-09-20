@@ -174,7 +174,7 @@ namespace Merge
                 }
             }
             tutorialTime += Time.deltaTime;
-            if(tutorialTime >= 10)
+            if(tutorialTime >= 10 && !isUsingBooster)
             {
                 UIStartTutorial uIStartTutorial = UIManager.Instance.popupHolder.GetComponentInChildren<UIStartTutorial>(true);
                 uIStartTutorial.gameObject.SetActive(true);
@@ -491,6 +491,7 @@ namespace Merge
             {
                 newFruit.OnSpawn();
                 CheckNewFruit(newFruit);
+                CheckHeartFruit(newFruit);
             }
             listFruit.Add(newFruit);
             newFruit.gameObject.SetActive(true);
@@ -573,6 +574,14 @@ namespace Merge
             }
             fruitUnlocked.Add(fruitType);
             Save();
+        }
+        private void CheckHeartFruit(Fruit fruit)
+        {
+            FruitType fruitType = fruit.GetFruitType();
+            if ((int)fruitType > 5)
+            {
+                CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + (int)fruitType - 5);
+            }
         }
         #region Booster
         private void BoosterHandleSelectFruit()
