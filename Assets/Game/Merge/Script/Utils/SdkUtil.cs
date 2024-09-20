@@ -18,8 +18,6 @@ namespace Merge
         public static int screenWith = -1;
         public static int screenHight = -1;
 
-        private static int verSdk = 0;
-
         public static long CurrentTimeMilis()
         {
             var re = toTimestamp(DateTime.UtcNow);

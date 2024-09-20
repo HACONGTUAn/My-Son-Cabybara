@@ -43,14 +43,13 @@ namespace Merge
         [SerializeField] AudioSource musicPlayer;
         [field: SerializeField] private List<AudioSource> activeAudioSources = new List<AudioSource>();
         [field: SerializeField] private List<AudioSource> inActiveAudioSources = new List<AudioSource>();
-        protected void Awake()
+        protected override void Awake()
         {
             for (int i = 0; i < 2; i++)
             {
                 AudioSource audioSource = Instantiate(musicPlayer, transform);
                 inActiveAudioSources.Add(audioSource);
             }
-            DontDestroyOnLoad(gameObject);
         }
         public void PlayOneShot(AudioClip audioClip, float volume, float pitch = 1, float delay = 0)
         {

@@ -55,11 +55,11 @@ namespace Merge
 
         public int getInt(string key, int valdef = 0)
         {
-            bool isll = false;
-            if (key.CompareTo("ladsdjsjhdj") == 0)
-            {
-                isll = true;
-            }
+            // bool isll = false;
+            // if (key.CompareTo("ladsdjsjhdj") == 0)
+            // {
+            //     isll = true;
+            // }
             // if (AppConfig.isDataEncode)
             // {
                 if (checkHas && PlayerPrefs.HasKey(key))

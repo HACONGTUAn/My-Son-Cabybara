@@ -15,12 +15,10 @@ namespace Merge
         private int isWaitConfig = 0;
         private float toTimeWait = 2;
         private float minWait = 2;
-        private int stateGetCf = 0;
         float timestep1 = 0;
         float timestep2 = 0;
         float timeRun = 0;
         float kTime = 1;
-        float tcheckads = 0;
         private RectTransform imgWatermelonRectTransform;
         private Vector2 watermelonStartPos;
         private Vector2 watermelonEndPos;
@@ -50,7 +48,6 @@ namespace Merge
                 this.minWait = 2;
             }
             isWaitConfig = isWaitCondition;
-            stateGetCf = 0;
             if (isWaitConfig == 1)
             {
                 //if (GameHelper.checkLvXaDu())
@@ -92,17 +89,16 @@ namespace Merge
                 timestep2 = toTimeWait - timestep1;
             }
             yield return new WaitForSeconds(2.5f);
-            stateGetCf = 2;
             kTime = 10;
         }
 
-        public void onGetConfig()
-        {
-            if (isWaitConfig != 0)
-            {
-                stateGetCf = 1;
-            }
-            int tmptoTimeWait = PlayerPrefs.GetInt("time_splash_scr", 4);
+        // public void onGetConfig()
+        // {
+            // if (isWaitConfig != 0)
+            // {
+            //     stateGetCf = 1;
+            // }
+            // int tmptoTimeWait = PlayerPrefs.GetInt("time_splash_scr", 4);
             /*Debug.Log("aaaaa 2=" + tmptoTimeWait);
             if (tmptoTimeWait < 2)
             {
@@ -115,7 +111,7 @@ namespace Merge
                 timestep1 = perStep * toTimeWait;
                 timestep2 = toTimeWait - timestep1;
             }*/
-        }
+        // }
 
         private void Update()
         {
