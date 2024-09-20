@@ -155,6 +155,7 @@
     <Compile Include="Assets\Game\Merge\Script\Item\FruitCollisionHandle.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\BetterOutline.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UISettingPopup.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\CoinFx.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\AquariumControler.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameRes.cs" />
     <Compile Include="Assets\Game\MainGame\Script\MiniGame3.cs" />
