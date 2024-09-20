@@ -15,13 +15,13 @@ namespace CapybaraJump
         public float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
         public CountDown countDown;
-        public float startTime = 1f;
-        public float endTime = 2f;
+        public float startTime = 0.7f;
+        public float endTime = 1.1f;
         public float fallTime = 0.5f;
         public bool isBoost = false;
         public bool isShield = false;
-        public float jumpF = 10f;
-        public float jumpTime = 0.1f;
+        public float jumpF = 30f;
+        public float jumpTime = 0.3f;
         public bool gameOver = false;
         public bool isJustShield = false;
         public GameObject oldCarpet;
