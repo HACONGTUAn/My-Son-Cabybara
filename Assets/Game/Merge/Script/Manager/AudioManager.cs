@@ -43,7 +43,7 @@ namespace Merge
         [SerializeField] AudioSource musicPlayer;
         [field: SerializeField] private List<AudioSource> activeAudioSources = new List<AudioSource>();
         [field: SerializeField] private List<AudioSource> inActiveAudioSources = new List<AudioSource>();
-        protected void Awake()
+        protected override void Awake()
         {
             for (int i = 0; i < 2; i++)
             {

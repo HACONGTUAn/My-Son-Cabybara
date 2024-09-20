@@ -93,7 +93,7 @@ namespace Spine.Unity.Editor {
 		public static readonly List<ScriptableObject> protectFromStackGarbageCollection = new List<ScriptableObject>();
 		public static HashSet<string> assetsImportedInWrongState = new HashSet<string>();
 
-		public static void HandleOnPostprocessAllAssets (string[] imported, List<string> texturesWithoutMetaFile) {
+		public static void HandleOnPostponesAllAssets (string[] imported, List<string> texturesWithoutMetaFile) {
 			// In case user used "Assets -> Reimport All", during the import process,
 			// asset database is not initialized until some point. During that period,
 			// all attempts to load any assets using API (i.e. AssetDatabase.LoadAssetAtPath)

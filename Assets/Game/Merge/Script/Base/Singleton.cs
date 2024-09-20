@@ -1,11 +1,11 @@
 using UnityEngine;
+
 namespace Merge
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
-
-        private static object _lock = new object();
+        private static readonly object _lock = new object();
 
         public static T Instance
         {
@@ -15,20 +15,20 @@ namespace Merge
                 {
                     if (_instance == null)
                     {
-                        _instance = (T)FindObjectOfType(typeof(T));
+                        _instance = FindFirstObjectByType<T>();
 
-                        if (FindObjectsOfType(typeof(T)).Length > 1)
+                        if (FindObjectsByType<T>(FindObjectsSortMode.None).Length > 1)
                         {
-                            Debug.LogError("[Singleton] Something went really wrong " +
-                                        " - there should never be more than 1 singleton!" +
-                                        " Reopening the scene might fix it.");
-                            return _instance;
+                            Debug.LogError("[Singleton] Something went really wrong - " +
+                                           "there should never be more than 1 singleton! " +
+                                           "Reopening the scene might fix it.");
                         }
                     }
                     return _instance;
                 }
             }
         }
+
         protected virtual void Awake()
         {
             if (_instance == null)
@@ -37,7 +37,8 @@ namespace Merge
             }
             else
             {
-                Debug.LogError("Ey to much instance mateeeeeee: " + this.GetType().Name);
+                Debug.LogError("Ey too many instances mateeeeeee: " + this.GetType().Name);
+                Destroy(gameObject); // Optionally destroy this instance if a duplicate is found
             }
         }
     }
