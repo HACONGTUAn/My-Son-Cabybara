@@ -12,6 +12,7 @@ namespace CapybaraJump
         public static CapybaraMain Instance;
         private Animator animator;
         public bool isMoving = false;
+        public Rigidbody2D rb;
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace CapybaraJump
         void Start()
         {
             animator = GetComponent<Animator>();
+            rb = GetComponent<Rigidbody2D>();
 
         }
 
@@ -32,57 +34,49 @@ namespace CapybaraJump
         {
            
         }
-        public void LandingSuccessful()
+        public void LandingSuccessful(GameObject carpet)
         {
-            if (!GameManager.Instance.isShield)
-            {
-                this.StopMove();
-            }
+            
+            this.StopMove();
+            
             Debug.Log("success! next");
             animator.SetTrigger("touchGround");
-            CameraFollowController.Instance.MoveUpperOneTime(1, CameraFollowController.Instance.moveTime);
-            SpawnCarpet.Instance.UpdatePos();
-            SpawnCarpet.Instance.SpawnNewCarpet(2f);
+            if (!ScoreController.Instance.shield.activeSelf)
+            {
+                Debug.Log("not move");
+                GameManager.Instance.isShield = false;
+            }
+            if (!GameManager.Instance.isJustShield)
+            {
+                if (carpet == GameManager.Instance.oldCarpet)
+                {
+                  //  SpawnCarpet.Instance.SpawnNewCarpet(2f);
+                    return;
+                }
+                GameManager.Instance.oldCarpet = carpet;
+
+
+                CameraFollowController.Instance.MoveUpperOneTime(1, CameraFollowController.Instance.moveTime);
+                SpawnCarpet.Instance.UpdatePos();
+                SpawnCarpet.Instance.SpawnNewCarpet(2f);
+            }
+            else
+            {
+                Debug.Log("jusst");
+                SpawnCarpet.Instance.SpawnNewCarpet(2f);
+                GameManager.Instance.isJustShield = false;
+
+            }
+
+           
+
+
         }
-
-        /*   private void OnTriggerEnter2D(Collider2D collision)
-           {
-               if (collision.gameObject.layer == GameManager.Instance.CapybaraCarpet_LayerIndex)
-               {
-
-                   Vector2 playerDirection = transform.position - collision.transform.GetChild(1).transform.position;
-                   float angle = Vector2.Angle(playerDirection, Vector2.up);
-                   if(angle <= GameManager.Instance.angleCollisonEnterThreshHole)
-                   {
-
-                       if(angle <= GameManager.Instance.perfectJumpThreshHole){
-                           ScoreController.Instance.AddScore(1);// fix
-                           Debug.Log("Perfect!");
-                       }
-                       else {
-                           ScoreController.Instance.AddScore(1);
-                       }
-                       ScoreController.Instance.CheckGift(this.transform.position + Vector3.up*InstantiateGameObject.Instance.carpetHeight*1.5f);
-                       if(GameManager.Instance.isBoost){
-
-                           StopMove();
-                           MoveUpBooster(10);
-                       }
-                       else LandingSuccessful();
-                      // SpawnCarpet.Instance.UpdatePos();
-                   }
-                   else
-                   { 
-
-                       Debug.Log("Lose");
-                       GameManager.Instance.GameOver();
-                   }
-                  // Debug.Log(angle);
-               }
-           }*/
 
         public void MoveUpBooster(int steps)
         {
+            GameManager.Instance.oldCarpet = null;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
             float jumpTime = GameManager.Instance.jumpTime;
 
@@ -94,7 +88,7 @@ namespace CapybaraJump
                 Debug.Log(newYPos);
                 Debug.Log(InstantiateGameObject.Instance.carpetHeight * steps);
                 CameraFollowController.Instance.MoveUpperOneTime(steps, jumpTime * 3);
-                float boostPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight * (steps);
+                float boostPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight * (steps+1);
                 Debug.Log(boostPos);
                 transform.DOMoveY(boostPos, jumpTime * 3).SetEase(Ease.Linear)
                 .OnComplete(() =>
@@ -102,17 +96,18 @@ namespace CapybaraJump
                     transform.DOKill();
 
                     GameManager.Instance.isBoost = false;
-                    float newYPos = transform.position.y - InstantiateGameObject.Instance.carpetHeight * 3;
-                    Debug.Log("đây" + newYPos);
-                    float fallTime = GameManager.Instance.fallTime;
-                    transform.DOMoveY(newYPos, fallTime * 1.5f)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(() =>
-                    {
+                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    //float newYPos = transform.position.y - InstantiateGameObject.Instance.carpetHeight * 3;
+                    //Debug.Log("đây" + newYPos);
+                    //float fallTime = GameManager.Instance.fallTime;
+                    //transform.DOMoveY(newYPos, fallTime * 1.5f)
+                    //.SetEase(Ease.Linear)
+                    //.OnComplete(() =>
+                    //{
 
-                        Debug.Log("Fall complete!");
-                        animator.SetTrigger("touchGround");
-                    });
+                    //    Debug.Log("Fall complete!");
+                    //    animator.SetTrigger("touchGround");
+                    //});
 
 
                 });
@@ -120,13 +115,16 @@ namespace CapybaraJump
 
 
                 IEnumerator Spawn(int steps)
+                
                 {
+                    yield return new WaitForSeconds(0.6f);
                     int index = 1;
                     while (index <= steps)
                     {
 
                         SpawnCarpet.Instance.UpdatePos();
-                        SpawnCarpet.Instance.SpawnNewCarpet(0.5f);
+                        SpawnCarpet.Instance.SpawnNewCarpet(0.35f);
+                        ScoreController.Instance.AddScore(1);
                         index++;
 
 
@@ -142,7 +140,6 @@ namespace CapybaraJump
         {
             transform.DOKill();
             animator.SetTrigger("touchGround");
-           
             animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             animator.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
@@ -150,7 +147,7 @@ namespace CapybaraJump
         public void ClickToJump()
         {
             Debug.Log("false");
-            if(!GameManager.Instance.isBoost)
+            if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().velocity == Vector2.zero )
             {
                 animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 animator.SetTrigger("Jump");

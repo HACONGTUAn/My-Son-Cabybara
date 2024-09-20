@@ -8,6 +8,7 @@ UserSettings/
 *.tmp
 *.sln
 .vs/
+.csproj
 
 
 # Bỏ qua một tệp tin cụ thể
