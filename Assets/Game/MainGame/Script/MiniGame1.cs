@@ -11,10 +11,12 @@ public class MiniGame1 : BaseID
 
         //public TMP_Text textButton2;
         //public TMP_Text soluongBtn2;
-
+        
         private void Start()
         {
-            //items = Manager.Instance.ReadDataInFile(this);
+            items = Manager.Instance.ReadDataInFile(this);
+
+            
             //textButton1.text = items[0].name;
             //soluongBtn1.text = items[0].quantity.ToString();
 
@@ -23,7 +25,7 @@ public class MiniGame1 : BaseID
 
         }
 
-        void UserItemInMiniGame()
+       public void UserItemInMiniGame()
         {
             Manager.Instance.UpdateDataInFile(this);
         }
@@ -35,6 +37,11 @@ public class MiniGame1 : BaseID
             //UserItemInMiniGame();
             //Debug.Log("clickBtn");
         }
+        public void AddItem(int type, int value)
+        {
+            Merge.GameRes.AddRes(new Merge.DataTypeResource(Merge.RES_type.BOOSTER, type), value, "");
+        }
+
 }
 
 }

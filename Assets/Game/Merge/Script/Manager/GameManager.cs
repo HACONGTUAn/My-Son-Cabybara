@@ -9,6 +9,7 @@ namespace Merge
 {
     public class GameManager : Singleton<GameManager>
     {
+        public CapybaraMain.MiniGame1 minigame;
         public static EGameState GameState { get; private set; }
         public static EGameMode GameMode { get; private set; }
         public DataManager dataManager;

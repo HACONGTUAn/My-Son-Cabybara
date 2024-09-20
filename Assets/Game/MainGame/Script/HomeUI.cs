@@ -19,6 +19,8 @@ namespace CapybaraMain
         private int currentIndex = 0;
         private float itemWidth;
         private GameObject currentGameObject = null;
+        private GameObject saveGameObject = null;
+        private bool checkGame = false;
         private void Start()
         {
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
@@ -57,8 +59,28 @@ namespace CapybaraMain
                 Debug.Log("No key");
                 return;
             }
-            
-            currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex], test);
+            if(currentGameObject == null && checkGame == false){
+                currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+                if(currentIndex == 0)
+                {
+                    saveGameObject = currentGameObject;
+                    checkGame = true;
+                }
+            }
+            else
+            {
+                if(checkGame && currentIndex == 0){
+                    currentGameObject = saveGameObject;
+                    currentGameObject.SetActive(true);
+                }
+                else
+                {
+                    currentGameObject = Instantiate(LoadingResources.Instance.keyValuePairs[currentIndex]);
+                }
+            }
+           
+           
+           
             
           
             this.gameObject.SetActive(false);
@@ -68,11 +90,20 @@ namespace CapybaraMain
         public void BackHome()
         {
            // currentGameObject.SetActive(false);
-            Destroy(currentGameObject);
+           if(currentGameObject.GetComponent<BaseID>().id == 0)
+            {
+                currentGameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(currentGameObject);
+            }
+            
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
         }
-
+        // daily
+        //=====================================================================================================
         public void DailyOpen()
         {
             daiLyUp.SetActive(true);
@@ -81,7 +112,8 @@ namespace CapybaraMain
         {
             daiLyUp.SetActive(false);
         }
-
+        // Setting 
+        //========================================================================================================
         public void SettingOpen()
         {
             Setting.SetActive(true);

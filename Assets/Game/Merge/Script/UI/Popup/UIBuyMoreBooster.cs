@@ -53,7 +53,16 @@ namespace Merge
         private void BuyAD()
         {
 
-            GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), 1, "Buy by AD");
+            //GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), 1, "Buy by AD");
+            if ((int)boosterType == 0)
+            {
+                GameManager.Instance.minigame.items[0].quantity += 1;
+            }
+            if ((int)boosterType == 6)
+            {
+
+                GameManager.Instance.minigame.items[1].quantity += 1;
+            }
             Observer.Notify(UIBoosterPanel.RefreshUseBoosterKey);     
         }
 

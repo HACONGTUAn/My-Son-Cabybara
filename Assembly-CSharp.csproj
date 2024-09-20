@@ -127,8 +127,8 @@
     <Compile Include="Assets\Game\Merge\Script\Manager\AudioManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\ImmortalObject.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\BuildManager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraCarpet.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Core\ImmortalObject.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraCarpet.cs" />
     <Compile Include="Assets\Game\Merge\Script\Utils\PlayerPrefsUtil.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectContainerSO.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraIdle.cs" />

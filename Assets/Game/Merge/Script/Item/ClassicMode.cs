@@ -67,7 +67,7 @@ namespace Merge
             TrackingController.OnStartGame();
             Observer.AddObserver(UIBoosterPanel.CancerUseBoosterKey, CancerBooster);
             Fruit.onCollisionWithFruit += CollisionBetweenFruitsCallback;
-            Debug.Log("bbbb");
+           // Debug.Log("bbbb");
             GameManager.PassMinutes += PassMinutes;
             listFruit = new List<Fruit>();
             listCombo = new List<ComboSequence>();

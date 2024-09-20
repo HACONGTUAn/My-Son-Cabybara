@@ -26,7 +26,16 @@ namespace Merge
             this.boosterPanel = boosterPanel;
             button = GetComponent<Button>();
             button.onClick.AddListener(UseBooster);
-            amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
+            //amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
+            if ((int)boosterType == 0)
+            {
+                amount = GameManager.Instance.minigame.items[0].quantity;
+            }
+            if ((int)boosterType == 6)
+            {
+
+                amount = GameManager.Instance.minigame.items[1].quantity;
+            }
             amountText.text = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType)).ToString();
             if (!classicMode)
             {
@@ -42,7 +51,16 @@ namespace Merge
                 classicMode = GameManager.Instance.currentMode.GetComponent<ClassicMode>();
                 // adventureMode = GameManager.Instance.currentMode.GetComponent<AdventureMode>();
             }
-            amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
+            //amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
+            if ((int)boosterType == 0)
+            {
+                amount = GameManager.Instance.minigame.items[0].quantity;
+            }
+            if ((int)boosterType == 6)
+            {
+
+                amount = GameManager.Instance.minigame.items[1].quantity;
+            }
             amountText.text = amount.ToString();
             adIcon.gameObject.SetActive(amount <= 0);
             if (!classicMode)
@@ -124,7 +142,15 @@ namespace Merge
                         Debug.LogError("Is Using Booster");
                         boosterPanel.UseBooster(boosterType, () =>
                         {
-                            GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), -1, "");
+                            //GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), -1, "");
+                            if((int)boosterType == 0)
+                            {
+                                GameManager.Instance.minigame.items[0].quantity -= 1;
+                            }
+                            if((int)boosterType == 6) {
+
+                                GameManager.Instance.minigame.items[1].quantity -= 1;
+                            }
                             Refresh();
                             isUsingBooster = true;
                         });
