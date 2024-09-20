@@ -26,6 +26,7 @@ namespace CapybaraJump
         public bool isJustShield = false;
         public GameObject oldCarpet;
         public GameObject floorCarpet;
+        public GameObject Canvas;
        /// <summary>
        /// /
        /// </summary>
@@ -74,7 +75,9 @@ namespace CapybaraJump
 
         public void PlayAgain()
         {
-            SceneManager.LoadScene(0);
+          
+            gameOverPopUp.SetActive(false);
+            Canvas.SetActive(false);
             /*  StartGame();
              Time.timeScale = 1f; */
         }

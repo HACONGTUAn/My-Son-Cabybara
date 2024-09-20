@@ -10,12 +10,13 @@ namespace CapybaraMain
         
         [SerializeField]private Button next;
         [SerializeField] private Button back;
+
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
         [SerializeField] private GameObject daiLyUp;
         [SerializeField] private GameObject Setting ;
-        [SerializeField] private Transform test;
-
+        [SerializeField] private GameObject _buildScrolView;
+        [SerializeField] private Capybara.BuildManager _BuildManager;
         private int currentIndex = 0;
         private float itemWidth;
         private GameObject currentGameObject = null;
@@ -121,6 +122,17 @@ namespace CapybaraMain
         public void exitSetting()
         {
             Setting.SetActive(false);
+        }
+        // build 
+        //=======================================================================================================
+        public void buildChapter()
+        {
+            _buildScrolView.SetActive(true);
+            _BuildManager.LoadChapter();
+        }
+        public void exitbuildChapter()
+        {
+            _buildScrolView.SetActive(false);
         }
     }
 }

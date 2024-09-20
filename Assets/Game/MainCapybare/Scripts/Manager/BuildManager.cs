@@ -13,13 +13,13 @@ namespace Capybara
         private void Start()
         {
             follow = GameManager.Instance.followChapter;
-            LoadChapter();
+           
         }
         private void Update() 
         {
             CheckChapter();
         }
-        private void LoadChapter()
+        public void LoadChapter()
         {
             GameObject chapterObj = chapterSpawn.transform.Find(follow.listChapter.chapter[follow.chapter].chapterName)?.gameObject;
             GameObject chapterPrefab;

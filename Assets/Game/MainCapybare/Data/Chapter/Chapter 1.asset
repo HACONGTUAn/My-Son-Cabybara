@@ -37,21 +37,21 @@ MonoBehaviour:
       fishingPrefab: {fileID: 0}
   - tasks:
     - taskName: 4
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 3
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 5
-      isUnlocked: 1
+      isUnlocked: 0
       type: 0
       price: 2
       height: 0
       mergeType: 0
       fishingPrefab: {fileID: 0}
     - taskName: 6
-      isUnlocked: 1
+      isUnlocked: 0
       type: 3
       price: 0
       height: 0
