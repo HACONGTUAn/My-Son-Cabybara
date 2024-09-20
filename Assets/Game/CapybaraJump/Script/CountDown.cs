@@ -8,7 +8,7 @@ namespace CapybaraJump
 {
     public class CountDown : MonoBehaviour
     {
-        private float countdownTime = 5f; // Countdown time in seconds
+        private float countdownTime = 3f; // Countdown time in seconds
         public TextMeshProUGUI timerText; // Reference to the UI Text component
 
         private float currentTime;
@@ -16,6 +16,7 @@ namespace CapybaraJump
         void Start()
         {
             currentTime = countdownTime;
+            
             //UpdateTimerText();
         }
 

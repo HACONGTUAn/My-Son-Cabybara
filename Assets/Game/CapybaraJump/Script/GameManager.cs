@@ -22,6 +22,10 @@ namespace CapybaraJump
         public bool isShield = false;
         public float jumpF = 10f;
         public float jumpTime = 0.1f;
+        public bool gameOver = false;
+        public bool isJustShield = false;
+        public GameObject oldCarpet;
+        public GameObject floorCarpet;
 
 
         void Awake()
@@ -35,13 +39,13 @@ namespace CapybaraJump
         void Start()
         {
             //StartCoroutine(StartPlay());
-            Time.timeScale = 0f;
+           // Time.timeScale = 0f;
 
         }
 
         private IEnumerator StartPlay()
         {
-            Time.timeScale = 1f;
+           // Time.timeScale = 1f;
             yield return new WaitForSeconds(1);
             countDown.gameObject.SetActive(true);
             countDown.StartCountdown();
@@ -61,7 +65,7 @@ namespace CapybaraJump
 
         public void GameOver()
         {
-            Time.timeScale = 0f;
+           // Time.timeScale = 0f;
             gameOverPopUp.SetActive(true);
         }
 
@@ -75,14 +79,17 @@ namespace CapybaraJump
         public void Booster()
         {
             isBoost = true;
-            CapybaraMain.Instance.StopMove();
+          //  CapybaraMain.Instance.StopMove();
             CapybaraMain.Instance.MoveUpBooster(10);
         }
 
         public void Shield()
         {
-            isShield = true;
-            ScoreController.Instance.shield.SetActive(true);
+            if (!isShield)
+            {
+                isShield = true;
+                ScoreController.Instance.shield.SetActive(true);
+            }
         }
 
 
