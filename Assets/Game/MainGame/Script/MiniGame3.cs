@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,12 @@ namespace CapybaraMain
         void Update()
         {
 
+        }
+
+        
+        public void UserItemInMiniGame()
+        {
+            Manager.Instance.UpdateDataInFile(this);
         }
     }
 }

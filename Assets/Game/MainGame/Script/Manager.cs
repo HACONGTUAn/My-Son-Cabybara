@@ -8,12 +8,11 @@ namespace CapybaraMain
 
 public class Manager : TPRLSingleton<Manager>
 {
-        public TMP_Text hearText;
-        public TMP_Text teckitText;
+    
         public List<MiniGame> _data = new List<MiniGame>();
 
-        private int heart = 0;
-        private int ticket = 0;
+        private int heart = 1000;
+        private int ticket = 1000;
 
         private void Start()
         {

@@ -7,7 +7,6 @@ namespace CapybaraMain
 { 
     public class HomeUI : BaseUI
     {
-        
         [SerializeField]private Button next;
         [SerializeField] private Button back;
 
@@ -24,6 +23,11 @@ namespace CapybaraMain
         private bool checkGame = false;
         private void Start()
         {
+           
+
+            heartText.text = Manager.Instance.GetHeart().ToString();
+            ticket.text = Manager.Instance.GetTicket().ToString();
+
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
             
 
@@ -94,14 +98,41 @@ namespace CapybaraMain
            if(currentGameObject.GetComponent<BaseID>().id == 0)
             {
                 currentGameObject.SetActive(false);
+                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
+
             }
             else
             {
+                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
                 Destroy(currentGameObject);
             }
             
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
+
+            heartText.text = Manager.Instance.GetHeart().ToString();
+            ticket.text = Manager.Instance.GetTicket().ToString();
+        }
+        void switchTypeMiniGame(BaseID obj)
+        {
+            if (obj is MiniGame1)
+            {
+                Debug.Log(" Mini1");
+                MiniGame1 miniGame = (MiniGame1)obj;
+                miniGame.UserItemInMiniGame();
+            }
+            else if (obj is MiniGame2)
+            {
+                MiniGame2 miniGame = (MiniGame2)obj;
+                miniGame.UserItemInMiniGame();
+                Debug.Log(" Mini2");
+            }
+            else if (obj is MiniGame3)
+            {
+                MiniGame3 miniGame = (MiniGame3)obj;
+                miniGame.UserItemInMiniGame();
+                Debug.Log("Mini3");
+            }
         }
         // daily
         //=====================================================================================================
