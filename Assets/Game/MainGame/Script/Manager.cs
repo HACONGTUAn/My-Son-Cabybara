@@ -103,7 +103,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int GetHeart()
         {
-            return heart;
+            return PlayerPrefs.GetInt("heart");
         }
 
         //===================================================================================
@@ -118,7 +118,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int GetTicket()
         {
-            return ticket;
+            return PlayerPrefs.GetInt("teckit");
         }
         //===================================================================================
 
