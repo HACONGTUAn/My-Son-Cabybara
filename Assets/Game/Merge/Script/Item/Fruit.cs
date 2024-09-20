@@ -98,7 +98,7 @@ namespace Merge
             Rigidbody2D[] rd = GetComponentsInChildren<Rigidbody2D>();
             foreach (var item in rd)
             {
-                item.linearVelocity = Vector2.zero;
+                item.velocity = Vector2.zero;
                 item.bodyType = RigidbodyType2D.Kinematic;
             }
         }

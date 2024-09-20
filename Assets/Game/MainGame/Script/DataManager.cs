@@ -30,7 +30,7 @@ namespace CapybaraMain
             if (!File.Exists(path))
             {
                 _testData = new List<MiniGame>
-        {
+                 {
             new MiniGame
             {
                 id = 0,
