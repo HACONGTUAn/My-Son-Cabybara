@@ -16,6 +16,7 @@ namespace Merge
         [SerializeField] Image nextFruitIconImage;
         [SerializeField] Text scoreText;
         [SerializeField] Text scoreNextText;
+        [SerializeField] Text heartText;
         [SerializeField] UIComboAnimation comboAnimation;
         [SerializeField] ItemObjectContainerSO fruitContainer;
         private Tween scoreTween;
@@ -25,7 +26,12 @@ namespace Merge
             base.Initialize(uiManager);
             boosterPanel.Initialize();
             pauseButton.onClick.AddListener(Pause);
+            HeartText();
             // removeAdsButton.onClick.AddListener(RemoveAds);
+        }
+        public void HeartText()
+        {
+            heartText.text = CapybaraMain.Manager.Instance.GetHeart().ToString();
         }
 
         private void RemoveAds()

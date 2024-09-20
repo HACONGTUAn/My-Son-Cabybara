@@ -73,10 +73,16 @@ namespace Merge
             listCombo = new List<ComboSequence>();
             fruitUnlocked = new List<FruitType>();
             Bounds bounds = new Bounds(transform.position, mapSize);
-            CameraManager.Instance.SetView(bounds);
             mainCamera = Camera.main;
+            SetView(bounds);
             ready = false;
             showRate = 1;
+        }
+        public void SetView(Bounds bounds)
+        {
+            float sizeX = bounds.size.x;
+            float orthographicSize = sizeX * Screen.height / Screen.width * 0.5f;
+            mainCamera.orthographicSize = orthographicSize;
         }
 
         private void CancerBooster(object data)
@@ -212,11 +218,15 @@ namespace Merge
         }
         private void HandleSelect()
         {
-            if (IsPointerOverUIObject() || isUsingBooster)
-            {
-                isSelected = false;
-                return;
+            if (isUsingBooster)
+            {   
+                if(IsPointerOverUIObject())
+                {
+                    isSelected = false;
+                    return;
+                }
             }
+            
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
             {
                 if (!isStart)
@@ -581,6 +591,8 @@ namespace Merge
             if ((int)fruitType > 5)
             {
                 CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + (int)fruitType - 5);
+                UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
+                CoinFx.Instance.PlayFx(null, 0, fruit.transform);
             }
         }
         #region Booster
