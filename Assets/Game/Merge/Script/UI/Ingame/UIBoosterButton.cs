@@ -139,7 +139,7 @@ namespace Merge
                     }
                     if (amount > 0)
                     {
-                        Debug.LogError("Is Using Booster");
+                        //Debug.LogError("Is Using Booster");
                         boosterPanel.UseBooster(boosterType, () =>
                         {
                             //GameRes.AddRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType), -1, "");

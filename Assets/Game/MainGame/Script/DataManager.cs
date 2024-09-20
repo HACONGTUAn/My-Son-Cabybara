@@ -13,6 +13,7 @@ namespace CapybaraMain
         private void Start()
         {
            // WriteDataInJson();
+
             ReadFileJson();
         }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         public void WriteDataInJson(List<MiniGame> listData)
@@ -23,7 +24,51 @@ namespace CapybaraMain
         }
         public List<MiniGame> ReadFileJson()
         {
+          
             string path = Application.persistentDataPath + "/test.json";
+
+            if (!File.Exists(path))
+            {
+                _testData = new List<MiniGame>
+        {
+            new MiniGame
+            {
+                id = 0,
+                nameMinigame = "Minigame1",
+                items = new List<Item>
+                {
+                    new Item("break", 1),
+                    new Item("Destroy", 1)
+                },
+                price = 1
+            },
+            new MiniGame
+            {
+                id = 1,
+                nameMinigame = "Minigame2",
+                items = new List<Item>
+                {
+                    new Item("break_2", 1),
+                    new Item("Destroy_23", 1)
+                },
+                price = 1
+            },
+            new MiniGame
+            {
+                id = 2,
+                nameMinigame = "Minigame3",
+                items = new List<Item>
+                {
+                    new Item("break_3", 1),
+                    new Item("Destroy_33", 1)
+                },
+                price = 1
+            }
+        };
+                WriteDataInJson(_testData);
+                Debug.Log("File created with default data.");
+            }
+
             if (File.Exists(path))
             {
                 string json = File.ReadAllText(path);
