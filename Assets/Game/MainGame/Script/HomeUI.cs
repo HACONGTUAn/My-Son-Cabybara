@@ -163,7 +163,6 @@ namespace CapybaraMain
         public void buildChapter()
         {
             _buildScrolView.SetActive(true);
-            _BuildManager.LoadChapter();
         }
         public void exitbuildChapter()
         {

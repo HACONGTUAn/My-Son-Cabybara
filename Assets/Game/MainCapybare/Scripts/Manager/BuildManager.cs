@@ -13,7 +13,7 @@ namespace Capybara
         private void Start()
         {
             follow = GameManager.Instance.followChapter;
-           
+            LoadChapter();
         }
         private void Update() 
         {
