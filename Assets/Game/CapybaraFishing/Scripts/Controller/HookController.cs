@@ -46,7 +46,7 @@ namespace Fishing
                     transform.localRotation = Quaternion.Euler(0, 0, angle);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space) && !isShooting && !isReturning)
+                if (Input.GetMouseButton(0) && !isShooting && !isReturning)
                 {
                     isShooting = true;
                     originalPosition = transform.localPosition;
@@ -84,11 +84,32 @@ namespace Fishing
                 lineRenderer.SetPosition(1, transform.position);
                 yield return null;
             }
+            ResetHook();
+        }
+
+        private void ResetHook()
+        {
+            StopCoroutine(autoReturn);
+            foreach (Transform t in itemHolder.transform)
+            {
+                Destroy(t.gameObject);
+            }
+            transform.localPosition = originalPosition;
+            if(rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                Destroy(rb);
+            }
+            
+            totalMass = 0.2f;
+            isReturning = false;
+            isShooting = false;
+            isCatched = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (isShooting && other.CompareTag("Item"))
+            if (!isReturning && isShooting && other.CompareTag("Item"))
             {
                 isCatched = true;
                 Transform fishTrans = other.transform.parent;
@@ -119,12 +140,10 @@ namespace Fishing
             animator.SetTrigger("CatchFish");
             yield return new WaitForSeconds(1f);
             while (itemHolder.transform.childCount > 0)
-            {
-                {
-                    GameObject fish = itemHolder.transform.GetChild(0).gameObject;
-                    fish.transform.SetParent(bucket.transform);
-                    fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac
-                }
+            {               
+                GameObject fish = itemHolder.transform.GetChild(0).gameObject;
+                fish.transform.SetParent(bucket.transform);
+                fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac               
             }
             
 

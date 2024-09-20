@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace RavingBots.Water2D
+namespace Fishing
 {
 	[RequireComponent(typeof(BuoyancyEffector2D))]
 	public class Water2DEffects : MonoBehaviour
