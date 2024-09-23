@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
 
 namespace CapybaraJump
 {
@@ -10,7 +10,7 @@ namespace CapybaraJump
         // Start is called before the first frame update
         public static ScoreController Instance { get; private set; }
         public int score = 0;
-        public TextMeshProUGUI text;
+  
         [SerializeField] private GiftManager gift;
         public GameObject shield;
 
@@ -23,7 +23,7 @@ namespace CapybaraJump
         }
         void Start()
         {
-            text.text = score + " M";
+          
 
         }
 
@@ -37,7 +37,7 @@ namespace CapybaraJump
         {
             score += scoreToAdd;
             if (score < 0) score = 0;
-            text.text = score + " M";
+          
 
         }
 

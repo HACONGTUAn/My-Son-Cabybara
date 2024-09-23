@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
 using UnityEngine.UI;
 
 namespace CapybaraJump
@@ -9,7 +9,7 @@ namespace CapybaraJump
     public class CountDown : MonoBehaviour
     {
         private float countdownTime = 3f; // Countdown time in seconds
-        public TextMeshProUGUI timerText; // Reference to the UI Text component
+        
 
         private float currentTime;
 
@@ -28,8 +28,7 @@ namespace CapybaraJump
             while (currentTime > 0)
             {
                 // Update the UI Text with the current time
-                timerText.text = Mathf.Round(currentTime).ToString();
-
+                
                 // Wait for 1 second
                 yield return new WaitForSeconds(1f);
 
@@ -38,7 +37,7 @@ namespace CapybaraJump
             }
 
             // Ensure the timer shows 0 when done
-            timerText.text = "";
+        
 
             // Call a method to handle when the timer finishes
             OnCountdownFinished();
