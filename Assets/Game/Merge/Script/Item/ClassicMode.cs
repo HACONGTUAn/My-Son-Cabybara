@@ -590,9 +590,10 @@ namespace Merge
             FruitType fruitType = fruit.GetFruitType();
             if ((int)fruitType > 5)
             {
-                CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + (int)fruitType - 5);
+                int heart = CapybaraMain.Manager.Instance.GetHeart() + (int)fruitType - 5;
+                CapybaraMain.Manager.Instance.SetHeart(heart);
                 UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
-                CoinFx.Instance.PlayFx(null, 0, fruit.transform);
+                CoinFx.Instance.PlayFx(null, 0, fruit.transform, heart);
             }
         }
         #region Booster
