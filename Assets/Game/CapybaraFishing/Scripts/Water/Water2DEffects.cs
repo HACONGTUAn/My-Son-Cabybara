@@ -73,7 +73,7 @@ namespace Fishing
 
                 if (power < SplashFXPowerThreshold)
 					return;
-
+				
 				var splash = _splashCache[_splash];
 				splash.transform.position = new Vector2(other.bounds.center.x, other.bounds.min.y - SplashFXOffset);
 				splash.Play(power, SplashFXSounds[Random.Range(0, SplashFXSounds.Length)], power * SplashFXPowerToVolume, SplashFXPowerToPitch / power);

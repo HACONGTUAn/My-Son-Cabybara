@@ -76,9 +76,7 @@ namespace Fishing
         private void ContinueSlice()
         {
             Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            newPosition.z = 0f;
-            newPosition.x += Random.Range(-0.01f, 0.01f);
-            newPosition.y += Random.Range(-0.01f, 0.01f);
+            newPosition.z = 0f;            
             direction = newPosition - transform.position;
 
             transform.position = newPosition;

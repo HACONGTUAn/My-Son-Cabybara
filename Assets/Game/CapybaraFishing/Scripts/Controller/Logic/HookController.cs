@@ -5,6 +5,7 @@ namespace Fishing
 {
     public class HookController : MonoBehaviour
     {
+        public static HookController Instance;
         public float rotateSpeed = 50f;
         public float minRotateAngle = -70f;
         public float maxRotateAngle = 70f;
@@ -19,14 +20,19 @@ namespace Fishing
 
         private bool isShooting = false;
         private bool isReturning = false;   
-        private bool isCatched = false;
+        //private bool isCatched = false;
         private LineRenderer lineRenderer;
         private Vector3 originalPosition;      
         private Coroutine autoReturn;
         private Rigidbody2D rb;
         private float totalMass = 0.2f;
-
-
+        private void Awake()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+        }
         void Start()
         {           
             lineRenderer = gameObject.GetComponent<LineRenderer>();
@@ -46,27 +52,13 @@ namespace Fishing
                     transform.localRotation = Quaternion.Euler(0, 0, angle);
                 }
 
-                if (Input.GetMouseButton(0) && !isShooting && !isReturning)
-                {
-                    isShooting = true;
-                    originalPosition = transform.localPosition;
-                    rb = gameObject.AddComponent<Rigidbody2D>();
-                    rb.gravityScale = 0;
-                    rb.drag = 0.5f;
-                    rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-                    rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
-                    rb.AddForce(transform.up * -hookForce);
-                    autoReturn = StartCoroutine(AutoReturnAfterDelay());
-
-                } // sua lai dieu kien ban cau
-
                 if (isReturning)
                 {
                     StopCoroutine(autoReturn);
                     Vector2 directionToReturn = (transform.parent.position - transform.position).normalized;
                     rb.mass = totalMass;
                     rb.AddForce(directionToReturn * Max(returnForce, totalMass * 10)  * Time.deltaTime);
-                    if (Vector2.Distance(transform.position, transform.parent.position) < 0.5f)
+                    if (Vector2.Distance(transform.position, transform.parent.position) < 1f)
                     {
                         transform.localPosition = originalPosition;
                         rb.velocity = Vector2.zero;
@@ -86,6 +78,32 @@ namespace Fishing
             }
             ResetHook();
         }
+        public void ShootingHook()
+        {
+            if (GameManager.Instance.gameState == GameState.Fishing && !isShooting && !isReturning)
+            {
+                isShooting = true;
+                originalPosition = transform.localPosition;
+                rb = gameObject.AddComponent<Rigidbody2D>();
+                rb.gravityScale = 0;
+                rb.drag = 0.5f;
+                rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+                rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+                rb.AddForce(transform.up * -hookForce);
+                autoReturn = StartCoroutine(AutoReturnAfterDelay());
+            }
+            
+        }
+        public void OnPowerUse()
+        {
+            StartCoroutine(StartUsePower());
+        }
+        private IEnumerator StartUsePower()
+        {
+            returnForce = 3200f;
+            yield return new WaitForSeconds(5);
+            returnForce = 600f;
+        }
 
         private void ResetHook()
         {
@@ -104,14 +122,14 @@ namespace Fishing
             totalMass = 0.2f;
             isReturning = false;
             isShooting = false;
-            isCatched = false;
+            //isCatched = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!isReturning && isShooting && other.CompareTag("Item"))
             {
-                isCatched = true;
+                //isCatched = true;
                 Transform fishTrans = other.transform.parent;
                 fishTrans.GetComponent<FishController>().isCatch = true;
                 fishTrans.parent = itemHolder.transform;
@@ -151,7 +169,7 @@ namespace Fishing
             itemHolder.transform.position = originPos;
             isReturning = false;
             isShooting = false;
-            isCatched = false;
+            //isCatched = false;
         }
         private float Max(float a, float b)
         {

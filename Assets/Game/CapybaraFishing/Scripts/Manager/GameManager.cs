@@ -9,33 +9,31 @@ namespace Fishing
         public static GameManager Instance;
         public GameState gameState;
         public Action slashEvent,fishingEvent;
-        private UIController uiController;
-        private AquariumControler aquariumControler;
+        private UIController uiController;     
         private void Awake()
         {
             if(Instance == null)
             {
                 Instance = this;
             }
-        }
-        private void OnEnable()
-        {
-            gameState = GameState.Start;
-        }
+        }       
         void Start()
         {
             Initialize();
         }     
         private void Initialize()
         {
-            uiController = GetComponent<UIController>();    
-            aquariumControler = GetComponent<AquariumControler>();
+            Application.targetFrameRate = 60;
+            uiController = GetComponent<UIController>();              
         }
         public void SwitchGameState(GameState state)
         {
             gameState = state; 
             switch(gameState)
             {
+                case GameState.Start:
+                    HandleStartChange();
+                    break;
                 case GameState.Fishing:
                     ClearMap();
                     HandleFishingChange();
@@ -45,21 +43,25 @@ namespace Fishing
                     break;
             }
         }
+        private void HandleStartChange() 
+        { 
+            uiController.SwitchUIState(UIState.Start);
+            StartCoroutine(MoveCameraFishing());
+        }
+        private void HandleFishingChange()
+        {                    
+            uiController.SwitchUIState(UIState.Fishing);
+            StartCoroutine(MoveCameraFishing());
+            fishingEvent?.Invoke();
+        }
+        
         private void HandleSlashFishChange()
         {
+            uiController.SwitchUIState(UIState.Slashing);
             StartCoroutine(MoveCameraSlash());
             slashEvent?.Invoke();
             
         }
-        private void HandleFishingChange()
-        {
-            //aquariumControler.SpawnFishHandler();
-            uiController.timer = 30;
-            uiController.TimmerCount();
-            StartCoroutine(MoveCameraFishing());
-            fishingEvent?.Invoke();
-        }
-
         IEnumerator MoveCameraSlash()
         {
             Vector3 targetPosition = new Vector3(0, 9, -10);
