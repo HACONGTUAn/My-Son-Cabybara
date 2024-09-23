@@ -39,6 +39,7 @@ namespace Merge
             if(CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType))
             {
                 CapybaraMain.Manager.Instance.SetTicket(CapybaraMain.Manager.Instance.GetTicket() - boosterSO.GetBoosterPrice(boosterType));
+
                 if ((int)boosterType == 0)
                 {
                     GameManager.Instance.minigame.items[0].quantity += 1;

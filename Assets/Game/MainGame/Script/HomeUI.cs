@@ -24,14 +24,18 @@ namespace CapybaraMain
         private GameObject currentGameObject = null;
         private GameObject saveGameObject = null;
         private bool checkGame = false;
-        
+
+        private void OnEnable()
+        {
+            heartText.text = Manager.Instance.GetHeart().ToString();
+            ticket.text = Manager.Instance.GetTicket().ToString();
+
+        }
         private void Start()
         {
            
 
-            heartText.text = Manager.Instance.GetHeart().ToString();
-            ticket.text = Manager.Instance.GetTicket().ToString();
-
+           
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
             
 

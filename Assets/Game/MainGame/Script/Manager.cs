@@ -34,12 +34,12 @@ public class Manager : TPRLSingleton<Manager>
             {
                // teckitText.text = PlayerPrefs.GetInt("teckit").ToString();
             }
-
+            _data = DataManager.Instance.ReadFileJson();
         }
 
         // write data 
         //==========================================================================
-        private void WriteDataInFile()
+        public void WriteDataInFile()
         {
             DataManager.Instance.WriteDataInJson(_data);
         }
@@ -80,7 +80,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int FindTypeOfObject(BaseID currentMiniGame)
         {
-            _data = DataManager.Instance.ReadFileJson();
+           // _data = DataManager.Instance.ReadFileJson();
             for(int i = 0; i < _data.Count; i++)
             {
                 if(_data[i].id == currentMiniGame.id)

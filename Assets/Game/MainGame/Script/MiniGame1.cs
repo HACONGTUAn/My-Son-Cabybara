@@ -11,8 +11,9 @@ public class MiniGame1 : BaseID
 
         //public TMP_Text textButton2;
         //public TMP_Text soluongBtn2;
-        
-        private void Start()
+
+      
+        private void OnEnable()
         {
             items = Manager.Instance.ReadDataInFile(this);
 
