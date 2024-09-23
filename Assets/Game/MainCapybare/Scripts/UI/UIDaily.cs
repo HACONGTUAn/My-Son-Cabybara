@@ -19,8 +19,9 @@ namespace Capybara
         public Sprite image4;
         public DataDaily dataDaily;
         public List<DailyClaim> dailyClaims;
-        private void Start()
+        public void Start()
         {
+            if(dataDaily.dayGame < 1 || dataDaily.dayGame > 7)dataDaily.dayGame = 1;
             claimButton.onClick.AddListener(ClaimReward);
             claimButtonX2.onClick.AddListener(ClaimRewardX2);
             CheckClaim();
@@ -35,6 +36,7 @@ namespace Capybara
             if(!dataDaily.daily[dataDaily.dayGame-1].isUnlocked)
             {
                 dataDaily.daily[dataDaily.dayGame-1].isUnlocked = true;
+                UnlockButton();
                 coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx, dataDaily.daily[dataDaily.dayGame-1].ticket );
 
             }
@@ -44,8 +46,8 @@ namespace Capybara
             if(!dataDaily.daily[dataDaily.dayGame-1].isUnlocked)
             {
                 dataDaily.daily[dataDaily.dayGame-1].isUnlocked = true;
+                UnlockButton();
                 coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx, dataDaily.daily[dataDaily.dayGame-1].ticket *2 );
-
             }
         }
         private void Claim()
@@ -53,7 +55,6 @@ namespace Capybara
             dailyClaims[dataDaily.dayGame-1].reward.SetActive(true);
             CapybaraMain.Manager.Instance.SetTicket(CapybaraMain.Manager.Instance.GetTicket() + 1);
             CapybaraMain.HearTicker.Instance.ChangeValue();
-            UnlockButton();
         }
         private void CheckDay()
         {
@@ -64,6 +65,7 @@ namespace Capybara
             else
             {
                 dataDaily.dayReal = System.DateTime.Now.Day;
+                if(dataDaily.dayGame < 1)dataDaily.dayGame = 1;
                 if(dataDaily.daily[dataDaily.dayGame-1].isUnlocked)
                 {
                     dataDaily.dayGame ++;

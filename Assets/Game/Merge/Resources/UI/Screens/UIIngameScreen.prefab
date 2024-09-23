@@ -136,10 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1077774a0a9d164b956b6bfed314135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 100
+  range: 0.5
   moveTime: 0.5
   delayTime: 0
-  canvasRT: {fileID: 4500476076370100119}
   icons:
   - {fileID: 21300000, guid: 71a715574e0350843b2a8d8328c9b5b9, type: 3}
   endPos:

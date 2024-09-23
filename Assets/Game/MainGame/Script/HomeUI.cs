@@ -12,8 +12,9 @@ namespace CapybaraMain
         [SerializeField] private Button back;
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
-        [SerializeField] private GameObject daiLyUp;
+        [SerializeField] private Capybara.UIDaily daiLyUp;
         [SerializeField] private GameObject Setting ;
+        [SerializeField] private GameObject Build ;
         [SerializeField] private Transform test;
 
         private int currentIndex = 0;
@@ -106,11 +107,12 @@ namespace CapybaraMain
         //=====================================================================================================
         public void DailyOpen()
         {
-            daiLyUp.SetActive(true);
+            // daiLyUp.Start();
+            daiLyUp.gameObject.SetActive(true);
         }
         public void exitDaily()
         {
-            daiLyUp.SetActive(false);
+            daiLyUp.gameObject.SetActive(false);
         }
         // Setting 
         //========================================================================================================
@@ -121,6 +123,19 @@ namespace CapybaraMain
         public void exitSetting()
         {
             Setting.SetActive(false);
+        }
+        // Build 
+        //========================================================================================================
+        public void BuildOpen()
+        {
+            Build.SetActive(true);
+        }
+        public void exitBuild()
+        {
+            if(!Capybara.BuildManager.Instance.isBuilding)
+            {
+                Build.SetActive(false);
+            }
         }
     }
 }

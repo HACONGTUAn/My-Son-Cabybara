@@ -4,14 +4,14 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class CoinFx : MonoBehaviour
+public class UnCoinFx : MonoBehaviour
 {
-    public static CoinFx Instance { get; private set; }
+    public static UnCoinFx Instance { get; private set; }
     public float range;
     public float moveTime;
     public float delayTime;
     public List<Sprite> icons;
-    public List<Transform> endPos;
+    public List<Transform> startPos;
     private void Awake()
     {
         if (Instance == null)
@@ -33,13 +33,13 @@ public class CoinFx : MonoBehaviour
             Transform curChild = transform.GetChild(i);
             curChild.gameObject.SetActive(true);
             curChild.GetComponent<Image>().sprite = icons[idx];
-            float ranNumX = Random.Range(-range, range) + PosStart.position.x;
-            float ranNumY = Random.Range(-range, range) + PosStart.position.y;
+            float ranNumX = Random.Range(-range, range) + startPos[idx].position.x;
+            float ranNumY = Random.Range(-range, range) + startPos[idx].position.y;
             curChild.position = new Vector3(ranNumX, ranNumY);
             curChild.localScale = Vector3.zero;
             curChild.DOScale(1, moveTime).SetEase(Ease.OutElastic).SetDelay(Random.Range(0, 0.3f)).OnComplete(() =>
             {
-                curChild.DOMove(endPos[idx].position, moveTime).SetEase(Ease.InOutQuad).SetDelay(delayTime).OnComplete(() =>
+                curChild.DOMove(PosStart.position, moveTime).SetEase(Ease.InOutQuad).SetDelay(delayTime).OnComplete(() =>
                 {
                     curChild.gameObject.SetActive(false);
                     //SoundManager.Instance.playSoundFx(//SoundManager.Instance.effCollectCoin);
