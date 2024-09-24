@@ -8,7 +8,7 @@ namespace Fishing
     {
         public static GameManager Instance;
         public GameState gameState;
-        public Action slashEvent,fishingEvent;
+        public Action slashEvent,fishingEvent,startEvent,pause,unPause;
         private UIController uiController;     
         private void Awake()
         {
@@ -40,6 +40,9 @@ namespace Fishing
                     break;
                 case GameState.SlashFish:
                     HandleSlashFishChange();
+                    break;             
+             
+                default:
                     break;
             }
         }
@@ -47,6 +50,12 @@ namespace Fishing
         { 
             uiController.SwitchUIState(UIState.Start);
             StartCoroutine(MoveCameraFishing());
+            startEvent?.Invoke();
+        }
+        private void HandleEndChange()
+        {
+            //uiController.SwitchUIState(UIState.End);
+            
         }
         private void HandleFishingChange()
         {                    
@@ -61,6 +70,14 @@ namespace Fishing
             StartCoroutine(MoveCameraSlash());
             slashEvent?.Invoke();
             
+        }
+        public void PauseHandler()
+        {
+            pause?.Invoke();
+        }
+        public void UnPauseHandler()
+        {
+            unPause?.Invoke();
         }
         IEnumerator MoveCameraSlash()
         {
@@ -91,6 +108,6 @@ namespace Fishing
     }
     public enum GameState
     {
-        Start,Fishing,SlashFish
+        Start,Fishing,SlashFish,End
     }
 }

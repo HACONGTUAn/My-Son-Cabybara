@@ -57,7 +57,7 @@ namespace Fishing
                     StopCoroutine(autoReturn);
                     Vector2 directionToReturn = (transform.parent.position - transform.position).normalized;
                     rb.mass = totalMass;
-                    rb.AddForce(directionToReturn * Max(returnForce, totalMass * 10)  * Time.deltaTime);
+                    rb.AddForce(directionToReturn * Max(returnForce, totalMass)  * Time.deltaTime);
                     if (Vector2.Distance(transform.position, transform.parent.position) < 1f)
                     {
                         transform.localPosition = originalPosition;
@@ -76,7 +76,7 @@ namespace Fishing
                 lineRenderer.SetPosition(1, transform.position);
                 yield return null;
             }
-            ResetHook();
+            ResetHook();           
         }
         public void ShootingHook()
         {
@@ -107,7 +107,7 @@ namespace Fishing
 
         private void ResetHook()
         {
-            StopCoroutine(autoReturn);
+            if(autoReturn!=null) StopCoroutine(autoReturn);
             foreach (Transform t in itemHolder.transform)
             {
                 Destroy(t.gameObject);
@@ -118,7 +118,9 @@ namespace Fishing
                 rb.velocity = Vector2.zero;
                 Destroy(rb);
             }
-            
+            lineRenderer.SetPosition(0, transform.parent.position);
+            lineRenderer.SetPosition(1, transform.position);
+
             totalMass = 0.2f;
             isReturning = false;
             isShooting = false;
@@ -127,7 +129,7 @@ namespace Fishing
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!isReturning && isShooting && other.CompareTag("Item"))
+            if (!isReturning && isShooting && (other.CompareTag("Fish") || other.CompareTag("Trash")))
             {
                 //isCatched = true;
                 Transform fishTrans = other.transform.parent;

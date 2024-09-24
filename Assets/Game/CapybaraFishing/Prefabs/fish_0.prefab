@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 665193617303526189}
   - component: {fileID: 3566404411976993828}
   - component: {fileID: 1575469528386859541}
-  - component: {fileID: 1981709149973526976}
+  - component: {fileID: 2044201464590574639}
   m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 6
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -113,8 +113,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &1981709149973526976
-CapsuleCollider2D:
+--- !u!61 &2044201464590574639
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,8 +146,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.21666668, y: 0.23333333}
+    newSize: {x: 0.92, y: 0.92}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 0.21666668, y: 0.23333333}
-  m_Direction: 0
+  m_EdgeRadius: 0
 --- !u!1 &3858078894111321579
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +170,7 @@ GameObject:
   - component: {fileID: 7905648935852030266}
   m_Layer: 6
   m_Name: Co
-  m_TagString: Item
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +269,7 @@ GameObject:
   - component: {fileID: 3844959231041433695}
   - component: {fileID: 7442533681535349393}
   - component: {fileID: 2995486861754368395}
-  - component: {fileID: 4204221679123093367}
+  - component: {fileID: 1076492309109132120}
   m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
@@ -294,9 +304,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 6
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -361,8 +371,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &4204221679123093367
-CapsuleCollider2D:
+--- !u!61 &1076492309109132120
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -394,8 +404,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.30666667, y: 0.30666667}
+    newSize: {x: 0.92, y: 0.92}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 0.30666667, y: 0.30666667}
-  m_Direction: 0
+  m_EdgeRadius: 0
 --- !u!1 &6977649124081493742
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +428,7 @@ GameObject:
   - component: {fileID: 7532634947086210682}
   m_Layer: 6
   m_Name: fish_0
-  m_TagString: Item
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,7 +466,7 @@ MonoBehaviour:
   whole: {fileID: 8631020723917577529}
   sliced: {fileID: 5605840476250199306}
   fishCol: {fileID: 7905648935852030266}
-  massFish: 1
+  massFish: 0.2
   point: 100
   slashCount: 1
   isCatch: 0

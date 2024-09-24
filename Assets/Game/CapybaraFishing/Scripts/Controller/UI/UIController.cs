@@ -8,7 +8,7 @@ namespace Fishing {
     public class UIController : MonoBehaviour
     {    
         public static UIController Instance;
-        [SerializeField] private Button restart,touchDetect;
+        [SerializeField] private Button touchDetect;
         [SerializeField] private UIStart uiStart;     
         [SerializeField] private UIFishing uiFishing;
         [SerializeField] private UISlash uiSlash;                                
@@ -22,7 +22,7 @@ namespace Fishing {
         }
         private void Start()
         {
-            restart.onClick.AddListener(OnRestartClick);
+            
             touchDetect.onClick.AddListener(OnTouchDetectClick);                 
         }
        
@@ -42,7 +42,8 @@ namespace Fishing {
             state = uistate;
             switch (state)
             {
-                case UIState.Start:                   
+                case UIState.Start:
+                    HandleStart();
                     break;
                 case UIState.Fishing:
                     HandleFishing();
@@ -76,12 +77,7 @@ namespace Fishing {
             uiFishing.Clear();
             uiSlash.Clear();
             
-        }
-              
-        private void OnRestartClick()
-        {
-            GameManager.Instance.SwitchGameState(GameState.Start);
-        }       
+        }                   
     }
     public enum UIState
     {

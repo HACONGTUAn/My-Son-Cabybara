@@ -69,7 +69,7 @@ namespace Fishing
             var rigidbody = other.transform.parent.GetComponent<Rigidbody2D>();
 			if (rigidbody != null)
 			{
-				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity / 2, Vector2.up) * (rigidbody.mass * 5);
+				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity / 4, Vector2.up) * (rigidbody.mass * 6);
 
                 if (power < SplashFXPowerThreshold)
 					return;

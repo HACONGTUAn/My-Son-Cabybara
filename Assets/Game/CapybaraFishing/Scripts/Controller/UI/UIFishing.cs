@@ -16,11 +16,17 @@ namespace Fishing
         private BoosterController boosterController;
         private Coroutine timeCount;
         private int timer,powerBoost,timeBoost;
+        private bool isPause = false;
         void Awake()
         {
             boosterController = GetComponent<BoosterController>();
             boosterPower.onClick.AddListener(OnBoosterPowerClick);
             boosterTime.onClick.AddListener(OnBoosterTimeClick);
+        }
+        private void Start()
+        {
+            GameManager.Instance.pause += TimePause;
+            GameManager.Instance.unPause += TimeUnPause;
         }
         public void Initialize()
         {
@@ -88,19 +94,32 @@ namespace Fishing
             timer += 10;
             Debug.Log("Use Time");
         }
-
+        private void TimePause()
+        {
+            isPause = true;
+        }
+        private void TimeUnPause()
+        {
+            isPause = false;
+        }
         private IEnumerator StartTimerCount()
         {
             timerText.text = timer + "";
             while (timer > 0)
             {
-                timer--;
                 yield return new WaitForSeconds(1f);
+                if (isPause) continue;
+                timer--;
+                
                 timerText.text = timer + "";                
             }
 
             GameManager.Instance.SwitchGameState(GameState.SlashFish);
         }
-
+        private void OnDestroy()
+        {
+            GameManager.Instance.pause -= TimePause;
+            GameManager.Instance.unPause -= TimeUnPause;
+        }
     }
 }

@@ -46,9 +46,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 6
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4538862325357093452}
   m_Layer: 6
   m_Name: Co
-  m_TagString: Item
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 8592041120407929784}
   m_Layer: 6
   m_Name: fish_1
-  m_TagString: Item
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,8 +298,8 @@ MonoBehaviour:
   whole: {fileID: 5435890548607607943}
   sliced: {fileID: 2323702342655596530}
   fishCol: {fileID: 4538862325357093452}
-  massFish: 2
-  point: 100
+  massFish: 0.5
+  point: 200
   slashCount: 1
   isCatch: 0
   bottomArea: {x: -5, y: -2}
@@ -436,8 +436,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 6
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

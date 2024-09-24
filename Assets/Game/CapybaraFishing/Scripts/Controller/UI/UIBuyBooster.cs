@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using Fishing;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,18 +16,19 @@ namespace Fishing
         [SerializeField] private Sprite power,time;
         [SerializeField] private GameObject fakeAds;
         [SerializeField] private UIFishing uiFishing;
-        private BoosterController boosterController;
+        [SerializeField] private RectTransform popunPanel;
+        private BoosterController boosterController;       
         private int price;
         private void Start()
         {
             close.onClick.AddListener(OnCloseClick);
             ticketBuy.onClick.AddListener(OnTicketBuyClick);
             adsBuy.onClick.AddListener(OnAdsBuyClick);
-            boosterController = GetComponent<BoosterController>();
+            boosterController = GetComponent<BoosterController>();          
         }
         public void Initialize(BoosterType booster)
         {
-            Time.timeScale = 0;
+            GameManager.Instance.PauseHandler();
             boosterType = booster;
             switch (boosterType)
             {
@@ -40,13 +42,28 @@ namespace Fishing
                     break;
                 default:
                     break;
-            }
-            gameObject.SetActive(true);
+            }            
+            ShowPanel(popunPanel);
+
         }
+
         public void OnCloseClick()
         {
-            Time.timeScale = 1;
+            GameManager.Instance.UnPauseHandler();
             uiFishing.UpadteUI();
+            HidePanel(popunPanel);           
+            
+        }
+        public void ShowPanel(RectTransform panel)
+        {
+            gameObject.SetActive(true);
+            panel.localScale = Vector3.zero;
+            panel.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+        }
+          
+        public void HidePanel(RectTransform panel)
+        {
+            panel.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack);
             gameObject.SetActive(false);
         }
         private void OnTicketBuyClick()

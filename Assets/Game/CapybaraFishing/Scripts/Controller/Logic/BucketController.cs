@@ -35,9 +35,15 @@ namespace Fishing
                     fishTransform.localPosition = new Vector3(Random.Range(-7, 0.8f), 0, 0);
                     fishTransform.localRotation = Quaternion.identity;
                     rb.AddForce(new Vector2(Random.Range(-1,1), Random.Range(15f, 20f)),ForceMode2D.Impulse);
-                    rb.AddTorque(Random.Range(0,3f));
-                }               
+                    rb.AddTorque(Random.Range(0,2f));
+                }
+                StartCoroutine(ChangeEndState());
             }
+        }
+        private IEnumerator ChangeEndState()
+        {
+            yield return new WaitForSeconds(3); 
+            UISlash.Instance.EndGame();
         }
         private void ClearBucket()
         {
