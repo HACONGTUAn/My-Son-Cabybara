@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,11 +29,14 @@ namespace CapybaraJump
         public int initSortingLayer;
         [SerializeField] private Vector3 camearaInitPosition;
         [SerializeField] private Vector3 capybaraInitPosition;
+        [SerializeField] private Vector3 leftPosInitPosition;
+        [SerializeField] private Vector3 rightPosInitPosition;
+        [SerializeField] private GameObject startBtn;
 
-        
-       /// <summary>
-       /// /
-       /// </summary>
+
+        /// <summary>
+        /// /
+        /// </summary>
 
 
         void Awake()
@@ -79,7 +82,34 @@ namespace CapybaraJump
 
         public void PlayAgain()
         {
-            SceneManager.LoadScene(0);
+            if (SpawnCarpet.Instance.transform.childCount > 0)
+            {
+                foreach (Transform carpet in SpawnCarpet.Instance.transform)
+                {
+
+                    carpet.gameObject.SetActive(false);
+
+                }
+
+            }
+            
+            CameraFollowController.Instance.transform.localPosition = camearaInitPosition;
+            CameraFollowController.Instance.targetPos = camearaInitPosition;
+            CapybaraMain.Instance.transform.localPosition = capybaraInitPosition;
+            SpawnCarpet.Instance.spawnPosList[0].localPosition = leftPosInitPosition;
+            SpawnCarpet.Instance.spawnPosList[1].localPosition = rightPosInitPosition;
+            ScoreController.Instance.ResetScore();
+            oldCarpet = null;
+            isBoost = false;
+            isShield = false;
+            jumpF = 30f;
+            jumpTime = 0.3f;
+            gameOver = false;
+            isJustShield = false;
+            startBtn.SetActive(true);
+
+
+
             /*  StartGame();
              Time.timeScale = 1f; */
         }
@@ -99,7 +129,6 @@ namespace CapybaraJump
                 ScoreController.Instance.shield.SetActive(true);
             }
         }
-
 
     }
 

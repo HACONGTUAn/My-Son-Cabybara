@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: rocket
+    uniqueID: 1104868225
+    locked: 0
+  - name: carpet
+    uniqueID: 362806465
+    locked: 0
   - name: capybaraMain
     uniqueID: 1625832893
     locked: 0

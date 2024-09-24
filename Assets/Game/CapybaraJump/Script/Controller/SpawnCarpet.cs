@@ -10,7 +10,7 @@ namespace CapybaraJump
         public static SpawnCarpet Instance;
 
         // Start is called before the first frame update
-        [SerializeField] List<Transform> spawnPosList;
+        public List<Transform> spawnPosList;
         public List<Transform> oldPosList;
         public Queue<CapybaraCarpet> queueCarpet;
         public bool isMoving = false;

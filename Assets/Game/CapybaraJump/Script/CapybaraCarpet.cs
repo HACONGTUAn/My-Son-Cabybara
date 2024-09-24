@@ -78,6 +78,7 @@ namespace CapybaraJump
                     Debug.Log("Lose");
                     GameManager.Instance.GameOver();
                     CapybaraMain.Instance.StopMove();
+                    transform.GetChild(0).DOKill();
                     Debug.Log(angle);
                     this.StopMove();
 

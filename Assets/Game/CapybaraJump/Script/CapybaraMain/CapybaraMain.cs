@@ -38,7 +38,6 @@ namespace CapybaraJump
         {
             
             this.StopMove();
-            
             Debug.Log("success! next");
             animator.SetTrigger("touchGround");
             if (!ScoreController.Instance.shield.activeSelf)
@@ -54,8 +53,6 @@ namespace CapybaraJump
                     return;
                 }
                 GameManager.Instance.oldCarpet = carpet;
-
-
                 CameraFollowController.Instance.MoveUpperOneTime(1, CameraFollowController.Instance.moveTime);
                 SpawnCarpet.Instance.UpdatePos();
                 SpawnCarpet.Instance.SpawnNewCarpet(2f);
@@ -146,7 +143,7 @@ namespace CapybaraJump
 
         public void ClickToJump()
         {
-            Debug.Log("false");
+            
             if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().velocity == Vector2.zero )
             {
                 animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;

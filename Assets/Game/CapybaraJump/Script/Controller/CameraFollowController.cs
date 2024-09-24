@@ -12,7 +12,7 @@ namespace CapybaraJump
         public static CameraFollowController Instance { get; private set;}
         public float moveTime;
         [SerializeField] private Ease easeType;
-        private Vector3 targetPos;
+        public Vector3 targetPos;
 
         void Awake(){
             if(Instance == null){
