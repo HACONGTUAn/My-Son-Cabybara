@@ -69,6 +69,7 @@ namespace Capybara
             BuildManager.Instance.isBuilding = false;
             gameObject.SetActive(!task.isUnlocked);
             Destroy(gameObject);
+            BuildManager.Instance.CheckChapter();
         }
     }
 }

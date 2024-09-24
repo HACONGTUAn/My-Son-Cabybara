@@ -10,7 +10,12 @@ namespace Capybara
         public bool isBuilding;
         public Transform buttonSpawn;
         public Transform chapterSpawn;
-        public Slider chapterSlider;
+        public Slider inchapterSlider;
+        public Slider outchapterSlider;
+        public Text inChapterText;
+        public Text outChapterText;
+        public Text inTaskText;
+        public Text outTaskText;
         private Follow follow;
         public GameObject bottom;
         public GameObject left;
@@ -19,15 +24,20 @@ namespace Capybara
         private void Start()
         {
             follow = GameManager.Instance.followChapter;
-            chapterSlider.value = (float)follow.task / (float)follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count;
+            inchapterSlider.value = (float)follow.task / (float)follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count;
+            outchapterSlider.value = (float)follow.task / (float)follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count;
+            inChapterText.text = "Chapter " +  (follow.chapter+1).ToString();
+            outChapterText.text = "Chap " + (follow.chapter+1).ToString(); 
+            inTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
+            outTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
             CapybaraMain.Manager.Instance.SetHeart(50);
             isBuilding = false;
             LoadChapter();
         }
-        private void Update() 
-        {
-            CheckChapter();
-        }
+        // private void Update() 
+        // {
+        //     CheckChapter();
+        // }
         private void LoadChapter()
         {
             GameObject chapterObj = chapterSpawn.transform.Find(follow.listChapter.chapter[follow.chapter].chapterName)?.gameObject;
@@ -57,7 +67,7 @@ namespace Capybara
                 }
             }
         }
-        private void CheckChapter()
+        public void CheckChapter()
         {
             DataChapter dataChapter = follow.listChapter.chapter[follow.chapter].dataChapter;
             ListTaskChapter listTask = dataChapter.listTasks[follow.task];
@@ -75,6 +85,8 @@ namespace Capybara
             {
                 follow.listChapter.chapter[follow.chapter].isUnlocked = true;
                 follow.chapter++;
+                inChapterText.text = "Chapter " +  (follow.chapter+1).ToString();
+                outChapterText.text = "Chap " + (follow.chapter+1).ToString();
                 follow.task = 0;
             }
             Helper.CreateCounter(0.3f, () =>
@@ -85,16 +97,19 @@ namespace Capybara
         private IEnumerator SmoothSlider(float target)
         {
             float elapsedTime = 0;
-            float startValue = chapterSlider.value;
+            float startValue = inchapterSlider.value;
 
             while (elapsedTime < 0.3f)
             {
-                chapterSlider.value = Mathf.Lerp(startValue, target, elapsedTime / 0.3f);
+                inchapterSlider.value = Mathf.Lerp(startValue, target, elapsedTime / 0.3f);
+                outchapterSlider.value = Mathf.Lerp(startValue, target, elapsedTime / 0.3f);;
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-
-            chapterSlider.value = target;
+            inchapterSlider.value = target;
+            outchapterSlider.value = target;
+            inTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
+            outTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
         }
     }
 }
