@@ -141,13 +141,13 @@ namespace CapybaraJump
             transform.DOKill();
             animator.SetTrigger("touchGround");
             animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            animator.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            animator.GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
         }
 
         public void ClickToJump()
         {
             Debug.Log("false");
-            if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().velocity == Vector2.zero )
+            if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().linearVelocity == Vector2.zero )
             {
                 animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 animator.SetTrigger("Jump");

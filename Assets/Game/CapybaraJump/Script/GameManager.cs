@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using CapybaraMain;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CapybaraMain;
 
 namespace CapybaraJump
 {
     public class GameManager : MonoBehaviour
     {
+        public MiniGame2 minigame;
         public int CapybaraShield_LayerIndex = 8;
         public int CapybaraMain_LayerIndex = 7;
         public int CapybaraCarpet_LayerIndex = 6;

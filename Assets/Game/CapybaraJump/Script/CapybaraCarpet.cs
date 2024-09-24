@@ -40,7 +40,7 @@ namespace CapybaraJump
                 ScoreController.Instance.shield.SetActive(false);
                 MoveBack(0.5f);
                 //GameManager.Instance.isShield = false;
-                if (CapybaraMain.Instance.rb.velocity == Vector2.zero)
+                if (CapybaraMain.Instance.rb.linearVelocity == Vector2.zero)
                 {
                     SpawnCarpet.Instance.SpawnNewCarpet(2f);
                     GameManager.Instance.isJustShield = false;

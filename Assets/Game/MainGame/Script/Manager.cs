@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CapybaraMain
 {
 
 public class Manager : TPRLSingleton<Manager>
 {
-        public TMP_Text hearText;
-        public TMP_Text teckitText;
+        public Text hearText;
+        public Text teckitText;
         public List<MiniGame> _data = new List<MiniGame>();
 
         private int heart = 0;
@@ -35,6 +35,9 @@ public class Manager : TPRLSingleton<Manager>
             {
                // teckitText.text = PlayerPrefs.GetInt("teckit").ToString();
             }
+             PlayerPrefs.SetInt("teckit", 50);
+            hearText.text = GetHeart().ToString();
+            teckitText.text = GetTicket().ToString();
 
         }
 
@@ -103,7 +106,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int GetHeart()
         {
-            return heart;
+            return PlayerPrefs.GetInt("heart");
         }
 
         //===================================================================================
@@ -118,7 +121,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int GetTicket()
         {
-            return ticket;
+            return PlayerPrefs.GetInt("teckit");
         }
         //===================================================================================
 

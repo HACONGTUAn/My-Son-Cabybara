@@ -27,7 +27,7 @@ namespace CapybaraJump
 
             if (rb != null)
             {
-                if (rb.velocity.y < 0)
+                if (rb.linearVelocity.y < 0)
                 {
                     animator.SetTrigger("fall");
                 }
