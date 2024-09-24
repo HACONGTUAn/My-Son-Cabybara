@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: capybaraMain
+    uniqueID: 1625832893
+    locked: 0

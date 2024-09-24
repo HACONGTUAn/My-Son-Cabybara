@@ -18,8 +18,8 @@ namespace CapybaraJump
             //    animator.SetTrigger("Jump");
 
             //}
-            
-            
+
+
         }
        
         

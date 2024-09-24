@@ -28,7 +28,7 @@ namespace CapybaraJump
         void Start()
         {
 
-            carpetHeight = carpetPrefab.transform.GetChild(1).gameObject.GetComponent<Renderer>().bounds.size.y - 0.1f;
+            carpetHeight = carpetPrefab.transform.GetChild(1).gameObject.GetComponent<Renderer>().bounds.size.y - 0.3f;
         }
 
         // Update is called once per frame
@@ -68,6 +68,7 @@ namespace CapybaraJump
             }
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
             obj.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
+            obj.GetComponent<SpriteRenderer>().sortingOrder = GameManager.Instance.initSortingLayer++;
             carpetList.Enqueue(obj);
             return obj;
         }

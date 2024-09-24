@@ -73,16 +73,16 @@ namespace CapybaraJump
 
 
                 }
-               else
-               {
+                else
+                {
                     Debug.Log("Lose");
                     GameManager.Instance.GameOver();
                     CapybaraMain.Instance.StopMove();
-                   
+                    Debug.Log(angle);
                     this.StopMove();
 
-               }
-             }
+                }
+            }
 
         }
 

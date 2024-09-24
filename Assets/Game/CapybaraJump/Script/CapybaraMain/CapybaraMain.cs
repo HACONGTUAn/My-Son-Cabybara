@@ -81,7 +81,7 @@ namespace CapybaraJump
             float jumpTime = GameManager.Instance.jumpTime;
 
             float newYPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight * 2;
-            transform.DOMoveY(newYPos, jumpTime * 0.5f).SetEase(Ease.Linear)
+            transform.DOMoveY(newYPos, jumpTime * 0.5f).SetEase(Ease.InOutQuad)
             .OnComplete(() =>
             {
 
@@ -90,7 +90,7 @@ namespace CapybaraJump
                 CameraFollowController.Instance.MoveUpperOneTime(steps, jumpTime * 3);
                 float boostPos = transform.position.y + InstantiateGameObject.Instance.carpetHeight * (steps+1);
                 Debug.Log(boostPos);
-                transform.DOMoveY(boostPos, jumpTime * 3).SetEase(Ease.Linear)
+                transform.DOMoveY(boostPos, jumpTime * 3).SetEase(Ease.InOutQuad)
                 .OnComplete(() =>
                 {
                     transform.DOKill();
