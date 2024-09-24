@@ -7,35 +7,23 @@ namespace CapybaraMain
 { 
     public class HomeUI : BaseUI
     {
-        [SerializeField] private Text heartText;
-        [SerializeField] private Text ticket;
-
+        //tuan game ui
         [SerializeField]private Button next;
         [SerializeField] private Button back;
-
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
-        [SerializeField] private GameObject daiLyUp;
+        [SerializeField] private Capybara.UIDaily daiLyUp;
         [SerializeField] private GameObject Setting ;
-        [SerializeField] private GameObject _buildScrolView;
-        [SerializeField] private Capybara.BuildManager _BuildManager;
+        [SerializeField] private GameObject Build ;
+        [SerializeField] private Transform test;
+
         private int currentIndex = 0;
         private float itemWidth;
         private GameObject currentGameObject = null;
         private GameObject saveGameObject = null;
         private bool checkGame = false;
-
-        private void OnEnable()
-        {
-            heartText.text = Manager.Instance.GetHeart().ToString();
-            ticket.text = Manager.Instance.GetTicket().ToString();
-
-        }
         private void Start()
         {
-           
-
-           
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
             
 
@@ -106,51 +94,25 @@ namespace CapybaraMain
            if(currentGameObject.GetComponent<BaseID>().id == 0)
             {
                 currentGameObject.SetActive(false);
-                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
-
             }
             else
             {
-                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
                 Destroy(currentGameObject);
             }
             
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
-
-            heartText.text = Manager.Instance.GetHeart().ToString();
-            ticket.text = Manager.Instance.GetTicket().ToString();
-        }
-        void switchTypeMiniGame(BaseID obj)
-        {
-            if (obj is MiniGame1)
-            {
-              //  Debug.Log(" Mini1");
-                MiniGame1 miniGame = (MiniGame1)obj;
-                miniGame.UserItemInMiniGame();
-            }
-            else if (obj is MiniGame2)
-            {
-                MiniGame2 miniGame = (MiniGame2)obj;
-                miniGame.UserItemInMiniGame();
-              //  Debug.Log(" Mini2");
-            }
-            else if (obj is MiniGame3)
-            {
-                MiniGame3 miniGame = (MiniGame3)obj;
-                miniGame.UserItemInMiniGame();
-              //  Debug.Log("Mini3");
-            }
         }
         // daily
         //=====================================================================================================
         public void DailyOpen()
         {
-            daiLyUp.SetActive(true);
+            // daiLyUp.Start();
+            daiLyUp.gameObject.SetActive(true);
         }
         public void exitDaily()
         {
-            daiLyUp.SetActive(false);
+            daiLyUp.gameObject.SetActive(false);
         }
         // Setting 
         //========================================================================================================
@@ -162,15 +124,18 @@ namespace CapybaraMain
         {
             Setting.SetActive(false);
         }
-        // build 
-        //=======================================================================================================
-        public void buildChapter()
+        // Build 
+        //========================================================================================================
+        public void BuildOpen()
         {
-            _buildScrolView.SetActive(true);
+            Build.SetActive(true);
         }
-        public void exitbuildChapter()
+        public void exitBuild()
         {
-            _buildScrolView.SetActive(false);
+            if(!Capybara.BuildManager.Instance.isBuilding)
+            {
+                Build.SetActive(false);
+            }
         }
     }
 }

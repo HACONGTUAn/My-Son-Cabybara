@@ -7,6 +7,7 @@ namespace Capybara
 {
     public class UIBuildButton : MonoBehaviour
     {
+        //
         public Image Icon;
         public Text Heart;
         public Button Build;

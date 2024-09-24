@@ -7,6 +7,7 @@ namespace Capybara
 {
     public class BuildManager : Singleton<BuildManager>
     {
+        //
         public bool isBuilding;
         public Transform buttonSpawn;
         public Transform chapterSpawn;
