@@ -7,7 +7,7 @@ namespace CapybaraMain
 { 
     public class HomeUI : BaseUI
     {
-        
+        //tuan game ui
         [SerializeField]private Button next;
         [SerializeField] private Button back;
         [SerializeField] private ScrollRect scrollSelectionGame;
