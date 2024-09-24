@@ -57,7 +57,7 @@ namespace Fishing
         }
         private void Slice(Vector3 direction, Vector3 position, float force)
         {
-            int d = Random.Range(0,2) * 2 -1;
+            int d = -1;
             fishCol.enabled = false;
             whole.SetActive(false);
 
@@ -67,9 +67,9 @@ namespace Fishing
 
             foreach (Rigidbody2D slice in slices)
             {            
-                slice.velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+                slice.linearVelocity = gameObject.GetComponent<Rigidbody2D>().linearVelocity;
                 slice.AddForceAtPosition(d * direction * force, position, ForceMode2D.Impulse);
-                
+                d += 2;
             }
         }
         private void OnTriggerEnter2D(Collider2D collision)

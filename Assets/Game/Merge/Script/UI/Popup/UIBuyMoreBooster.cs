@@ -28,14 +28,14 @@ namespace Merge
         {
             boosterImgs[(int)boosterType].SetActive(true);
             buyCoin.transform.GetChild(0).GetComponent<Text>().text = boosterSO.GetBoosterPrice(boosterType).ToString();
-            buyCoin.interactable = CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType);
             AnimatedUI();
         }
 
         private void UpdateCount()
         {
             coinCount.text = CapybaraMain.Manager.Instance.GetTicket().ToString();
-            heartCount.text = CapybaraMain.Manager.Instance.GetHeart().ToString();     
+            heartCount.text = CapybaraMain.Manager.Instance.GetHeart().ToString();
+            buyCoin.interactable = CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType);     
         }
         private void BuyCoin()
         {

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 
 namespace CapybaraMain
@@ -8,11 +8,12 @@ namespace CapybaraMain
 
 public class Manager : TPRLSingleton<Manager>
 {
-    
+        public TMP_Text hearText;
+        public TMP_Text teckitText;
         public List<MiniGame> _data = new List<MiniGame>();
 
-        private int heart = 1000;
-        private int ticket = 1000;
+        private int heart = 0;
+        private int ticket = 0;
 
         private void Start()
         {
@@ -34,12 +35,12 @@ public class Manager : TPRLSingleton<Manager>
             {
                // teckitText.text = PlayerPrefs.GetInt("teckit").ToString();
             }
-            _data = DataManager.Instance.ReadFileJson();
+
         }
 
         // write data 
         //==========================================================================
-        public void WriteDataInFile()
+        private void WriteDataInFile()
         {
             DataManager.Instance.WriteDataInJson(_data);
         }
@@ -80,7 +81,7 @@ public class Manager : TPRLSingleton<Manager>
 
         public int FindTypeOfObject(BaseID currentMiniGame)
         {
-           // _data = DataManager.Instance.ReadFileJson();
+            _data = DataManager.Instance.ReadFileJson();
             for(int i = 0; i < _data.Count; i++)
             {
                 if(_data[i].id == currentMiniGame.id)

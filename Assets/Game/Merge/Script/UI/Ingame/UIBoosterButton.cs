@@ -29,34 +29,21 @@ namespace Merge
             //amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
             if ((int)boosterType == 0)
             {
-                amountText.text = (GameManager.Instance.minigame.items[0].quantity).ToString();
-              amount = GameManager.Instance.minigame.items[0].quantity;
+                amount = GameManager.Instance.minigame.items[0].quantity;
             }
             if ((int)boosterType == 6)
             {
 
                 amount = GameManager.Instance.minigame.items[1].quantity;
-                amountText.text = (GameManager.Instance.minigame.items[1].quantity).ToString();
             }
-            
-            
+            amountText.text = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType)).ToString();
             if (!classicMode)
             {
                 SetActiveCancer(false);
                 UpdateBoosterAvailability();
             }
         }
-        private void OnEnable()
-        {
-            if ((int)boosterType == 0)
-            {
-                amountText.text = (GameManager.Instance.minigame.items[0].quantity).ToString();
-            }
-            if ((int)boosterType == 6)
-            {
-                amountText.text = (GameManager.Instance.minigame.items[1].quantity).ToString();
-            }
-        }
+
         public void Refresh()
         {
             if (GameManager.Instance.currentMode)
@@ -67,12 +54,11 @@ namespace Merge
             //amount = GameRes.GetRes(new DataTypeResource(RES_type.BOOSTER, (int)boosterType));
             if ((int)boosterType == 0)
             {
-              
                 amount = GameManager.Instance.minigame.items[0].quantity;
             }
             if ((int)boosterType == 6)
             {
-              
+
                 amount = GameManager.Instance.minigame.items[1].quantity;
             }
             amountText.text = amount.ToString();

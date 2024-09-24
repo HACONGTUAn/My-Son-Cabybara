@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Fishing
 {
@@ -10,7 +13,6 @@ namespace Fishing
         public GameState gameState;
         public Action slashEvent,fishingEvent;
         private UIController uiController;
-        private AquariumControler aquariumControler;
         private void Awake()
         {
             if(Instance == null)
@@ -18,18 +20,15 @@ namespace Fishing
                 Instance = this;
             }
         }
-        private void OnEnable()
-        {
-            gameState = GameState.Start;
-        }
         void Start()
         {
             Initialize();
-        }     
+        }
+
         private void Initialize()
         {
-            uiController = GetComponent<UIController>();    
-            aquariumControler = GetComponent<AquariumControler>();
+            uiController = GetComponent<UIController>();
+            SwitchGameState(GameState.Fishing);
         }
         public void SwitchGameState(GameState state)
         {
@@ -37,7 +36,6 @@ namespace Fishing
             switch(gameState)
             {
                 case GameState.Fishing:
-                    ClearMap();
                     HandleFishingChange();
                     break;
                 case GameState.SlashFish:
@@ -51,15 +49,6 @@ namespace Fishing
             slashEvent?.Invoke();
             
         }
-        private void HandleFishingChange()
-        {
-            //aquariumControler.SpawnFishHandler();
-            uiController.timer = 30;
-            uiController.TimmerCount();
-            StartCoroutine(MoveCameraFishing());
-            fishingEvent?.Invoke();
-        }
-
         IEnumerator MoveCameraSlash()
         {
             Vector3 targetPosition = new Vector3(0, 9, -10);
@@ -70,7 +59,14 @@ namespace Fishing
                 yield return null;
             }
             cam.transform.position = targetPosition;
-        }      
+        }
+        private void HandleFishingChange()
+        {
+            uiController.timer = 30;
+            uiController.TimmerCount();
+            StartCoroutine(MoveCameraFishing());
+            fishingEvent?.Invoke();
+        }
         IEnumerator MoveCameraFishing()
         {
             Vector3 targetPosition = new Vector3(0, 0, -10);
@@ -82,13 +78,10 @@ namespace Fishing
             }
             cam.transform.position = targetPosition;
         }
-        private void ClearMap()
-        {
 
-        }
     }
     public enum GameState
     {
-        Start,Fishing,SlashFish
+        Fishing,SlashFish
     }
 }

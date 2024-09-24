@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 
 namespace CapybaraMain { 
@@ -11,9 +11,8 @@ public class MiniGame1 : BaseID
 
         //public TMP_Text textButton2;
         //public TMP_Text soluongBtn2;
-
-      
-        private void OnEnable()
+        
+        private void Start()
         {
             items = Manager.Instance.ReadDataInFile(this);
 

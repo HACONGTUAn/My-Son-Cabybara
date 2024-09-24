@@ -27,7 +27,7 @@ namespace Fishing
         private float totalMass = 0.2f;
 
 
-        void Start()
+        void Awake()
         {           
             lineRenderer = gameObject.GetComponent<LineRenderer>();
             GameManager.Instance.fishingEvent += OnFishingHandle;
@@ -46,13 +46,13 @@ namespace Fishing
                     transform.localRotation = Quaternion.Euler(0, 0, angle);
                 }
 
-                if (Input.GetMouseButton(0) && !isShooting && !isReturning)
+                if (Input.GetKeyDown(KeyCode.Space) && !isShooting && !isReturning)
                 {
                     isShooting = true;
                     originalPosition = transform.localPosition;
                     rb = gameObject.AddComponent<Rigidbody2D>();
                     rb.gravityScale = 0;
-                    rb.drag = 0.5f;
+                    rb.linearDamping = 0.5f;
                     rb.interpolation = RigidbodyInterpolation2D.Interpolate;
                     rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
                     rb.AddForce(transform.up * -hookForce);
@@ -69,7 +69,7 @@ namespace Fishing
                     if (Vector2.Distance(transform.position, transform.parent.position) < 0.5f)
                     {
                         transform.localPosition = originalPosition;
-                        rb.velocity = Vector2.zero;
+                        rb.linearVelocity = Vector2.zero;
                         Destroy(rb);
                         totalMass = 0.2f;
                         if (itemHolder.transform.childCount > 0)
@@ -84,32 +84,11 @@ namespace Fishing
                 lineRenderer.SetPosition(1, transform.position);
                 yield return null;
             }
-            ResetHook();
-        }
-
-        private void ResetHook()
-        {
-            StopCoroutine(autoReturn);
-            foreach (Transform t in itemHolder.transform)
-            {
-                Destroy(t.gameObject);
-            }
-            transform.localPosition = originalPosition;
-            if(rb != null)
-            {
-                rb.velocity = Vector2.zero;
-                Destroy(rb);
-            }
-            
-            totalMass = 0.2f;
-            isReturning = false;
-            isShooting = false;
-            isCatched = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!isReturning && isShooting && other.CompareTag("Item"))
+            if (isShooting && other.CompareTag("Item"))
             {
                 isCatched = true;
                 Transform fishTrans = other.transform.parent;
@@ -127,7 +106,7 @@ namespace Fishing
         {
             yield return new WaitForSeconds(returnTime);          
             isReturning = true;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         private IEnumerator CatchFishAnim()
@@ -140,10 +119,12 @@ namespace Fishing
             animator.SetTrigger("CatchFish");
             yield return new WaitForSeconds(1f);
             while (itemHolder.transform.childCount > 0)
-            {               
-                GameObject fish = itemHolder.transform.GetChild(0).gameObject;
-                fish.transform.SetParent(bucket.transform);
-                fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac               
+            {
+                {
+                    GameObject fish = itemHolder.transform.GetChild(0).gameObject;
+                    fish.transform.SetParent(bucket.transform);
+                    fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac
+                }
             }
             
 

@@ -10,7 +10,7 @@ namespace CapybaraMain
     {
         public List<MiniGame> _testData = new List<MiniGame>();
          List<MiniGame> _loadData;
-        private void OnEnable()
+        private void Start()
         {
            // WriteDataInJson();
 
@@ -30,7 +30,7 @@ namespace CapybaraMain
             if (!File.Exists(path))
             {
                 _testData = new List<MiniGame>
-                 {
+        {
             new MiniGame
             {
                 id = 0,
@@ -90,7 +90,7 @@ namespace CapybaraMain
             return _loadData;
         }
     }
-    [System.Serializable]
+   
     public class Item
     {
         public string name;
@@ -101,7 +101,6 @@ namespace CapybaraMain
             quantity = _quantity;
         }
     }
-    [System.Serializable]
     public class MiniGame
     {
         public int id;

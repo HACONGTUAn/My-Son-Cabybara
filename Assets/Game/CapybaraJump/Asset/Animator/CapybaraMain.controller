@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6e1d25fbe4da46180ae8dee8b8951a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallTime: 0.15
-  easeType: 5
+  fallHeight: 1.2
+  fallTime: 0.5
+  easeType: 1
 --- !u!1102 &-3684093328601744173
 AnimatorState:
   serializedVersion: 6
@@ -26,8 +27,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8645068402844829999}
-  m_StateMachineBehaviours:
-  - {fileID: -2142512395697884593}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -91,8 +91,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3228667800986204609}
-  m_StateMachineBehaviours:
-  - {fileID: -6634034260593307347}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -119,8 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48944e9ffd372c3bd91bd8f8b3e631a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easeType: 9
-  jumpTime: 0.3
+  height: 2
+  easeType: 5
+  jumpTime: 0.5
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -173,8 +173,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6579861376696020695}
-  m_StateMachineBehaviours:
-  - {fileID: -617734675410312225}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

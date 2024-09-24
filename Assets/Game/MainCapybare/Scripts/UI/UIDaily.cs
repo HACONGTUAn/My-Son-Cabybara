@@ -37,7 +37,7 @@ namespace Capybara
             {
                 dataDaily.daily[dataDaily.dayGame-1].isUnlocked = true;
                 UnlockButton();
-                coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx, dataDaily.daily[dataDaily.dayGame-1].ticket );
+                coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx.position, dataDaily.daily[dataDaily.dayGame-1].ticket );
 
             }
         }
@@ -47,7 +47,7 @@ namespace Capybara
             {
                 dataDaily.daily[dataDaily.dayGame-1].isUnlocked = true;
                 UnlockButton();
-                coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx, dataDaily.daily[dataDaily.dayGame-1].ticket *2 );
+                coinFx.PlayFx(Claim, 0, dailyClaims[dataDaily.dayGame-1].fx.position, dataDaily.daily[dataDaily.dayGame-1].ticket *2 );
             }
         }
         private void Claim()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Fishing
+namespace RavingBots.Water2D
 {
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(MeshRenderer))]

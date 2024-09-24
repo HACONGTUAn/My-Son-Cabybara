@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Fishing
+namespace RavingBots.Water2D
 {
 	public class Water2DSplashFX : MonoBehaviour
 	{
