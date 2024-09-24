@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -214,17 +215,14 @@ namespace Merge
             eventData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, results);
-            return results.Count > 0;
+            return results.Any(result => result.gameObject.layer == LayerMask.NameToLayer("UI"));
         }
         private void HandleSelect()
         {
-            if (isUsingBooster)
+            if (isUsingBooster|| IsPointerOverUIObject())
             {   
-                if(IsPointerOverUIObject())
-                {
-                    isSelected = false;
-                    return;
-                }
+                isSelected = false;
+                return;
             }
             
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
@@ -590,10 +588,11 @@ namespace Merge
             FruitType fruitType = fruit.GetFruitType();
             if ((int)fruitType > 5)
             {
-                int heart = CapybaraMain.Manager.Instance.GetHeart() + (int)fruitType - 5;
-                CapybaraMain.Manager.Instance.SetHeart(heart);
-                UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
-                CoinFx.Instance.PlayFx(null, 0, fruit.transform, heart);
+                CoinFx.Instance.PlayFx(() =>
+                    {
+                        CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + 1);
+                        UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
+                    }, 0, fruit.transform, (int)fruitType - 5);
             }
         }
         #region Booster

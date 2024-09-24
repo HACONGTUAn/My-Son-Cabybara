@@ -10,16 +10,19 @@ namespace Merge
         [SerializeField] Button exitButton, buyCoin, buyAD;
         [SerializeField] Text coinCount, heartCount;
         public EBoosterType boosterType;
+        public bool isBuy;
         [SerializeField] GameObject[] boosterImgs;
         [SerializeField] Transform popup;
         [SerializeField] BoosterSO boosterSO;
+        [SerializeField] UnCoinFx unCoinFx;
         public override void Initialize(UIManager manager)
         {
+            base.Initialize(manager);
             exitButton.onClick.AddListener(Close);
             buyCoin.onClick.AddListener(BuyCoin);  
             buyAD.onClick.AddListener(BuyAD);
             UpdateCount();
-            base.Initialize(manager);
+            isBuy = false;
         }
         private void Start()
         {
@@ -36,10 +39,16 @@ namespace Merge
         }
         private void BuyCoin()
         {
-            if(CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType))
+            if(CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType) && !isBuy)
             {
-                CapybaraMain.Manager.Instance.SetTicket(CapybaraMain.Manager.Instance.GetTicket() - boosterSO.GetBoosterPrice(boosterType));
-
+                isBuy = true;
+                unCoinFx.PlayFx(() =>
+                {
+                    isBuy = false;
+                    CapybaraMain.Manager.Instance.SetTicket(CapybaraMain.Manager.Instance.GetTicket() - 1);
+                    UpdateCount();
+                }, 0, buyCoin.transform, boosterSO.GetBoosterPrice(boosterType));
+                // CapybaraMain.Manager.Instance.SetTicket(CapybaraMain.Manager.Instance.GetTicket() - boosterSO.GetBoosterPrice(boosterType));
                 if ((int)boosterType == 0)
                 {
                     GameManager.Instance.minigame.items[0].quantity += 1;
@@ -50,9 +59,7 @@ namespace Merge
                     GameManager.Instance.minigame.items[1].quantity += 1;
                 }
                 Observer.Notify(UIBoosterPanel.RefreshUseBoosterKey);
-                UpdateCount();
             }
-
         }
         private void BuyAD()
         {

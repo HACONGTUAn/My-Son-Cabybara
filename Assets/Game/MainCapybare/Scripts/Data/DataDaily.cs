@@ -24,7 +24,8 @@ namespace Capybara
         private void ResetDailys(DataDaily dataDaily)
         {
             Undo.RecordObject(dataDaily, "Reset All Dailys");
-
+            dataDaily.dayGame = 0;
+            dataDaily.dayReal = 0;
             foreach (Daily daily in dataDaily.daily)
             {
                 daily.isUnlocked = false;

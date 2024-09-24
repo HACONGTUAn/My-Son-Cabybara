@@ -33,7 +33,7 @@ namespace Capybara
             EditorUtility.SetDirty(dataListChapter);
             AssetDatabase.SaveAssets();
 
-            Debug.Log("All chapter Unlocked.");
+            Debug.Log("All Chapters Unlocked.");
         }
     }
 #endif
