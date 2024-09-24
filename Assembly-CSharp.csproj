@@ -80,28 +80,25 @@
     <Compile Include="Assets\Game\MainGame\Script\DataManager.cs" />
     <Compile Include="Assets\Game\MainGame\Script\LoadingResources.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseUI.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\ScoreController.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataChapter.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataDaily.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\BucketController.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIComboAnimation.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\Controller\CameraFollowController.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Base\Singleton.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\FruitItemObjectSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UIBuyMoreBooster.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraFall.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\FruitContainerSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\DataManager.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UIBuildButton.cs" />
     <Compile Include="Assets\Game\MainGame\Script\Manager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\Controller\SpawnCarpet.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\AudioManager.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\BuildManager.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Core\ImmortalObject.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraIdle.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UnCoinFx.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\FishController.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\IDamage.cs" />
@@ -110,6 +107,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\Kino Bloom\Bloom.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\DataManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIBoosterConfirmPanel.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UIDaily.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameMode.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIBoosterPanel.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Water\Water2DMaterialScaler.cs" />
@@ -118,7 +116,6 @@
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UISettingPopup.cs" />
     <Compile Include="Assets\Game\MainGame\Script\MiniGame3.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\UIController.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraJump.cs" />
     <Compile Include="Assets\Game\Merge\Script\Base\PlayerPrefsBase.cs" />
     <Compile Include="Assets\Game\Merge\Script\Audio\AudioContainerSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\GradientColor.cs" />
@@ -127,7 +124,6 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleText.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Data\Follow.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\ShakeFruit.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\GiftManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\ClassicMode.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Water\Water2DSplashFX.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\BladeController.cs" />
@@ -137,25 +133,20 @@
     <Compile Include="Assets\Game\MainGame\Script\ShopUI.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Helper.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\CapybaraMain.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\LevelController.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\BoosterSO.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\Controller\InstantiateGameObject.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIRequireDisplay.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UIStartTutorial.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\CamaraManager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\GameManager.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_Effect.CameraShake.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseID.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Game\MainGame\Script\UIManager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CountDown.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\FruitType.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Observer.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo_RandomText.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\ImmortalObject.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraCarpet.cs" />
     <Compile Include="Assets\Game\Merge\Script\Utils\PlayerPrefsUtil.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectContainerSO.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\Fruit.cs" />
@@ -166,7 +157,9 @@
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Water\Water2DEffects.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\BetterOutline.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\CoinFx.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\AquariumControler.cs" />
+    <Compile Include="Assets\Game\MainGame\Script\HearTicker.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameRes.cs" />
     <Compile Include="Assets\Game\MainGame\Script\MiniGame2.cs" />
     <Compile Include="Assets\Game\MainGame\Script\StotyUI.cs" />
@@ -203,6 +196,10 @@
     </Reference>
     <Reference Include="UnityEngine.ARModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule">
