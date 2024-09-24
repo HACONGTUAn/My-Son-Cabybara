@@ -19,12 +19,12 @@ public class CoinFx : MonoBehaviour
             Instance = this;
         }
     }
-    public void PlayFx(System.Action callBack, int idx, Transform PosStart, int coinCount)
+    public void PlayFx(System.Action callBack, int idx, Vector3 PosStart, int coinCount)
     {
         StartCoroutine(DelayPlayFx(callBack, idx, PosStart, coinCount));
     }
 
-    IEnumerator DelayPlayFx(System.Action callBack, int idx, Transform PosStart, int coinCount)
+    IEnumerator DelayPlayFx(System.Action callBack, int idx, Vector3 PosStart, int coinCount)
     {
         yield return new WaitForSeconds(0.5f);
         //SoundManager.Instance.playSoundFx(//SoundManager.Instance.effCoinUI);
@@ -33,8 +33,8 @@ public class CoinFx : MonoBehaviour
             Transform curChild = transform.GetChild(i);
             curChild.gameObject.SetActive(true);
             curChild.GetComponent<Image>().sprite = icons[idx];
-            float ranNumX = Random.Range(-range, range) + PosStart.position.x;
-            float ranNumY = Random.Range(-range, range) + PosStart.position.y;
+            float ranNumX = Random.Range(-range, range) + PosStart.x;
+            float ranNumY = Random.Range(-range, range) + PosStart.y;
             curChild.position = new Vector3(ranNumX, ranNumY);
             curChild.localScale = Vector3.zero;
             curChild.DOScale(1, moveTime).SetEase(Ease.OutElastic).SetDelay(Random.Range(0, 0.3f)).OnComplete(() =>

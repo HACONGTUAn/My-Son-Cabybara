@@ -346,6 +346,7 @@ namespace Merge
                 nextFruitType = sender.GetFruitType() + 1;
             }
             Vector2 fruitSpawnPos = Vector3.Lerp(otherfruit.position, sender.position, 0.5f);
+            // CheckHeartFruit(nextFruitType, new Vector3(fruitSpawnPos.x, fruitSpawnPos.y, 0));
             int newScore = score + (((int)sender.GetFruitType() + 1) * 10);
             ingameScreen.SetScore(score, newScore);
             score = newScore;
@@ -499,7 +500,7 @@ namespace Merge
             {
                 newFruit.OnSpawn();
                 CheckNewFruit(newFruit);
-                CheckHeartFruit(newFruit);
+                CheckHeartFruit(fruitType, spawnPosition);
             }
             listFruit.Add(newFruit);
             newFruit.gameObject.SetActive(true);
@@ -583,16 +584,16 @@ namespace Merge
             fruitUnlocked.Add(fruitType);
             Save();
         }
-        private void CheckHeartFruit(Fruit fruit)
+        private void CheckHeartFruit(FruitType fruitType, Vector3 fruitTransform)
         {
-            FruitType fruitType = fruit.GetFruitType();
+            // FruitType fruitType = fruit.GetFruitType();
             if ((int)fruitType > 5)
             {
                 CoinFx.Instance.PlayFx(() =>
                     {
                         CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + 1);
                         UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
-                    }, 0, fruit.transform, (int)fruitType - 5);
+                    }, 0, fruitTransform, (int)fruitType - 5);
             }
         }
         #region Booster

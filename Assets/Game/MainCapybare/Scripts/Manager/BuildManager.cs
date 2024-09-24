@@ -12,6 +12,10 @@ namespace Capybara
         public Transform chapterSpawn;
         public Slider chapterSlider;
         private Follow follow;
+        public GameObject bottom;
+        public GameObject left;
+        public GameObject top;
+        public GameObject task;
         private void Start()
         {
             follow = GameManager.Instance.followChapter;

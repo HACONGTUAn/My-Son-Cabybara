@@ -20920,6 +20920,10 @@ MonoBehaviour:
   buttonSpawn: {fileID: 1031141391}
   chapterSpawn: {fileID: 1789596118}
   chapterSlider: {fileID: 1290881531}
+  bottom: {fileID: 1611555379}
+  left: {fileID: 1871805213}
+  top: {fileID: 389160280}
+  task: {fileID: 1075387889}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
