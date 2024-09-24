@@ -22,12 +22,45 @@ namespace Capybara
         }
         private void TaskButtonClick(TaskChapter task, GameObject taskObj)
         {
+            switch ((int)task.type)
+            {
+                case 0://Heart
+                    HeartButton(task, taskObj);
+                    break;
+                case 1://Jump
+                    JumpButton(task, taskObj);
+                    break;
+                case 2://Merge
+                    MergeButton(task, taskObj);
+                    break;
+                case 3://Fishing
+                    FishingButton(task, taskObj);
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+        private void HeartButton(TaskChapter task, GameObject taskObj)
+        {
             if(CapybaraMain.Manager.Instance.GetHeart() >= task.price && !BuildManager.Instance.isBuilding)
             {
                 Build.interactable = false;
                 BuildManager.Instance.isBuilding = true;
                 UnCoinFx.Instance.PlayFx(() => UnlockTask(task, taskObj), 0, Build.transform, task.price);
             }
+        }
+        private void JumpButton(TaskChapter task, GameObject taskObj)
+        {
+            
+        }
+        private void MergeButton(TaskChapter task, GameObject taskObj)
+        {
+            
+        }
+        private void FishingButton(TaskChapter task, GameObject taskObj)
+        {
+            
         }
         private void UnlockTask(TaskChapter task, GameObject taskObj)
         {
@@ -71,5 +104,6 @@ namespace Capybara
             Destroy(gameObject);
             BuildManager.Instance.CheckChapter();
         }
+
     }
 }
