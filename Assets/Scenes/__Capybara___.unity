@@ -2268,9 +2268,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 101.85, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &166898082
@@ -17978,9 +17978,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 380.54337, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675153003
@@ -19842,9 +19842,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 659.2367, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914330518
@@ -21800,11 +21800,11 @@ MonoBehaviour:
   isBuilding: 0
   buttonSpawn: {fileID: 1031141391}
   chapterSpawn: {fileID: 1789596118}
-  inchapterSlider: {fileID: 0}
+  inchapterSlider: {fileID: 1290881531}
   outchapterSlider: {fileID: 1067543219}
-  inChapterText: {fileID: 0}
+  inChapterText: {fileID: 1038153612}
   outChapterText: {fileID: 621311031}
-  inTaskText: {fileID: 0}
+  inTaskText: {fileID: 542329930}
   outTaskText: {fileID: 239093808}
   bottom: {fileID: 1611555379}
   left: {fileID: 1871805213}
