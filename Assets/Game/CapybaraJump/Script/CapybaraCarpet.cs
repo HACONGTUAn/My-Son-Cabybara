@@ -30,26 +30,18 @@ namespace CapybaraJump
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(this.gameObject == GameManager.Instance.floorCarpet)
+          
+            if (this.gameObject == GameManager.Instance.floorCarpet)
             {
                 CapybaraMain.Instance.StopMove();
                 return;
             }
-            //if (collision.gameObject.layer == GameManager.Instance.CapybaraShield_LayerIndex)
-            //{
-            //    transform.DOKill();
-            //    ScoreController.Instance.shield.SetActive(false);
-            //    Debug.Log("move back");
-            //    MoveBack(0.5f);
-            //    //GameManager.Instance.isShield = false;
-            //    if (CapybaraMain.Instance.rb.velocity == Vector2.zero)
-            //    {
-            //        SpawnCarpet.Instance.SpawnNewCarpet(2f);
-            //        GameManager.Instance.isJustShield = false;
-            //    }
-            //    else GameManager.Instance.isJustShield = true;
-            //    return;
-            //}
+            if (GameManager.Instance.gameOver)
+            {
+                return;
+            }
+           
+        
              if (collision.gameObject.layer == GameManager.Instance.CapybaraMain_LayerIndex)
             {
                
@@ -61,16 +53,20 @@ namespace CapybaraJump
                     CapybaraMain.Instance.StopMove();
                     Debug.Log("OK!");
                     this.StopMove();
-                    if (angle <= GameManager.Instance.perfectJumpThreshHole)
+                    if(gameObject != GameManager.Instance.oldCarpet)
                     {
-                        ScoreController.Instance.AddScore(2);// fix
-                        Debug.Log("Perfect!");
-                    }
-                    else
-                    {
-                        ScoreController.Instance.AddScore(1);
-                    }
-                    //  ScoreController.Instance.CheckGift(CapybaraMain.Instance.transform.position + Vector3.up * InstantiateGameObject.Instance.carpetHeight * 1.5f);
+                        if (angle <= GameManager.Instance.perfectJumpThreshHole)
+                        {
+                            ScoreController.Instance.AddScore(2);// fix
+                            Debug.Log("Perfect!");
+                        }
+                        else
+                        {
+                            ScoreController.Instance.AddScore(1);
+                        }
+                    }    
+                   
+                      ScoreController.Instance.CheckGift(CapybaraMain.Instance.transform.localPosition + Vector3.up * InstantiateGameObject.Instance.carpetHeight * 1.5f);
                    
                     CapybaraMain.Instance.LandingSuccessful(this.gameObject);
                    
@@ -85,12 +81,14 @@ namespace CapybaraJump
                         transform.DOKill();
                         MoveBack(0.5f);
                         Debug.Log("Lose");
-                        
                         CapybaraMain.Instance.LandingSuccessful(this.gameObject);
                         return;
                     }
                     else
                     {
+                        GameManager.Instance.gameOver = true;
+                        CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                         this.StopMove();
                         int dimensity = (isRight) ? 1 : -1;
                         CapybaraMain.Instance.Die(dimensity);
@@ -98,10 +96,6 @@ namespace CapybaraJump
                         //CapybaraMain.Instance.StopMove();
                         transform.GetChild(0).DOKill();
                     }
-                    
-                   
-                  
-
                 }
             }
 

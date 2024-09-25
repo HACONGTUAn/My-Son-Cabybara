@@ -11,7 +11,8 @@ namespace CapybaraJump
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if(!GameManager.Instance.isBoost){
+            if(!GameManager.Instance.isBoost && !GameManager.Instance.gameOver)
+            {
                
                 GameObject capybara = animator.gameObject;
                 rb = capybara.GetComponent<Rigidbody2D>();

@@ -10,16 +10,14 @@ namespace CapybaraJump
     {
         public bool IsStart = false;
         public MiniGame2 minigame;
-        public int CapybaraShield_LayerIndex = 8;
-        public int CapybaraMain_LayerIndex = 7;
-        public int CapybaraCarpet_LayerIndex = 6;
+        public int CapybaraMain_LayerIndex = 9;
         public static GameManager Instance;
-        public float angleCollisonEnterThreshHole = 35f;
+        public float angleCollisonEnterThreshHole = 40f;
         public float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
         public CountDown countDown;
-        public float startTime = 0.7f;
-        public float endTime = 1.1f;
+        public float startTime = 0.5f;
+        public float endTime = 0.8f;
         public float fallTime = 0.5f;
         public bool isBoost = false;
         public bool isShield = false;
@@ -31,6 +29,7 @@ namespace CapybaraJump
         public GameObject oldCarpet;
         public GameObject floorCarpet;
         public int initSortingLayer;
+        
         [SerializeField] private Vector3 camearaInitPosition;
         [SerializeField] private Vector3 capybaraInitPosition;
         [SerializeField] private Vector3 leftPosInitPosition;
@@ -133,7 +132,7 @@ namespace CapybaraJump
 
         public void Booster()
         {
-            if (isBoost)
+            if (isBoost || gameOver)
             {
                 return;
             }

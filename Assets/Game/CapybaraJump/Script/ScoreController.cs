@@ -44,25 +44,26 @@ namespace CapybaraJump
         {
             score = 0;
             text.text = score + " M";
+            
         }
 
 
-        /*public void CheckGift(Vector3 position)
+        public void CheckGift(Vector3 position)
         {
-            if (score == 3)
+            if (score == 5)
             {
-                gift.transform.position = position;
-                gift.type = 2;
+                gift.transform.localPosition = position;
+                gift.type = 1;
                 gift.gameObject.SetActive(true);
 
             }
-            if (score == 5)
+            if (score == 10)
             {
-                gift.transform.position = position;
+                gift.transform.localPosition = position;
                 gift.type = 1;
                 gift.gameObject.SetActive(true);
             }
-        }*/
+        }
     }
 
 }

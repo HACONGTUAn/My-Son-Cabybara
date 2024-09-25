@@ -62,6 +62,11 @@ namespace CapybaraJump
             }
             else
             {
+                if (carpet == GameManager.Instance.oldCarpet)
+                {
+                    //  SpawnCarpet.Instance.SpawnNewCarpet(2f);
+                    return;
+                }
                 if (ScoreController.Instance.shield.activeSelf)
                 {
                     Debug.Log("third");
@@ -76,7 +81,7 @@ namespace CapybaraJump
                     Debug.Log("second");
                     GameManager.Instance.isShield = false;
                     SpawnCarpet.Instance.SpawnNewCarpet(2f);
-                    GameManager.Instance.isJustShield = false;
+                    //GameManager.Instance.isJustShield = false;
 
                 }
                
@@ -155,7 +160,7 @@ namespace CapybaraJump
         public void ClickToJump()
         {
             
-            if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().velocity == Vector2.zero )
+            if(!GameManager.Instance.isBoost && animator.GetComponent<Rigidbody2D>().velocity == Vector2.zero && !GameManager.Instance.gameOver)
             {
                 animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 GetComponent<Rigidbody2D>().gravityScale = GameManager.Instance.gravityScale;
@@ -167,8 +172,12 @@ namespace CapybaraJump
         }
         public void Die(int dimensity)
         {
-            float xPos = -2* dimensity;
-            transform.DOMoveX(xPos, 0.3f)
+            Debug.Log("die");
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            transform.DOKill();
+           
+            float xPos = -1.5f* dimensity;
+            transform.DOMoveX(xPos, 0.2f)
                 .SetEase(Ease.InQuad)
                 .OnComplete(() =>
                 {

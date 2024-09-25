@@ -13,7 +13,7 @@ namespace CapybaraJump
 
         [SerializeField] private List<Sprite> listCarpet = new();
         [SerializeField] private GameObject carpetPrefab;
-        private int count = 8;
+        private int count = 15;
         public float carpetHeight;
         public Queue<GameObject> carpetList = new Queue<GameObject>();
 

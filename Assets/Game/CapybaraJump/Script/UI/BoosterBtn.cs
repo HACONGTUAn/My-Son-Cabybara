@@ -43,14 +43,14 @@ namespace CapybaraJump
         }
         private void UseBooster()
         {
-            if (amount > 0 && GameManager.Instance.IsStart)
+            if (amount > 0 && GameManager.Instance.IsStart && !GameManager.Instance.gameOver)
             {
-                if((int)boosterType == 0)
+                if((int)boosterType == 0 && !GameManager.Instance.isBoost)
                 {
                     GameManager.Instance.minigame.items[0].quantity -= 1;
                     GameManager.Instance.Booster();
                 }
-                if((int)boosterType == 1) {
+                if((int)boosterType == 1 && !GameManager.Instance.isShield) {
 
                     GameManager.Instance.minigame.items[1].quantity -= 1;
                     GameManager.Instance.Shield();

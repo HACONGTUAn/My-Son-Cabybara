@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using CapybaraMain;
 namespace CapybaraJump
 {
     public class GiftManager : MonoBehaviour
     {
+        [SerializeField] private CoinFx coinFx;
         [SerializeField] private List<GameObject> listItem = new List<GameObject>();
+        [SerializeField] Text  heartCount;
         public static GiftManager Instance;
         public int type;
         // Start is called before the first frame update
@@ -29,7 +32,7 @@ namespace CapybaraJump
 
         }
 
-       /* private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.layer == GameManager.Instance.CapybaraMain_LayerIndex)
             {
@@ -37,17 +40,15 @@ namespace CapybaraJump
 
                 if (type == 1)
                 {
-                    //GameManager.Instance.isBoost = true;
-                }
-
-                if (type == 2)
-                {
-                   // GameManager.Instance.isShield = true;
-                   // ScoreController.Instance.shield.SetActive(true);
+                    coinFx.PlayFx(() =>
+                    {
+                        Manager.Instance.SetHeart(Manager.Instance.GetHeart() + 1);
+                        heartCount.text = Manager.Instance.GetHeart().ToString();
+                    }, 0, Camera.main.WorldToScreenPoint(CapybaraMain.Instance.transform.position), 1);
                 }
                 this.gameObject.SetActive(false);
             }
-        }*/
+        }
 
     }
 
