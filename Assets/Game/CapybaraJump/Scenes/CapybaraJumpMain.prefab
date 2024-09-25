@@ -2564,7 +2564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a285b37085dc2d646ac136be5dbce03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
+  timerText: {fileID: 7310105523948252309}
 --- !u!114 &7310105523948252309
 MonoBehaviour:
   m_ObjectHideFlags: 0
