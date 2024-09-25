@@ -11,7 +11,7 @@ namespace CapybaraJump
         public static ScoreController Instance { get; private set; }
         public int score = 0;
         public Text text;
-        [SerializeField] private GiftManager gift;
+     //   [SerializeField] private GiftManager gift;
         public GameObject shield;
 
         void Awake()
