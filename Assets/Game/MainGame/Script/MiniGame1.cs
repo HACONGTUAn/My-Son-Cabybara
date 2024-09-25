@@ -30,13 +30,7 @@ public class MiniGame1 : BaseID
             Manager.Instance.UpdateDataInFile(this);
         }
         
-        public void ClickBtn()
-        {
-            //items[0].quantity --;
-            //soluongBtn1.text = items[0].quantity.ToString();
-            //UserItemInMiniGame();
-            //Debug.Log("clickBtn");
-        }
+       
         public void AddItem(int type, int value)
         {
             Merge.GameRes.AddRes(new Merge.DataTypeResource(Merge.RES_type.BOOSTER, type), value, "");

@@ -95,6 +95,10 @@ public class Manager : TPRLSingleton<Manager>
         //===================================================================================
         public void SetHeart(int _heart)
         {
+            if (_heart < 0)
+            {
+                _heart = 0;
+            }
             heart = _heart;
             WriteDataHeart();
         }
@@ -110,6 +114,10 @@ public class Manager : TPRLSingleton<Manager>
         //===================================================================================
         public void SetTicket(int _teckit)
         {
+            if(_teckit < 0)
+            {
+                _teckit = 0;
+            }
             ticket = _teckit;
             WriteDataTicket();
         }

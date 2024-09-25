@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using NUnit.Framework.Internal;
 using Unity.Mathematics;
 using UnityEngine;

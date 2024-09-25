@@ -171,25 +171,25 @@ namespace Merge
             return re;
         }
 
-        public static int getAndroidBuildVersion()
-        {
-#if UNITY_ANDROID && !UNITY_EDITOR
-            if (verSdk <= 0)
-            {
-                using (var buildVersion = new AndroidJavaClass("android.os.Build$VERSION"))
-                {
-                    int verSdk = buildVersion.GetStatic<int>("SDK_INT");
-                    return verSdk;
-                }
-            }
-            else
-            {
-                return verSdk;
-            }
-#else
-            return 1000;
-#endif
-        }
+//        public static int getAndroidBuildVersion()
+//        {
+//#if UNITY_ANDROID && !UNITY_EDITOR
+//            if (verSdk <= 0)
+//            {
+//                using (var buildVersion = new AndroidJavaClass("android.os.Build$VERSION"))
+//                {
+//                    int verSdk = buildVersion.GetStatic<int>("SDK_INT");
+//                    return verSdk;
+//                }
+//            }
+//            else
+//            {
+//                return verSdk;
+//            }
+//#else
+//            return 1000;
+//#endif
+//        }
 
         public static string formatNumber(int number)
         {
