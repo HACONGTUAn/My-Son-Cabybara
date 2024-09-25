@@ -37,8 +37,10 @@ namespace Fishing
         }
         public void UpadteUI()
         {
-            powerBoost = boosterController.GetBooster(BoosterType.FishingPower);
-            timeBoost = boosterController.GetBooster(BoosterType.FishingTime);
+            //powerBoost = boosterController.GetBooster(BoosterType.FishingPower);
+            //timeBoost = boosterController.GetBooster(BoosterType.FishingTime);
+            powerBoost = UIController.Instance._dataMiniGame.items[0].quantity;
+            timeBoost = UIController.Instance._dataMiniGame.items[1].quantity;
             if (powerBoost == 0)
             {
                 plusPower.SetActive(true);
@@ -46,7 +48,8 @@ namespace Fishing
             else
             {
                 plusPower.SetActive(false);
-                powerNum.text = powerBoost.ToString();
+                //   powerNum.text = powerBoost.ToString();
+                powerNum.text = UIController.Instance._dataMiniGame.items[0].quantity.ToString();
             }
             if (timeBoost == 0)
             {
@@ -56,7 +59,8 @@ namespace Fishing
             else
             {
                 plusTime.SetActive(false);
-                timeNum.text = timeBoost.ToString();
+                //  timeNum.text = timeBoost.ToString();
+                timeNum.text = UIController.Instance._dataMiniGame.items[1].quantity.ToString();
             }
         }
         public void Clear()
@@ -66,7 +70,8 @@ namespace Fishing
         }
         private void OnBoosterPowerClick()
         {
-            int numBooster = boosterController.GetBooster(BoosterType.FishingPower);
+            // int numBooster = boosterController.GetBooster(BoosterType.FishingPower);
+            int numBooster = UIController.Instance._dataMiniGame.items[0].quantity;
             if (numBooster > 0)
                 UsePowerBooster(numBooster);
             else
@@ -75,7 +80,7 @@ namespace Fishing
         }
         private void OnBoosterTimeClick()
         {
-            int numBooster = boosterController.GetBooster(BoosterType.FishingTime);
+            int numBooster = UIController.Instance._dataMiniGame.items[1].quantity;
             if (numBooster > 0)
                 UseTimeBooster(numBooster);
             else
@@ -84,13 +89,15 @@ namespace Fishing
         }
         private void UsePowerBooster(int numBooster)
         {
-            boosterController.SetBooster(BoosterType.FishingPower, numBooster - 1);
+           // boosterController.SetBooster(BoosterType.FishingPower, numBooster - 1);
+            UIController.Instance._dataMiniGame.items[0].quantity -= 1;
             HookController.Instance.OnPowerUse();
             Debug.Log("Use Power");
         }
         private void UseTimeBooster(int numBooster)
         {
-            boosterController.SetBooster(BoosterType.FishingTime, numBooster - 1);
+            // boosterController.SetBooster(BoosterType.FishingTime, numBooster - 1);
+            UIController.Instance._dataMiniGame.items[1].quantity -= 1;
             timer += 10;
             Debug.Log("Use Time");
         }

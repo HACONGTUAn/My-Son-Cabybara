@@ -18,7 +18,8 @@ namespace Fishing
         [SerializeField] private UIFishing uiFishing;
         [SerializeField] private RectTransform popunPanel;
         private BoosterController boosterController;       
-        private int price;
+        private int pricePower = 1;
+        private int priceTime = 2;
         private void Start()
         {
             close.onClick.AddListener(OnCloseClick);
@@ -34,11 +35,12 @@ namespace Fishing
             {
                 case BoosterType.FishingPower:
                     boostImg.sprite = power;
-                    priceText.text = "5";
+                    priceText.text = pricePower.ToString();
+
                     break;
                 case BoosterType.FishingTime:
                     boostImg.sprite = time;
-                    priceText.text = "10";
+                    priceText.text = priceTime.ToString();
                     break;
                 default:
                     break;
@@ -68,7 +70,24 @@ namespace Fishing
         }
         private void OnTicketBuyClick()
         {
-            boosterController.SetBooster(boosterType ,boosterController.GetBooster(boosterType) + 1);
+            //  boosterController.SetBooster(boosterType ,boosterController.GetBooster(boosterType) + 1);
+          //  Debug.Log(UIController.Instance._dataMiniGame.items[0].quantity);
+            switch (boosterType)
+            {
+                case BoosterType.FishingPower:
+                    UIController.Instance._dataMiniGame.items[0].quantity += 1;
+                    int ticket = CapybaraMain.Manager.Instance.GetTicket() - pricePower;
+                    CapybaraMain.Manager.Instance.SetTicket(ticket);
+                    break;
+                case BoosterType.FishingTime:
+                    UIController.Instance._dataMiniGame.items[1].quantity += 1;
+                    int ticketTime = CapybaraMain.Manager.Instance.GetTicket() - priceTime;
+                    CapybaraMain.Manager.Instance.SetTicket(ticketTime);
+                    break;
+                default:
+                    break;
+            }
+            UIController.Instance.UpdateHeartAndTicket();
         }
         private void OnAdsBuyClick()
         {

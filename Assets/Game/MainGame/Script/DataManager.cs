@@ -90,7 +90,7 @@ namespace CapybaraMain
             return _loadData;
         }
     }
-   
+  [System.Serializable]
     public class Item
     {
         public string name;
@@ -101,6 +101,7 @@ namespace CapybaraMain
             quantity = _quantity;
         }
     }
+[System.Serializable]
     public class MiniGame
     {
         public int id;

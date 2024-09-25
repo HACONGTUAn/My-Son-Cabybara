@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 namespace Fishing {
     public class UIController : MonoBehaviour
-    {    
+    {
+         public CapybaraMain.MiniGame3 _dataMiniGame;
+        [SerializeField] Text heartText;
+        [SerializeField] Text ticketText;
         public static UIController Instance;
         [SerializeField] private Button touchDetect;
         [SerializeField] private UIStart uiStart;     
@@ -23,9 +26,14 @@ namespace Fishing {
         private void Start()
         {
             
-            touchDetect.onClick.AddListener(OnTouchDetectClick);                 
+            touchDetect.onClick.AddListener(OnTouchDetectClick);
+            UpdateHeartAndTicket();
         }
-       
+        public void UpdateHeartAndTicket()
+        {
+            heartText.text = CapybaraMain.Manager.Instance.GetHeart().ToString();
+            ticketText.text = CapybaraMain.Manager.Instance.GetTicket().ToString();
+        }
         private void OnTouchDetectClick()
         {
             if(GameManager.Instance.gameState == GameState.Start)

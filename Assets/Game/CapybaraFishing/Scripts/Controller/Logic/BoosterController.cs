@@ -13,7 +13,7 @@ namespace Fishing
         }
         public void SetBooster(BoosterType booster, int n)
         {
-            PlayerPrefs.SetInt(booster.ToString(),n);
+           // PlayerPrefs.SetInt(booster.ToString(),n);
         }
     }
     public enum BoosterType

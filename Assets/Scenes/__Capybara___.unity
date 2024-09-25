@@ -2036,9 +2036,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 101.85, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &166898082
@@ -4272,6 +4272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d497023cf05cbaf4d80907c64b8963bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: []
 --- !u!4 &442987567
 Transform:
   m_ObjectHideFlags: 0
@@ -4829,7 +4830,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15927,9 +15928,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 380.54337, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675153003
@@ -17626,9 +17627,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 728126468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 659.2367, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 203.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914330518
@@ -19428,7 +19429,7 @@ MonoBehaviour:
   id:
   - {fileID: -277019257886501207, guid: 2ccc39648f8ec824ba412be1ff529f5c, type: 3}
   - {fileID: 5075316788972390013, guid: 1b30883f68a70f14eaca39e8593598e6, type: 3}
-  - {fileID: 1290956441055811986, guid: ac93a5fd22ef15848aed5c9d1e86e15e, type: 3}
+  - {fileID: -9119743975018314824, guid: ac93a5fd22ef15848aed5c9d1e86e15e, type: 3}
 --- !u!114 &2144794941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19441,6 +19442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5102f5dcd0667045989abcaaa5c4b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testData: []
 --- !u!114 &2144794942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23380,9 +23382,84 @@ MonoBehaviour:
     _button: {fileID: 5287145080526942709}
     _noAdv: 1
   _packCombo:
-  - button: {fileID: 0}
-  - button: {fileID: 0}
-  - button: {fileID: 0}
+  - _packItemMiniGame:
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    button: {fileID: 2358527773909312622}
+  - _packItemMiniGame:
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    button: {fileID: 4344033419359471896}
+  - _packItemMiniGame:
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    - id: 0
+      nameMinigame: MiniGame1
+      items:
+      - name: break
+        quantity: 5
+      - name: Destroy
+        quantity: 10
+      price: 10
+    button: {fileID: 7713827810541194967}
 --- !u!222 &7154423287941131729
 CanvasRenderer:
   m_ObjectHideFlags: 0
