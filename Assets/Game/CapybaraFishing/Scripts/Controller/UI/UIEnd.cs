@@ -25,12 +25,23 @@ namespace Fishing
         {
             curScore = score;
             curScoreText.text = curScore.ToString();
+            highestScore = Mathf.Max(GetHighestScore(), curScore);
+            highestScoreText.text = "Highest Score : " + highestScore.ToString();
+            SetHighestScore(highestScore);
             ShowPanel(panelPopup);
             UpdateHeart();
         }
         private void UpdateHeart()
         {
             // Do thing update heart
+        }
+        private int GetHighestScore()
+        {
+            return PlayerPrefs.GetInt("FishingHighest", 0);
+        }
+        private void SetHighestScore(int high)
+        {
+            PlayerPrefs.SetInt("FishingHighest", high);
         }
         private void OnReciveClick()
         {

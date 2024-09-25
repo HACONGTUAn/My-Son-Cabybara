@@ -22,8 +22,12 @@ namespace Fishing
             mainCamera = Camera.main;
             sliceCollider = GetComponent<Collider2D>();
             sliceTrail = GetComponentInChildren<TrailRenderer>();
+            
         }
-
+        private void Start()
+        {
+            GameManager.Instance.slashEvent += BladeActive;
+        }
         private void OnEnable()
         {
             StopSlice();
@@ -34,10 +38,15 @@ namespace Fishing
             StopSlice();
         }
 
-        private void Update()
+        private void BladeActive() 
         {
+            StartCoroutine(StartBlade());
+        }
 
-            if (GameManager.Instance.gameState == GameState.SlashFish)
+       
+        private IEnumerator StartBlade()
+        {
+            while (GameManager.Instance.gameState == GameState.SlashFish)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -51,9 +60,10 @@ namespace Fishing
                 {
                     ContinueSlice();
                 }
+                yield return null;
             }
+            StopSlice();
         }
-
         private void StartSlice()
         {
             Vector3 position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -80,6 +90,11 @@ namespace Fishing
             direction = newPosition - transform.position;
 
             transform.position = newPosition;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.slashEvent -= BladeActive;
         }
     }
 }
