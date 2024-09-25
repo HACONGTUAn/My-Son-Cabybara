@@ -81,6 +81,7 @@
     <Compile Include="Assets\Game\Merge\Script\UI\PopupUI.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo_Rotate.cs" />
     <Compile Include="Assets\Game\MainGame\Script\DataManager.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Data\BoosterSO.cs" />
     <Compile Include="Assets\Game\MainGame\Script\LoadingResources.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseUI.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Helper.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataChapter.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\CapybaraMain.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\UI\BoosterType.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\LevelController.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIComboAnimation.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\BoosterSO.cs" />
@@ -107,12 +109,13 @@
     <Compile Include="Assets\Game\Merge\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseID.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\UI\BuyBooster.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\DataManager.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Game\MainGame\Script\UIManager.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\BoosterBtn.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CountDown.cs" />
     <Compile Include="Assets\Game\MainGame\Script\Manager.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\UI\BoosterBtn.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\Controller\SpawnCarpet.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\FruitType.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\Observer.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Assets\Game\Merge\Script\Core\ImmortalObject.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraCarpet.cs" />
     <Compile Include="Assets\Game\Merge\Script\Utils\PlayerPrefsUtil.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UnCoinFx.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectContainerSO.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraIdle.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\Fruit.cs" />
@@ -140,6 +144,7 @@
     <Compile Include="Assets\Game\Merge\Script\Item\FruitCollisionHandle.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\BetterOutline.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UISettingPopup.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\CoinFx.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameRes.cs" />
     <Compile Include="Assets\Game\MainGame\Script\MiniGame3.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraJump.cs" />

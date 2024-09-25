@@ -45,14 +45,16 @@ namespace CapybaraJump
             {
                 GameObject carpet = carpetList.Dequeue();
 
-                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
+                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.2f, 0);
                 carpetList.Enqueue(carpet);
                 if (trans.gameObject.name == "leftPos")
                 {
                     carpet.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+                    carpet.GetComponent<CapybaraCarpet>().isRight = false;
                 }
                 else
                 {
+                    carpet.GetComponent<CapybaraCarpet>().isRight = true;
                     carpet.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 }
 
@@ -65,10 +67,16 @@ namespace CapybaraJump
             GameObject obj = Instantiate(carpetPrefab, this.transform);
             if (trans.gameObject.name == "leftPos")
             {
+                obj.GetComponent<CapybaraCarpet>().isRight = false;
                 obj.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
             }
+            else
+            {
+               obj.GetComponent<CapybaraCarpet>().isRight = true;
+               obj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            }
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
-            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.4197f, 0);
+            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.2f, 0);
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = GameManager.Instance.initSortingLayer++;
             carpetList.Enqueue(obj);
             return obj;

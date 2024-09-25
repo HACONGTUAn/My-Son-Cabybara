@@ -13,6 +13,7 @@ namespace CapybaraJump
         [SerializeField] private float moveTime;
         public bool isMoving = false;
         private Vector3 startPosition;
+        public bool isRight;
 
 
         void Start()
@@ -34,28 +35,31 @@ namespace CapybaraJump
                 CapybaraMain.Instance.StopMove();
                 return;
             }
-            if (collision.gameObject.layer == GameManager.Instance.CapybaraShield_LayerIndex)
+            //if (collision.gameObject.layer == GameManager.Instance.CapybaraShield_LayerIndex)
+            //{
+            //    transform.DOKill();
+            //    ScoreController.Instance.shield.SetActive(false);
+            //    Debug.Log("move back");
+            //    MoveBack(0.5f);
+            //    //GameManager.Instance.isShield = false;
+            //    if (CapybaraMain.Instance.rb.velocity == Vector2.zero)
+            //    {
+            //        SpawnCarpet.Instance.SpawnNewCarpet(2f);
+            //        GameManager.Instance.isJustShield = false;
+            //    }
+            //    else GameManager.Instance.isJustShield = true;
+            //    return;
+            //}
+             if (collision.gameObject.layer == GameManager.Instance.CapybaraMain_LayerIndex)
             {
-                transform.DOKill();
-                ScoreController.Instance.shield.SetActive(false);
-                MoveBack(0.5f);
-                //GameManager.Instance.isShield = false;
-                if (CapybaraMain.Instance.rb.velocity == Vector2.zero)
-                {
-                    SpawnCarpet.Instance.SpawnNewCarpet(2f);
-                    GameManager.Instance.isJustShield = false;
-                }
-                else GameManager.Instance.isJustShield = true;
-                return;
-            }
-            else if (collision.gameObject.layer == GameManager.Instance.CapybaraMain_LayerIndex)
-            {
-                Debug.Log("abc");
+               
+               
                 Vector2 playerDirection = collision.transform.position - transform.GetChild(1).transform.position;
                 float angle = Vector2.Angle(playerDirection, Vector2.up);
                 if (angle <= GameManager.Instance.angleCollisonEnterThreshHole)
                 {
-                    Debug.Log("OK");
+                    CapybaraMain.Instance.StopMove();
+                    Debug.Log("OK!");
                     this.StopMove();
                     if (angle <= GameManager.Instance.perfectJumpThreshHole)
                     {
@@ -75,12 +79,28 @@ namespace CapybaraJump
                 }
                 else
                 {
-                    Debug.Log("Lose");
-                    GameManager.Instance.GameOver();
-                    CapybaraMain.Instance.StopMove();
-                    transform.GetChild(0).DOKill();
-                    Debug.Log(angle);
-                    this.StopMove();
+                    if (GameManager.Instance.isShield)
+                    {
+                        ScoreController.Instance.shield.SetActive(false);
+                        transform.DOKill();
+                        MoveBack(0.5f);
+                        Debug.Log("Lose");
+                        
+                        CapybaraMain.Instance.LandingSuccessful(this.gameObject);
+                        return;
+                    }
+                    else
+                    {
+                        this.StopMove();
+                        int dimensity = (isRight) ? 1 : -1;
+                        CapybaraMain.Instance.Die(dimensity);
+                        //GameManager.Instance.GameOver();
+                        //CapybaraMain.Instance.StopMove();
+                        transform.GetChild(0).DOKill();
+                    }
+                    
+                   
+                  
 
                 }
             }
@@ -113,7 +133,7 @@ namespace CapybaraJump
 
         private void StickMoveBack()
         {
-            Debug.Log("stick move back");
+           
             Transform stick = transform.GetChild(0);
             Vector3 oldPos = new Vector3(stick.localPosition.x + 5f, stick.localPosition.y, stick.localPosition.z);
             transform.GetChild(0).DOLocalMove(oldPos, this.moveTime * 0.35f)
@@ -122,13 +142,12 @@ namespace CapybaraJump
 
         private void MoveBack(float time)
         {
-            Debug.Log(startPosition);
-            Debug.Log("move back");
+            
             transform.DOLocalMove(startPosition, time)
            .SetEase(this.easeType)
             .OnComplete(() =>
             {
-                Debug.Log("move back complete");
+               
                 isMoving = false;
                // StopMove();
 

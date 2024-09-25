@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
+
+public class UnCoinFx : MonoBehaviour
+{
+    public static UnCoinFx Instance { get; private set; }
+    public float range;
+    public float moveTime;
+    public float delayTime;
+    public List<Sprite> icons;
+    public List<Transform> startPos;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    public void PlayFx(System.Action callBack, int idx, Transform PosStart, int coinCount)
+    {
+        StartCoroutine(DelayPlayFx(callBack, idx, PosStart, coinCount));
+    }
+
+    IEnumerator DelayPlayFx(System.Action callBack, int idx, Transform PosStart, int coinCount)
+    {
+        yield return new WaitForSeconds(0.5f);
+        //SoundManager.Instance.playSoundFx(//SoundManager.Instance.effCoinUI);
+        for (int i = 0; i < coinCount; i++)
+        {
+            Transform curChild = transform.GetChild(i);
+            curChild.gameObject.SetActive(true);
+            curChild.GetComponent<Image>().sprite = icons[idx];
+            float ranNumX = Random.Range(-range, range) + startPos[idx].position.x;
+            float ranNumY = Random.Range(-range, range) + startPos[idx].position.y;
+            curChild.position = new Vector3(ranNumX, ranNumY);
+            curChild.localScale = Vector3.zero;
+            curChild.DOScale(1, moveTime).SetEase(Ease.OutElastic).SetDelay(Random.Range(0, 0.3f)).OnComplete(() =>
+            {
+                curChild.DOMove(PosStart.position, moveTime).SetEase(Ease.InOutQuad).SetDelay(delayTime).OnComplete(() =>
+                {
+                    curChild.gameObject.SetActive(false);
+                    //SoundManager.Instance.playSoundFx(//SoundManager.Instance.effCollectCoin);
+                    callBack.Invoke();
+                });
+            });
+        }
+    }
+
+}
