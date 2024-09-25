@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CapybaraMain;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,8 @@ namespace CapybaraJump
 {
     public class GameManager : MonoBehaviour
     {
+        public bool IsStart = false;
+        public MiniGame2 minigame;
         public int CapybaraShield_LayerIndex = 8;
         public int CapybaraMain_LayerIndex = 7;
         public int CapybaraCarpet_LayerIndex = 6;
@@ -20,8 +23,9 @@ namespace CapybaraJump
         public float fallTime = 0.5f;
         public bool isBoost = false;
         public bool isShield = false;
-        public float jumpF = 30f;
+        public float jumpF = 12f;
         public float jumpTime = 0.3f;
+        public int gravityScale = 3;
         public bool gameOver = false;
         public bool isJustShield = false;
         public GameObject oldCarpet;
@@ -32,6 +36,7 @@ namespace CapybaraJump
         [SerializeField] private Vector3 leftPosInitPosition;
         [SerializeField] private Vector3 rightPosInitPosition;
         [SerializeField] private GameObject startBtn;
+        [SerializeField] private List<BoosterBtn> listItemsBtn;
 
 
         /// <summary>
@@ -60,6 +65,11 @@ namespace CapybaraJump
             yield return new WaitForSeconds(1);
             countDown.gameObject.SetActive(true);
             countDown.StartCountdown();
+            foreach (BoosterBtn btn in listItemsBtn)
+            {
+                btn.resetStart();
+            }
+            IsStart = true;
 
 
         }
@@ -76,7 +86,8 @@ namespace CapybaraJump
 
         public void GameOver()
         {
-           // Time.timeScale = 0f;
+            // Time.timeScale = 0f;
+            IsStart = false;
             gameOverPopUp.SetActive(true);
         }
 
@@ -97,16 +108,22 @@ namespace CapybaraJump
             CameraFollowController.Instance.targetPos = camearaInitPosition;
             CapybaraMain.Instance.transform.localPosition = capybaraInitPosition;
             SpawnCarpet.Instance.spawnPosList[0].localPosition = leftPosInitPosition;
+            CapybaraMain.Instance.animator.SetTrigger("idle");
             SpawnCarpet.Instance.spawnPosList[1].localPosition = rightPosInitPosition;
             ScoreController.Instance.ResetScore();
             oldCarpet = null;
             isBoost = false;
             isShield = false;
-            jumpF = 30f;
+            jumpF = 12f;
             jumpTime = 0.3f;
             gameOver = false;
             isJustShield = false;
             startBtn.SetActive(true);
+            gravityScale = 3;
+            foreach (BoosterBtn btn in listItemsBtn)
+            {
+                btn.Refresh();
+            }
 
 
 
@@ -116,6 +133,10 @@ namespace CapybaraJump
 
         public void Booster()
         {
+            if (isBoost)
+            {
+                return;
+            }
             isBoost = true;
           //  CapybaraMain.Instance.StopMove();
             CapybaraMain.Instance.MoveUpBooster(10);

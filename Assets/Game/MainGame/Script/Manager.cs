@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CapybaraMain
 {
 
 public class Manager : TPRLSingleton<Manager>
 {
-    
+   
         public List<MiniGame> _data = new List<MiniGame>();
 
         private int heart = 0;
@@ -33,6 +34,7 @@ public class Manager : TPRLSingleton<Manager>
             {
                // teckitText.text = PlayerPrefs.GetInt("teckit").ToString();
             }
+            PlayerPrefs.SetInt("teckit", 50);
 
         }
 
