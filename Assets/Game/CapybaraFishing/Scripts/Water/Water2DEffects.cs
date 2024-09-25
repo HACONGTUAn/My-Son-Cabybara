@@ -69,11 +69,11 @@ namespace RavingBots.Water2D
             var rigidbody = other.transform.parent.GetComponent<Rigidbody2D>();
 			if (rigidbody != null)
 			{
-				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity / 2, Vector2.up) * (rigidbody.mass * 5);
+				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity / 4, Vector2.up) * (rigidbody.mass * 6);
 
                 if (power < SplashFXPowerThreshold)
 					return;
-
+				
 				var splash = _splashCache[_splash];
 				splash.transform.position = new Vector2(other.bounds.center.x, other.bounds.min.y - SplashFXOffset);
 				splash.Play(power, SplashFXSounds[Random.Range(0, SplashFXSounds.Length)], power * SplashFXPowerToVolume, SplashFXPowerToPitch / power);

@@ -5,6 +5,7 @@ namespace Fishing
 {
     public class HookController : MonoBehaviour
     {
+        public static HookController Instance;
         public float rotateSpeed = 50f;
         public float minRotateAngle = -70f;
         public float maxRotateAngle = 70f;
@@ -19,15 +20,20 @@ namespace Fishing
 
         private bool isShooting = false;
         private bool isReturning = false;   
-        private bool isCatched = false;
+        //private bool isCatched = false;
         private LineRenderer lineRenderer;
         private Vector3 originalPosition;      
         private Coroutine autoReturn;
         private Rigidbody2D rb;
         private float totalMass = 0.2f;
-
-
-        void Awake()
+        private void Awake()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+        }
+        void Start()
         {           
             lineRenderer = gameObject.GetComponent<LineRenderer>();
             GameManager.Instance.fishingEvent += OnFishingHandle;
@@ -46,27 +52,13 @@ namespace Fishing
                     transform.localRotation = Quaternion.Euler(0, 0, angle);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space) && !isShooting && !isReturning)
-                {
-                    isShooting = true;
-                    originalPosition = transform.localPosition;
-                    rb = gameObject.AddComponent<Rigidbody2D>();
-                    rb.gravityScale = 0;
-                    rb.drag = 0.5f;
-                    rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-                    rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
-                    rb.AddForce(transform.up * -hookForce);
-                    autoReturn = StartCoroutine(AutoReturnAfterDelay());
-
-                } // sua lai dieu kien ban cau
-
                 if (isReturning)
                 {
                     StopCoroutine(autoReturn);
                     Vector2 directionToReturn = (transform.parent.position - transform.position).normalized;
                     rb.mass = totalMass;
-                    rb.AddForce(directionToReturn * Max(returnForce, totalMass * 10)  * Time.deltaTime);
-                    if (Vector2.Distance(transform.position, transform.parent.position) < 0.5f)
+                    rb.AddForce(directionToReturn * Max(returnForce, totalMass)  * Time.deltaTime);
+                    if (Vector2.Distance(transform.position, transform.parent.position) < 1f)
                     {
                         transform.localPosition = originalPosition;
                         rb.velocity = Vector2.zero;
@@ -84,13 +76,62 @@ namespace Fishing
                 lineRenderer.SetPosition(1, transform.position);
                 yield return null;
             }
+            ResetHook();           
+        }
+        public void ShootingHook()
+        {
+            if (GameManager.Instance.gameState == GameState.Fishing && !isShooting && !isReturning)
+            {
+                isShooting = true;
+                originalPosition = transform.localPosition;
+                rb = gameObject.AddComponent<Rigidbody2D>();
+                rb.gravityScale = 0;
+                rb.drag = 0.5f;
+                rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+                rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+                rb.AddForce(transform.up * -hookForce);
+                autoReturn = StartCoroutine(AutoReturnAfterDelay());
+            }
+            
+        }
+        public void OnPowerUse()
+        {
+            StartCoroutine(StartUsePower());
+        }
+        private IEnumerator StartUsePower()
+        {
+            returnForce = 3200f;
+            yield return new WaitForSeconds(5);
+            returnForce = 600f;
+        }
+
+        private void ResetHook()
+        {
+            if(autoReturn!=null) StopCoroutine(autoReturn);
+            foreach (Transform t in itemHolder.transform)
+            {
+                Destroy(t.gameObject);
+            }
+            transform.localPosition = originalPosition;
+            if(rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                Destroy(rb);
+            }
+            lineRenderer.SetPosition(0, transform.parent.position);
+            lineRenderer.SetPosition(1, transform.position);
+
+            totalMass = 0.2f;
+            isReturning = false;
+            isShooting = false;
+            //isCatched = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (isShooting && other.CompareTag("Item"))
+            if (!isReturning && isShooting && (other.CompareTag("Fish") || other.CompareTag("Trash")))
             {
-                isCatched = true;
+                //isCatched = true;
                 Transform fishTrans = other.transform.parent;
                 fishTrans.GetComponent<FishController>().isCatch = true;
                 fishTrans.parent = itemHolder.transform;
@@ -119,12 +160,10 @@ namespace Fishing
             animator.SetTrigger("CatchFish");
             yield return new WaitForSeconds(1f);
             while (itemHolder.transform.childCount > 0)
-            {
-                {
-                    GameObject fish = itemHolder.transform.GetChild(0).gameObject;
-                    fish.transform.SetParent(bucket.transform);
-                    fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac
-                }
+            {               
+                GameObject fish = itemHolder.transform.GetChild(0).gameObject;
+                fish.transform.SetParent(bucket.transform);
+                fish.transform.rotation = Quaternion.identity; // Chuyen fish qua parent khac               
             }
             
 
@@ -132,7 +171,7 @@ namespace Fishing
             itemHolder.transform.position = originPos;
             isReturning = false;
             isShooting = false;
-            isCatched = false;
+            //isCatched = false;
         }
         private float Max(float a, float b)
         {
