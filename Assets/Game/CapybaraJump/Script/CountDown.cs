@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
 using UnityEngine.UI;
 
 namespace CapybaraJump
@@ -11,7 +11,7 @@ namespace CapybaraJump
         //abc
         //abc
         private float countdownTime = 3f; // Countdown time in seconds
-        public TextMeshProUGUI timerText; // Reference to the UI Text component
+        public Text timerText; // Reference to the UI Text component
 
         private float currentTime;
 
