@@ -35,7 +35,8 @@ namespace Merge
         {
             coinCount.text = CapybaraMain.Manager.Instance.GetTicket().ToString();
             heartCount.text = CapybaraMain.Manager.Instance.GetHeart().ToString();
-            buyCoin.interactable = CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType);     
+            buyCoin.interactable = CapybaraMain.Manager.Instance.GetTicket() >= boosterSO.GetBoosterPrice(boosterType);  
+            UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();   
         }
         private void BuyCoin()
         {

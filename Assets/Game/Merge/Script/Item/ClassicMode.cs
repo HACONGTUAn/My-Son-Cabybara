@@ -319,6 +319,7 @@ namespace Merge
                     Clear();
                     GameManager.Instance.PlayClassicMode();
                 }
+                UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
             });
         }
 
@@ -499,7 +500,7 @@ namespace Merge
             if (animationSpawn)
             {
                 newFruit.OnSpawn();
-                CheckNewFruit(newFruit);
+                // CheckNewFruit(newFruit);
                 CheckHeartFruit(fruitType, spawnPosition);
             }
             listFruit.Add(newFruit);

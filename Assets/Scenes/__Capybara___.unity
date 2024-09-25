@@ -4985,6 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followChapter: {fileID: 11400000, guid: 53ed6619dc6ba7e448e3670726a6d70d, type: 2}
+  homeUI: {fileID: 1331597606}
 --- !u!1 &466890973
 GameObject:
   m_ObjectHideFlags: 0
