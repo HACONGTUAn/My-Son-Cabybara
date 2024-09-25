@@ -7,9 +7,12 @@ namespace CapybaraMain
 { 
     public class HomeUI : BaseUI
     {
-        //tuan game ui
+        [SerializeField] private Text heartText;
+        [SerializeField] private Text ticket;
+
         [SerializeField]private Button next;
         [SerializeField] private Button back;
+
         [SerializeField] private ScrollRect scrollSelectionGame;
         [SerializeField] private Button backHome;
         [SerializeField] private Capybara.UIDaily daiLyUp;
@@ -22,6 +25,13 @@ namespace CapybaraMain
         private GameObject currentGameObject = null;
         private GameObject saveGameObject = null;
         private bool checkGame = false;
+
+        private void OnEnable()
+        {
+            heartText.text = Manager.Instance.GetHeart().ToString();
+            ticket.text = Manager.Instance.GetTicket().ToString();
+
+        }
         private void Start()
         {
             itemWidth = scrollSelectionGame.content.GetChild(0).GetComponent<RectTransform>().rect.width;
@@ -90,18 +100,45 @@ namespace CapybaraMain
 
         public void BackHome()
         {
-           // currentGameObject.SetActive(false);
-           if(currentGameObject.GetComponent<BaseID>().id == 0)
+            // currentGameObject.SetActive(false);
+            if (currentGameObject.GetComponent<BaseID>().id == 0)
             {
                 currentGameObject.SetActive(false);
+                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
+
             }
             else
             {
+                switchTypeMiniGame(currentGameObject.GetComponent<BaseID>());
                 Destroy(currentGameObject);
             }
-            
+
             this.gameObject.SetActive(true);
             backHome.gameObject.SetActive(false);
+
+            heartText.text = Manager.Instance.GetHeart().ToString();
+            ticket.text = Manager.Instance.GetTicket().ToString();
+        }
+        void switchTypeMiniGame(BaseID obj)
+        {
+            if (obj is MiniGame1)
+            {
+                //  Debug.Log(" Mini1");
+                MiniGame1 miniGame = (MiniGame1)obj;
+                miniGame.UserItemInMiniGame();
+            }
+            else if (obj is MiniGame2)
+            {
+                MiniGame2 miniGame = (MiniGame2)obj;
+                miniGame.UserItemInMiniGame();
+                //  Debug.Log(" Mini2");
+            }
+            else if (obj is MiniGame3)
+            {
+                MiniGame3 miniGame = (MiniGame3)obj;
+                miniGame.UserItemInMiniGame();
+                //  Debug.Log("Mini3");
+            }
         }
         // daily
         //=====================================================================================================

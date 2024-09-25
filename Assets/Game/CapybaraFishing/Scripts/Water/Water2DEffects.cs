@@ -51,7 +51,7 @@ namespace RavingBots.Water2D
             Rigidbody2D rigidbody = other.transform.parent.GetComponent<Rigidbody2D>();
 			if (rigidbody != null)
 			{
-				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.linearVelocity, Vector2.down) * rigidbody.mass ;
+				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity, Vector2.down) * rigidbody.mass ;
 
 				if (power < SplashFXPowerThreshold)
 					return;
@@ -69,7 +69,7 @@ namespace RavingBots.Water2D
             var rigidbody = other.transform.parent.GetComponent<Rigidbody2D>();
 			if (rigidbody != null)
 			{
-				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.linearVelocity / 2, Vector2.up) * (rigidbody.mass * 5);
+				var power = SplashFXPowerScale * Vector2.Dot(rigidbody.velocity / 2, Vector2.up) * (rigidbody.mass * 5);
 
                 if (power < SplashFXPowerThreshold)
 					return;

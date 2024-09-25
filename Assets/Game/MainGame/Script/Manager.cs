@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace CapybaraMain
@@ -8,8 +7,7 @@ namespace CapybaraMain
 
 public class Manager : TPRLSingleton<Manager>
 {
-        public TMP_Text hearText;
-        public TMP_Text teckitText;
+    
         public List<MiniGame> _data = new List<MiniGame>();
 
         private int heart = 0;
@@ -40,7 +38,7 @@ public class Manager : TPRLSingleton<Manager>
 
         // write data 
         //==========================================================================
-        private void WriteDataInFile()
+        public void WriteDataInFile()
         {
             DataManager.Instance.WriteDataInJson(_data);
         }
