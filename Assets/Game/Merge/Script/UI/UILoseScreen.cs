@@ -9,10 +9,8 @@ namespace Merge
 {
     public class UILoseScreen : ScreenUI
     {
-        [SerializeField] SkeletonGraphic highScoreTitle;
-        [SerializeField] SkeletonGraphic loseTitle;
-        [SerializeField] Button continueButton;
         [SerializeField] Button restartButton;
+        [SerializeField] Button homeButton;
         [SerializeField] Text scoreText;
         [SerializeField] Text highScoreText;
         [SerializeField] CanvasGroup canvasGroup;
@@ -26,28 +24,12 @@ namespace Merge
         public override void Initialize(UIManager uiManager)
         {
             base.Initialize(uiManager);
-            continueButton.onClick.AddListener(Continue);
             restartButton.onClick.AddListener(Restart);
+            homeButton.onClick.AddListener(Home);
         }
         public override void Active()
         {
             base.Active();
-            continueButton.gameObject.SetActive(reviveCount == 0);
-            // nativeAdObj.gameObject.SetActive(false);
-            // float aspectOri = 1080f / 1920f;
-            // float newAspect = (float)Screen.width / (float)Screen.height;
-            // float multiply = aspectOri / newAspect;
-            // float newSize = 450 * multiply;
-            // float yHeight = (newSize - 450) / 2f;
-            // nativeAdObj.sizeDelta = new Vector2(nativeAdObj.sizeDelta.x, newSize);
-            // nativeAdObj.anchoredPosition = new Vector2(nativeAdObj.anchoredPosition.x, nativeAdObj.anchoredPosition.y + yHeight);
-            // AdsHelper.Instance.showNative("lose", nativeAdObj, false, false, (status) =>
-                // {
-                //     if (status == AD_State.AD_LOAD_OK)
-                //     {
-                //         nativeAdObj.gameObject.SetActive(true);
-                //     }
-                // });
         }
         public void SetUp(int score, int highScore, Action<bool> revive)
         {
@@ -60,37 +42,24 @@ namespace Merge
             }
             scoreText.text = score.ToString();
             highScoreText.text = DataManager.HighScoreClassicMode.ToString();
-            highScoreTitle.gameObject.SetActive(score > highScore);
-            loseTitle.gameObject.SetActive(score <= highScore);
             if (score > highScore)
             {
-                highScoreTitle.AnimationState.AddAnimation(0, "Show", false, 0.25f);
-                highScoreTitle.AnimationState.AddAnimation(0, "Idle", true, -1);
+                
             }
             else
             {
-                loseTitle.AnimationState.AddAnimation(0, "Show", false, 0.25f);
-                loseTitle.AnimationState.AddAnimation(0, "Idle", true, -1);
+                
             }
         }
         private void Restart()
         {
             reviveCount = 0;
             reviveCallBack?.Invoke(false);
-            //AdsHelperWrapper.ShowFull("restart");
         }
-        private void Continue()
+        private void Home()
         {
-            reviveCount = 0;
-            reviveCallBack?.Invoke(false);
-            // AdsHelperWrapper.ShowGift("revive", (cb) =>
-            // {
-            //     if (cb == AD_State.AD_REWARD_OK)
-            //     {
-            //         reviveCount++;
-            //         reviveCallBack?.Invoke(true);
-            //     }
-            // });
+            Restart();
+            Capybara.GameManager.Instance.exit();
         }
     }
 

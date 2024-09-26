@@ -22,6 +22,7 @@ namespace Capybara
         public GameObject left;
         public GameObject top;
         public GameObject task;
+        [HideInInspector] public Dictionary<UIBuildButton,TaskChapter> uIBuilds = new Dictionary<UIBuildButton,TaskChapter>();
         private void Start()
         {
             follow = GameManager.Instance.followChapter;
@@ -31,14 +32,18 @@ namespace Capybara
             outChapterText.text = "Chap " + (follow.chapter+1).ToString(); 
             inTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
             outTaskText.text = follow.task.ToString() + "/" + follow.listChapter.chapter[follow.chapter].dataChapter.listTasks.Count.ToString();
-            CapybaraMain.Manager.Instance.SetHeart(50);
+            CapybaraMain.Manager.Instance.SetHeart(0);
             isBuilding = false;
             LoadChapter();
         }
-        // private void Update() 
-        // {
-        //     CheckChapter();
-        // }
+        private void Update() 
+        {
+            foreach(var button in uIBuilds)
+            {
+                button.Key.buttonCompleted(button.Value);
+            }
+
+        }
         private void LoadChapter()
         {
             GameObject chapterObj = chapterSpawn.transform.Find(follow.listChapter.chapter[follow.chapter].chapterName)?.gameObject;
@@ -63,6 +68,7 @@ namespace Capybara
                     if(!task.isUnlocked && follow.task == i)
                     {
                         UIBuildButton uIBuildButton = Instantiate(Resources.Load<UIBuildButton>("UI/UiBuildButton"), buttonSpawn);
+                        uIBuilds.Add(uIBuildButton,task);
                         uIBuildButton.SpawnBuildButton(task, taskObj);
                     }
                 }
@@ -92,6 +98,7 @@ namespace Capybara
             }
             Helper.CreateCounter(0.3f, () =>
             {
+                uIBuilds.Clear();
                 LoadChapter();
             });
         }

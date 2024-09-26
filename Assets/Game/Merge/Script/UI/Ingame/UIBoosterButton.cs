@@ -173,12 +173,14 @@ namespace Merge
                     }
                 }
             // }
-            cancerIcon.SetActive(false);
+            // cancerIcon.SetActive(false);
+            button.interactable = true;
         }
 
         public void SetActiveCancer(bool status)
         {
-            cancerIcon.SetActive(status);
+            // cancerIcon.SetActive(status);
+            button.interactable = !status;
             isUsingBooster = status;
         }
 

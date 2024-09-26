@@ -35,7 +35,7 @@ namespace Merge
         }
         public virtual void Hide()
         {
-            AudioManager.Instance.PlayOneShot("ClickSound", 1f);
+            
             if(Time.timeScale == 0) { Time.timeScale = 1; }
             isShowing = false;
             gameObject.SetActive(false);
