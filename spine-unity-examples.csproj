@@ -86,8 +86,8 @@
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonGraphicPlayAnimationAtEvent.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\MaterialReplacementExample.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonColorInitialize.cs" />
-    <Compile Include="Assets\Spine Examples\Scripts\Sample Components\RootMotionDeltaCompensation.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\FootSoldierExample.cs" />
+    <Compile Include="Assets\Spine Examples\Scripts\Sample Components\RootMotionDeltaCompensation.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\SpineBeginnerTwo.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonAnimationMulti\SkeletonAnimationMulti.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Mix and Match Character Customize\EquipButtonExample.cs" />

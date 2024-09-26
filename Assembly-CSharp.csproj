@@ -106,8 +106,8 @@
     <Compile Include="Assets\Game\CapybaraJump\Script\Controller\InstantiateGameObject.cs" />
     <Compile Include="Assets\Game\MainGame\Shop\ComboItemInMiniGamePack.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\Controller\CameraFollowController.cs" />
-    <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIRequireDisplay.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\UI\UIHandler.cs" />
+    <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIRequireDisplay.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Base\Singleton.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UIStartTutorial.cs" />
@@ -145,9 +145,9 @@
     <Compile Include="Assets\Game\Merge\Script\Utils\PlayerPrefsUtil.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UnCoinFx.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectContainerSO.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraIdle.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\Fruit.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
-    <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Behavior\CapybaraIdle.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\IDamage.cs" />
     <Compile Include="Assets\Game\MainGame\Script\MiniGame1.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectSO.cs" />
@@ -162,9 +162,9 @@
     <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UIDaily.cs" />
     <Compile Include="Assets\Game\MainGame\Script\HomeUI.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\GameMode.cs" />
+    <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\UI\UIFishing.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIBoosterPanel.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Water\Water2DMaterialScaler.cs" />
-    <Compile Include="Assets\Game\CapybaraFishing\Scripts\Controller\UI\UIFishing.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Water\Water2DEffects.cs" />
     <Compile Include="Assets\Game\CapybaraFishing\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\FruitCollisionHandle.cs" />
