@@ -34,6 +34,7 @@ namespace Capybara
                     foreach (TaskChapter tasks in listTasks.tasks)
                     {
                         tasks.isUnlocked = false;
+                        tasks.isCompleted = false;
                     }
                 }
             }

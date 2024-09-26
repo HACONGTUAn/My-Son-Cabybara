@@ -1,3 +1,4 @@
+using Capybara;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
@@ -215,6 +216,10 @@ namespace Merge
             eventData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, results);
+            if(isUsingBooster)
+            {
+                return results.Count > 0;
+            }
             return results.Any(result => result.gameObject.layer == LayerMask.NameToLayer("UI"));
         }
         private void HandleSelect()
@@ -383,6 +388,10 @@ namespace Merge
                             cb = CreateCombo(newfruit);
                         }
                     }
+                    else
+                    {
+                        CheckHeartFruit(FruitType.Size11, sender.transform.position);
+                    }
                     ParticleSystem p = Instantiate(fxMergePrefab, transform);
                     p.transform.position = fruitSpawnPos;
                     ChangeColorParticle(p, nextFruitType);
@@ -412,6 +421,10 @@ namespace Merge
                         {
                             cb = CreateCombo(newfruit);
                         }
+                    }
+                    else
+                    {
+                        CheckHeartFruit(FruitType.Size11, otherfruit.transform.position);
                     }
                     ParticleSystem p = Instantiate(fxMergePrefab, transform);
                     p.transform.position = fruitSpawnPos;
@@ -588,13 +601,23 @@ namespace Merge
         private void CheckHeartFruit(FruitType fruitType, Vector3 fruitTransform)
         {
             // FruitType fruitType = fruit.GetFruitType();
-            if ((int)fruitType > 5)
+            if ((int)fruitType > 6)
             {
                 CoinFx.Instance.PlayFx(() =>
                     {
                         CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() + 1);
                         UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
-                    }, 0, fruitTransform, (int)fruitType - 5);
+                    }, 0, fruitTransform, (int)fruitType - 6);
+            }
+            foreach (var build in BuildManager.Instance.uIBuilds)
+            {
+                if((int)build.Value.type == 2)
+                {
+                    if(build.Value.mergeType == (int)fruitType)
+                    {
+                        build.Value.isCompleted = true;
+                    }
+                }
             }
         }
         #region Booster
@@ -633,6 +656,10 @@ namespace Merge
                                     FruitType nf = fruit.GetFruitType() + 1;
                                     Fruit f = SpawnFruit(nf, fruit.position, true, true);
                                     f.hasContacted = true;
+                                }
+                                else
+                                {
+                                    CheckHeartFruit(FruitType.Size11, fruit.position);
                                 }
                                 RemoveFruit(fruit);
                                 Helper.CreateCounter(0.1f, () =>

@@ -19,7 +19,7 @@ namespace CapybaraMain
 
         private int currentIndex = 0;
         private float itemWidth;
-        private GameObject currentGameObject = null;
+        public GameObject currentGameObject = null;
         private GameObject saveGameObject = null;
         private bool checkGame = false;
         private void Start()

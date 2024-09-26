@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625bf0d0d007c784baa24a8785c07386, type: 3}
   m_Name: Daily
   m_EditorClassIdentifier: 
-  dayGame: 3
-  dayReal: 23
+  dayGame: 1
+  dayReal: 26
   daily:
   - DailyName: 1
-    isUnlocked: 1
+    isUnlocked: 0
     ticket: 1
   - DailyName: 2
-    isUnlocked: 1
+    isUnlocked: 0
     ticket: 2
   - DailyName: 3
-    isUnlocked: 1
+    isUnlocked: 0
     ticket: 3
   - DailyName: 4
     isUnlocked: 0

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Fishing;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,61 +10,88 @@ namespace Capybara
 {
     public class UIBuildButton : MonoBehaviour
     {
-        //
-        public Image Icon;
-        public Text Heart;
+        //================================================================ SpawnButton================================================================
         public Button Build;
+        public Image button;
+        public Text text;
+        public Image Icon;
+        public List<Sprite> sprites;
+        public Text Heart;
+        public Text textBtn;
+        public Image imageBtn;
+        public List<Sprite> spriteBtn;
+        public void SpawnBuildButton(TaskChapter task, GameObject taskObj)
+        {
+            if((int)task.type == 0)
+            {
+                Heart.text = "X" + task.price.ToString();
+                textBtn.text = "  Do it";
+            }
+            else
+            {
+                Heart.gameObject.SetActive(false);
+                textBtn.text = "  Play";
+            }
+            Icon.sprite = taskObj.GetComponent<SpriteRenderer>().sprite;
+            text.text = "I need " + task.taskName.ToString();
+            imageBtn.sprite = spriteBtn[(int)task.type];
+            button.sprite = sprites[task.isCompleted ? 1:0];
+            Build.onClick.AddListener(() => TaskButtonClick(task, taskObj));
+        }
+        public void buttonCompleted(TaskChapter task)
+        {
+            if((int)task.type == 0)
+            {
+                task.isCompleted = CapybaraMain.Manager.Instance.GetHeart()>(int)task.price;
+            }
+            button.sprite = sprites[task.isCompleted ? 1:0];
+        }
+        //==============================================Task Button================================================================
+        private void TaskButtonClick(TaskChapter task, GameObject taskObj)
+        {
+            if(task.isCompleted)
+                {
+                    if(!BuildManager.Instance.isBuilding)
+                    {
+                        Build.interactable = false;
+                        BuildManager.Instance.isBuilding = true;
+                        if((int)task.type == 0)
+                        {
+                            UnCoinFx.Instance.PlayFx(() => UnlockTask(task, taskObj), 0, Build.transform, task.price);
+                        }
+                        else
+                        {
+                            StartCoroutine(DelayTask(task, taskObj));
+                        } 
+                    }   
+                }
+                else
+                {
+                    switch((int)task.type)
+                    {
+                        case 0://Heart
+
+                            break;
+                        case 1://Jump
+                            GameManager.Instance.playgame(1);
+                            break;
+                        case 2://Merge
+                            GameManager.Instance.playgame(0);
+                            break;
+                        case 3://Fishing
+                            GameManager.Instance.playgame(2);
+                            break;
+                        default:
+                            break;
+                    }
+                    BuildManager.Instance.task.SetActive(false);
+                }
+        }
+
+        //================================================================DelayTask================================================================
         private float bottom;
         private float left;
         private float top;
-        public void SpawnBuildButton(TaskChapter task, GameObject taskObj)
-        {
-            Icon.sprite = taskObj.GetComponent<SpriteRenderer>().sprite;
-            Heart.text = "X" + task.price.ToString();
-            Build.onClick.AddListener(() => TaskButtonClick(task, taskObj));
-        }
-        private void TaskButtonClick(TaskChapter task, GameObject taskObj)
-        {
-            switch ((int)task.type)
-            {
-                case 0://Heart
-                    HeartButton(task, taskObj);
-                    break;
-                case 1://Jump
-                    JumpButton(task, taskObj);
-                    break;
-                case 2://Merge
-                    MergeButton(task, taskObj);
-                    break;
-                case 3://Fishing
-                    FishingButton(task, taskObj);
-                    break;
-                default:
-                    break;
-            }
-            
-        }
-        private void HeartButton(TaskChapter task, GameObject taskObj)
-        {
-            if(CapybaraMain.Manager.Instance.GetHeart() >= task.price && !BuildManager.Instance.isBuilding)
-            {
-                Build.interactable = false;
-                BuildManager.Instance.isBuilding = true;
-                UnCoinFx.Instance.PlayFx(() => UnlockTask(task, taskObj), 0, Build.transform, task.price);
-            }
-        }
-        private void JumpButton(TaskChapter task, GameObject taskObj)
-        {
-            
-        }
-        private void MergeButton(TaskChapter task, GameObject taskObj)
-        {
-            
-        }
-        private void FishingButton(TaskChapter task, GameObject taskObj)
-        {
-            
-        }
         private void UnlockTask(TaskChapter task, GameObject taskObj)
         {
             CapybaraMain.Manager.Instance.SetHeart(CapybaraMain.Manager.Instance.GetHeart() - 1);
@@ -102,9 +131,8 @@ namespace Capybara
             yield return new WaitForSeconds(1.5f); 
             BuildManager.Instance.isBuilding = false;
             gameObject.SetActive(!task.isUnlocked);
-            Destroy(gameObject);
+            // Destroy(gameObject);
             BuildManager.Instance.CheckChapter();
         }
-
     }
 }

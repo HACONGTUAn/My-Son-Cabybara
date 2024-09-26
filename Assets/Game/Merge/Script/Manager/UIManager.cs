@@ -85,7 +85,8 @@ namespace Merge
             ScreenUI.OnDestroyScreen += OnDestroyScreen;
             // GameManager.OnPause += Pause;
             // GameManager.OnResume += Resume;
-            Loading();
+            // Loading();
+            GameManager.Instance.Ready();
         }
         public void Loading()
         {

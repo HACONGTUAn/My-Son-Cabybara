@@ -42,12 +42,13 @@ namespace Merge
 
         private void Continue()
         {
-            uiManager.Loading();
+            // uiManager.Loading();
             gameObject.SetActive(false);
+            GameManager.Instance.Ready();
         }
         private void Home()
         {
-            Close();
+            Hide();
             Capybara.GameManager.Instance.exit();
         }
         private void AnimatedUI()
@@ -76,6 +77,7 @@ namespace Merge
         }
         private void Close()
         {
+            AudioManager.Instance.PlayOneShot("ClickSound", 1f);
             settingContainer.transform.DOScale(Vector3.zero, 0.5f).SetUpdate(true).SetEase(Ease.InBack).OnComplete(() =>
             {
                 if (Time.timeScale == 0) { Time.timeScale = 1; }

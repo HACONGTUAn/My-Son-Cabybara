@@ -10,6 +10,7 @@ namespace Merge
     public class UILoseScreen : ScreenUI
     {
         [SerializeField] Button restartButton;
+        [SerializeField] Button homeButton;
         [SerializeField] Text scoreText;
         [SerializeField] Text highScoreText;
         [SerializeField] CanvasGroup canvasGroup;
@@ -24,6 +25,7 @@ namespace Merge
         {
             base.Initialize(uiManager);
             restartButton.onClick.AddListener(Restart);
+            homeButton.onClick.AddListener(Home);
         }
         public override void Active()
         {
@@ -53,6 +55,11 @@ namespace Merge
         {
             reviveCount = 0;
             reviveCallBack?.Invoke(false);
+        }
+        private void Home()
+        {
+            Restart();
+            Capybara.GameManager.Instance.exit();
         }
     }
 

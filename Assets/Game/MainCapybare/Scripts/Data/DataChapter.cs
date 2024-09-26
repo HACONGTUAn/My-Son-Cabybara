@@ -27,6 +27,11 @@ namespace Capybara
             EditorGUI.PropertyField(unlockedRect, property.FindPropertyRelative("isUnlocked"), new GUIContent("Is Unlocked"));
             yPos += height + spacing;
 
+            // Vẽ trường isCompleted
+            Rect completedRect = new Rect(position.x, yPos, position.width, height);
+            EditorGUI.PropertyField(completedRect, property.FindPropertyRelative("isCompleted"), new GUIContent("Is Completed"));
+            yPos += height + spacing;
+
             // Vẽ trường TaskType
             Rect typeRect = new Rect(position.x, yPos, position.width, height);
             EditorGUI.PropertyField(typeRect, property.FindPropertyRelative("type"), new GUIContent("Task Type"));
@@ -58,7 +63,7 @@ namespace Capybara
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return EditorGUIUtility.singleLineHeight * 4 + EditorGUIUtility.standardVerticalSpacing * 3;
+            return EditorGUIUtility.singleLineHeight * 5 + EditorGUIUtility.standardVerticalSpacing * 3;
         }
     }
     [CustomEditor(typeof(DataChapter))]
@@ -84,6 +89,7 @@ namespace Capybara
                 foreach (TaskChapter tasks in listTasks.tasks)
                 {
                     tasks.isUnlocked = false;
+                    tasks.isCompleted = false;
                 }
             }
 
@@ -112,6 +118,7 @@ namespace Capybara
     {
         public string taskName;
         public bool isUnlocked;
+        public bool isCompleted;
 
         public TaskType type;
         

@@ -145,7 +145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: af8fbd4564e35c440b901931d5f5579a, type: 3}
+  m_Sprite: {fileID: 6547079737612260787, guid: fc2036ac4d43be24e84d4318fe7886d2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -246,9 +246,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a864a828ab00d448c5c4b462792f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 3374757041298141414}
-  Heart: {fileID: 3570185529043460065}
   Build: {fileID: 7700208939813971328}
+  button: {fileID: 9078791534739897297}
+  text: {fileID: 8887085875680581608}
+  Icon: {fileID: 3374757041298141414}
+  sprites:
+  - {fileID: 21300000, guid: 52af7b3e8494b6044beb52bf51eb3beb, type: 3}
+  - {fileID: -2628321000889923396, guid: 582e500a43503cb46bf7534bbe2e2a80, type: 3}
+  Heart: {fileID: 3570185529043460065}
+  textBtn: {fileID: 58999377582721774}
+  imageBtn: {fileID: 1824995656497884077}
+  spriteBtn:
+  - {fileID: 21300000, guid: 71a715574e0350843b2a8d8328c9b5b9, type: 3}
+  - {fileID: 21300000, guid: e5ca578514507704a808397a2120840d, type: 3}
+  - {fileID: 21300000, guid: a6a7ac1d68bf67a4ca1107d7c6e324d6, type: 3}
+  - {fileID: 21300000, guid: b8970e1886cc16a4eb251fc0cd9bb62f, type: 3}
 --- !u!1 &3156532051174207782
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,8 +594,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0fa384410393def418e17084c092dfc4, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -2628321000889923396, guid: 582e500a43503cb46bf7534bbe2e2a80, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
