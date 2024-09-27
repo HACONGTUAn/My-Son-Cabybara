@@ -14,6 +14,10 @@ namespace CapybaraJump
         public bool isMoving = false;
         public Rigidbody2D rb;
         public bool gameOverCalled = false;
+
+        [SerializeField] private  ParticleSystem fx;
+        [SerializeField] private  ParticleSystem hitLeft;
+        [SerializeField] private  ParticleSystem hitRight;
         private void Awake()
         {
             if (Instance == null)
@@ -37,7 +41,7 @@ namespace CapybaraJump
         public void LandingSuccessful(GameObject carpet)
         {
 
-
+            PlayFx();
             isMoving = false;
             animator.SetTrigger("touchGround");
 
@@ -177,6 +181,13 @@ namespace CapybaraJump
             rb.gravityScale = 0.3f;
             transform.DOKill();
             Debug.Log("die");
+            if(dimensity == 1){
+                hitRight.Play();
+
+            }
+            else {
+                hitLeft.Play();
+            }
             float xPos = -1.5f * dimensity;
             transform.DOMoveX(xPos, 0.2f)
                 .SetEase(Ease.InQuad)
@@ -207,6 +218,12 @@ namespace CapybaraJump
                 gameOverCalled = true; 
                 StopMove();
                 GameManager.Instance.GameOver();
+            }
+        }
+
+        public void PlayFx(){
+            if (fx!=null){
+                fx.Play();
             }
         }
     }

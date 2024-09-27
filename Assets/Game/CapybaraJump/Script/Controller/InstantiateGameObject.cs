@@ -45,7 +45,7 @@ namespace CapybaraJump
             {
                 GameObject carpet = carpetList.Dequeue();
 
-                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.53f, -0.07f, 0);
+                carpet.transform.GetChild(0).transform.localPosition = new Vector3(1.892f, -0.07f, 0);
                 carpetList.Enqueue(carpet);
                 if (trans.gameObject.name == "leftPos")
                 {
@@ -76,7 +76,7 @@ namespace CapybaraJump
                obj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             }
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
-            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.53f, -0.07f, 0);
+            obj.transform.GetChild(0).transform.localPosition = new Vector3(1.892f, -0.07f, 0);
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = GameManager.Instance.initSortingLayer++;
             carpetList.Enqueue(obj);
             return obj;

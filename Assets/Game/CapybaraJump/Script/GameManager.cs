@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace CapybaraJump
 {
     public class GameManager : MonoBehaviour
     {
+        
         public bool IsStart = false;
         public MiniGame2 minigame;
         public int CapybaraMain_LayerIndex = 9;
@@ -31,13 +33,21 @@ namespace CapybaraJump
         public GameObject oldCarpet;
         public GameObject floorCarpet;
         public int initSortingLayer;
+
         
-       
+        
+        [SerializeField] private GameObject PanelNewHighestScore;
+        [SerializeField] private GameObject PanelScore;
+
+        [SerializeField] private Text score;
+        [SerializeField] private Text newHighestScore;
+        [SerializeField] private Text highestScore;
         [SerializeField] private Vector3 capybaraInitPosition;
         [SerializeField] private Vector3 leftPosInitPosition;
         [SerializeField] private Vector3 rightPosInitPosition;
         [SerializeField] private GameObject startBtn;
         [SerializeField] private List<BoosterBtn> listItemsBtn;
+         [SerializeField] private HeartAdsFill heart;
 
 
         /// <summary>
@@ -88,9 +98,25 @@ namespace CapybaraJump
 
         public void GameOver()
         {
+            if (ScoreController.Instance.score > PlayerPrefs.GetInt("highScore", 0))
+            {
+                
+                PlayerPrefs.SetInt("highScore", ScoreController.Instance.score);
+                PlayerPrefs.Save(); 
+                PanelNewHighestScore.SetActive(true);
+                PanelScore.SetActive(false);
+                newHighestScore.text = PlayerPrefs.GetInt("highScore", 0) +"";
+            }
+            else{
+                PanelNewHighestScore.SetActive(false);
+                highestScore.text = PlayerPrefs.GetInt("highScore", 0) +"";
+                score.text = ScoreController.Instance.score +"";
+                PanelScore.SetActive(true);
+            }
             // Time.timeScale = 0f;
             IsStart = false;
             gameOverPopUp.SetActive(true);
+            heart.StartLoading();
         }
 
         public void PlayAgain()
@@ -126,6 +152,8 @@ namespace CapybaraJump
             startBtn.SetActive(true);
             CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().gravityScale = 1f;
             gravityScale = 1;
+            startTime = 0.7f;
+            endTime = 1.0f;
             foreach (BoosterBtn btn in listItemsBtn)
             {
                 btn.Refresh();

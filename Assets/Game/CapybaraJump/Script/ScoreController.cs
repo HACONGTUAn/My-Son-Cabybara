@@ -38,6 +38,7 @@ namespace CapybaraJump
             score += scoreToAdd;
             if (score < 0) score = 0;
             text.text = score + " M";
+           
 
         }
         public void ResetScore()
@@ -57,6 +58,16 @@ namespace CapybaraJump
                 gift.gameObject.SetActive(true);
 
             }
+            if(score > 20){
+                GameManager.Instance.startTime = 0.6f;
+                GameManager.Instance.endTime = 0.8f;
+            }
+            if(score > 50){
+                GameManager.Instance.startTime = 0.4f;
+                GameManager.Instance.endTime = 0.7f;
+            }
+
+            
            
         }
     }
