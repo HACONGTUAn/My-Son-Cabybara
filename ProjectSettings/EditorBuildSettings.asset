@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/__Capybara___.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Game/CapybaraJump/Scenes/SampleScene.unity
+    guid: e349d6b84da50aa4f9bf8e2a23d32a18
   m_configObjects: {}

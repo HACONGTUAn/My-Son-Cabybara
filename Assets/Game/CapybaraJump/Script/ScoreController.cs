@@ -11,7 +11,7 @@ namespace CapybaraJump
         public static ScoreController Instance { get; private set; }
         public int score = 0;
         public Text text;
-        [SerializeField] private GiftManager gift;
+        public GiftManager gift;
         public GameObject shield;
 
         void Awake()
@@ -50,19 +50,14 @@ namespace CapybaraJump
 
         public void CheckGift(Vector3 position)
         {
-            if (score == 5)
+            if (score%10 == 0)
             {
                 gift.transform.localPosition = position;
                 gift.type = 1;
                 gift.gameObject.SetActive(true);
 
             }
-            if (score == 10)
-            {
-                gift.transform.localPosition = position;
-                gift.type = 1;
-                gift.gameObject.SetActive(true);
-            }
+           
         }
     }
 

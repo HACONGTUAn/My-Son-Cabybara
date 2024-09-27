@@ -16,21 +16,21 @@ namespace CapybaraJump
         public float perfectJumpThreshHole = 3f;
         public GameObject gameOverPopUp;
         public CountDown countDown;
-        public float startTime = 0.5f;
-        public float endTime = 0.8f;
+        public float startTime = 0.7f;
+        public float endTime = 1.0f;
         public float fallTime = 0.5f;
         public bool isBoost = false;
         public bool isShield = false;
         public float jumpF = 12f;
         public float jumpTime = 0.3f;
-        public int gravityScale = 3;
+        public float gravityScale = 3;
         public bool gameOver = false;
         public bool isJustShield = false;
         public GameObject oldCarpet;
         public GameObject floorCarpet;
         public int initSortingLayer;
         
-        [SerializeField] private Vector3 camearaInitPosition;
+       
         [SerializeField] private Vector3 capybaraInitPosition;
         [SerializeField] private Vector3 leftPosInitPosition;
         [SerializeField] private Vector3 rightPosInitPosition;
@@ -54,7 +54,8 @@ namespace CapybaraJump
         void Start()
         {
             //StartCoroutine(StartPlay());
-           // Time.timeScale = 0f;
+            // Time.timeScale = 0f;
+            Application.targetFrameRate = 60;
 
         }
 
@@ -102,23 +103,27 @@ namespace CapybaraJump
                 }
 
             }
-            
-            CameraFollowController.Instance.transform.localPosition = camearaInitPosition;
-            CameraFollowController.Instance.targetPos = camearaInitPosition;
+
+            ScoreController.Instance.gift.gameObject.SetActive(false);
+            CameraFollowController.Instance.ResetCamera();
             CapybaraMain.Instance.transform.localPosition = capybaraInitPosition;
             SpawnCarpet.Instance.spawnPosList[0].localPosition = leftPosInitPosition;
-            CapybaraMain.Instance.animator.SetTrigger("idle");
+            CapybaraMain.Instance.animator.SetTrigger("touchGround");
+            CapybaraMain.Instance.gameOverCalled = false;
+            CapybaraMain.Instance.isMoving = false;
+            CapybaraMain.Instance.transform.GetComponent<BoxCollider2D>().isTrigger = false;
             SpawnCarpet.Instance.spawnPosList[1].localPosition = rightPosInitPosition;
             ScoreController.Instance.ResetScore();
             oldCarpet = null;
             isBoost = false;
             isShield = false;
-            jumpF = 12f;
+            //jumpF = 8f;
             jumpTime = 0.3f;
             gameOver = false;
             isJustShield = false;
             startBtn.SetActive(true);
-            gravityScale = 3;
+            CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().gravityScale = 1f;
+            gravityScale = 1;
             foreach (BoosterBtn btn in listItemsBtn)
             {
                 btn.Refresh();

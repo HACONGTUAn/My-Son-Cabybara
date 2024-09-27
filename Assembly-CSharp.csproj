@@ -71,6 +71,7 @@
     <Compile Include="Assets\Game\CapybaraJump\Script\GiftManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\ClassicMode.cs" />
     <Compile Include="Assets\Game\Merge\Script\Common\ScripableObjectExtentions.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\HeartAdsFill.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UINewFruitPopup.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleTextFontAsset.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Game\Merge\Script\UI\PopupUI.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo_Rotate.cs" />
     <Compile Include="Assets\Game\MainGame\Script\DataManager.cs" />
+    <Compile Include="Assets\Game\CapybaraJump\Script\test\capybara.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\Data\BoosterSO.cs" />
     <Compile Include="Assets\Game\MainGame\Script\LoadingResources.cs" />
     <Compile Include="Assets\Game\MainGame\Script\BaseUI.cs" />

@@ -28,7 +28,7 @@ namespace CapybaraJump
         void Start()
         {
 
-            carpetHeight = carpetPrefab.transform.GetChild(1).gameObject.GetComponent<Renderer>().bounds.size.y - 0.3f;
+            carpetHeight = carpetPrefab.transform.GetChild(1).gameObject.GetComponent<Renderer>().bounds.size.y - 0.6f;
         }
 
         // Update is called once per frame
@@ -45,7 +45,7 @@ namespace CapybaraJump
             {
                 GameObject carpet = carpetList.Dequeue();
 
-                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.2f, 0);
+                carpet.transform.GetChild(0).transform.localPosition = new Vector3(2.53f, -0.07f, 0);
                 carpetList.Enqueue(carpet);
                 if (trans.gameObject.name == "leftPos")
                 {
@@ -76,7 +76,7 @@ namespace CapybaraJump
                obj.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             }
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.listCarpet[index];
-            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.18f, -0.2f, 0);
+            obj.transform.GetChild(0).transform.localPosition = new Vector3(2.53f, -0.07f, 0);
             obj.transform.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = GameManager.Instance.initSortingLayer++;
             carpetList.Enqueue(obj);
             return obj;

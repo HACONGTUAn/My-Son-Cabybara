@@ -12,13 +12,13 @@ namespace CapybaraJump
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            
+            Debug.Log("fallllll");
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
            // Debug.Log("Exit Fall");
-            animator.transform.DOKill();
+           // animator.transform.DOKill();
           
         }
     }

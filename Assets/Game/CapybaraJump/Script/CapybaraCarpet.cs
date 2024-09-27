@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 namespace CapybaraJump
 {
@@ -15,6 +16,9 @@ namespace CapybaraJump
         private Vector3 startPosition;
         public bool isRight;
 
+        [SerializeField] private Animator animator;
+        
+      
 
         void Start()
         {
@@ -26,13 +30,20 @@ namespace CapybaraJump
         {
 
         }
+        
 
-
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
           
+            if (GameManager.Instance.isBoost)
+            {
+                MoveBack(0.5f);
+                return;
+            }
             if (this.gameObject == GameManager.Instance.floorCarpet)
             {
+                CapybaraMain.Instance.isMoving = false;
+                CapybaraMain.Instance.animator.SetTrigger("touchGround");
                 CapybaraMain.Instance.StopMove();
                 return;
             }
@@ -50,6 +61,7 @@ namespace CapybaraJump
                 float angle = Vector2.Angle(playerDirection, Vector2.up);
                 if (angle <= GameManager.Instance.angleCollisonEnterThreshHole)
                 {
+                    animator.SetTrigger("hit");
                     CapybaraMain.Instance.StopMove();
                     Debug.Log("OK!");
                     this.StopMove();
@@ -66,7 +78,7 @@ namespace CapybaraJump
                         }
                     }    
                    
-                      ScoreController.Instance.CheckGift(CapybaraMain.Instance.transform.localPosition + Vector3.up * InstantiateGameObject.Instance.carpetHeight * 1.5f);
+                    ScoreController.Instance.CheckGift(CapybaraMain.Instance.transform.localPosition + Vector3.up * InstantiateGameObject.Instance.carpetHeight * 1.5f);
                    
                     CapybaraMain.Instance.LandingSuccessful(this.gameObject);
                    
@@ -87,8 +99,7 @@ namespace CapybaraJump
                     else
                     {
                         GameManager.Instance.gameOver = true;
-                        CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        CapybaraMain.Instance.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                        
                         this.StopMove();
                         int dimensity = (isRight) ? 1 : -1;
                         CapybaraMain.Instance.Die(dimensity);
@@ -113,6 +124,7 @@ namespace CapybaraJump
              .OnComplete(() =>
              {
                  isMoving = false;
+                // animator.SetTrigger("hitTargetPoint");
                  StopMove();
              });
 
