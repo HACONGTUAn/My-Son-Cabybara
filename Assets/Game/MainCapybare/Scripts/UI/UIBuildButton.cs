@@ -20,8 +20,10 @@ namespace Capybara
         public Text textBtn;
         public Image imageBtn;
         public List<Sprite> spriteBtn;
+        [HideInInspector] public GameObject taskObjs;
         public void SpawnBuildButton(TaskChapter task, GameObject taskObj)
         {
+            taskObjs = taskObj;
             if((int)task.type == 0)
             {
                 Heart.text = "X" + task.price.ToString();
@@ -120,6 +122,7 @@ namespace Capybara
         {
             task.isUnlocked = true;
             taskObj.SetActive(task.isUnlocked);
+            // Sprite[] childSprite = taskObj.GetComponentInChildren<SpriteRenderer>().sprite;
             yield return new WaitForSeconds(2f); 
         }
         IEnumerator ThirdAction(TaskChapter task)

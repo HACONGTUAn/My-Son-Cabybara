@@ -609,15 +609,19 @@ namespace Merge
                         UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
                     }, 0, fruitTransform, (int)fruitType - 6);
             }
-            foreach (var build in BuildManager.Instance.uIBuilds)
+            // foreach (var build in BuildManager.Instance.uIBuilds)
+            // {
+            //     if((int)build.Value.type == 2)
+            //     {
+            //         if(build.Value.mergeType == (int)fruitType)
+            //         {
+            //             build.Value.isCompleted = true;
+            //         }
+            //     }
+            // }
+            if((int)fruitType == Capybara.DataBuildManager.Instance.mergeType)
             {
-                if((int)build.Value.type == 2)
-                {
-                    if(build.Value.mergeType == (int)fruitType)
-                    {
-                        build.Value.isCompleted = true;
-                    }
-                }
+                Capybara.DataBuildManager.Instance.IsCompleted(2);
             }
         }
         #region Booster

@@ -36,7 +36,7 @@ MonoBehaviour:
       type: 2
       price: 2
       height: 20
-      mergeType: 5
+      mergeType: 4
       fishingPrefab: {fileID: 8867046884895354597, guid: ceb8a1c9fbd19ea4c88466e12b4ea0a5, type: 3}
   - tasks:
     - taskName: 4
@@ -58,10 +58,10 @@ MonoBehaviour:
     - taskName: 6
       isUnlocked: 0
       isCompleted: 0
-      type: 1
+      type: 2
       price: 3
       height: 0
-      mergeType: 0
+      mergeType: 5
       fishingPrefab: {fileID: 0}
   - tasks:
     - taskName: 7
@@ -83,8 +83,8 @@ MonoBehaviour:
     - taskName: 9
       isUnlocked: 0
       isCompleted: 0
-      type: 3
+      type: 2
       price: 3
       height: 0
-      mergeType: 4
+      mergeType: 6
       fishingPrefab: {fileID: 0}

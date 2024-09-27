@@ -12,7 +12,6 @@ namespace Capybara
 
         private GameObject saveGameObject = null;
         private bool checkGame = false;
-        
         public void exit(){
             homeUI.BackHome();
         }

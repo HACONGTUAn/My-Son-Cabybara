@@ -70,6 +70,20 @@ namespace Capybara
                         UIBuildButton uIBuildButton = Instantiate(Resources.Load<UIBuildButton>("UI/UiBuildButton"), buttonSpawn);
                         uIBuilds.Add(uIBuildButton,task);
                         uIBuildButton.SpawnBuildButton(task, taskObj);
+                        switch((int)task.type)
+                        {
+                            case 1:
+                                DataBuildManager.Instance.jumpHeight = (int)task.height;
+                                break;
+                            case 2:
+                                DataBuildManager.Instance.mergeType = (int)task.mergeType;
+                                break;
+                            case 3:
+                                DataBuildManager.Instance.fishingPref = task.fishingPrefab;
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
