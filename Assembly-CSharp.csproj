@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleText.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Data\Follow.cs" />
     <Compile Include="Assets\Game\Merge\Script\Log\TrackingController.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\UIIngameScreen.cs" />
@@ -74,10 +75,12 @@
     <Compile Include="Assets\Game\CapybaraJump\Script\GiftManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Item\ClassicMode.cs" />
     <Compile Include="Assets\Game\Merge\Script\Common\ScripableObjectExtentions.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\DataBuildManager.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\HeartAdsFill.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UINewFruitPopup.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleTextFontAsset.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Core\Helper.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\HeartManager.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataListChapter.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Assets\Game\CapybaraJump\Script\ScoreController.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataChapter.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Data\DataDaily.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraMain\CapybaraMain.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\UI\BoosterType.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\LevelController.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Assets\Game\CapybaraJump\Script\Controller\CameraFollowController.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Ingame\UIRequireDisplay.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\Demo Assets\CFXR_Demo.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Base\Singleton.cs" />
     <Compile Include="Assets\Game\Merge\Script\UI\Popup\UIStartTutorial.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\CamaraManager.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\GameManager.cs" />
@@ -118,6 +123,7 @@
     <Compile Include="Assets\Game\Merge\Script\Manager\DataManager.cs" />
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Game\MainGame\Script\UIManager.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UIBuildButton.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CountDown.cs" />
     <Compile Include="Assets\Game\MainGame\Script\Manager.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\UI\BoosterBtn.cs" />
@@ -128,7 +134,10 @@
     <Compile Include="Assets\Game\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Game\Merge\Script\Manager\AudioManager.cs" />
     <Compile Include="Assets\Game\Merge\Script\Core\ImmortalObject.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Manager\BuildManager.cs" />
     <Compile Include="Assets\Game\CapybaraJump\Script\CapybaraCarpet.cs" />
+    <Compile Include="Assets\Game\MainCapybare\Scripts\Core\ImmortalObject.cs" />
+    <Compile Include="Assets\Game\Merge\Script\UI\Popup\UINewItemPopup.cs" />
     <Compile Include="Assets\Game\Merge\Script\Utils\PlayerPrefsUtil.cs" />
     <Compile Include="Assets\Game\MainCapybare\Scripts\UI\UnCoinFx.cs" />
     <Compile Include="Assets\Game\Merge\Script\Data\ItemObjectContainerSO.cs" />

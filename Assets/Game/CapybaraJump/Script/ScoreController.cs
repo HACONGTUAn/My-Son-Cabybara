@@ -67,6 +67,10 @@ namespace CapybaraJump
                 GameManager.Instance.endTime = 0.7f;
             }
 
+            if(score == 5){
+                Time.timeScale = 0;
+            }
+
             
            
         }

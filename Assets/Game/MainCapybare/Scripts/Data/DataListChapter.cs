@@ -4,6 +4,39 @@ using UnityEngine;
 
 namespace Capybara
 {
+#if UNITY_EDITOR
+    using UnityEditor;
+    [CustomEditor(typeof(DataListChapter))]
+    public class DataListChapterEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            DataListChapter dataListChapter = (DataListChapter)target;
+
+            if (GUILayout.Button("Reset All Chapters"))
+            {
+                ResetChapters(dataListChapter);
+            }
+        }
+
+        private void ResetChapters(DataListChapter dataListChapter)
+        {
+            Undo.RecordObject(dataListChapter, "Reset All Chapters");
+
+            foreach (Chapter chapter in dataListChapter.chapter)
+            {
+                chapter.isUnlocked = false;
+            }
+
+            EditorUtility.SetDirty(dataListChapter);
+            AssetDatabase.SaveAssets();
+
+            Debug.Log("All Chapters Unlocked.");
+        }
+    }
+#endif
     [CreateAssetMenu(fileName = "ListChapter", menuName = "Data/Capybara/ListChapter")]
     public class DataListChapter : ScriptableObject
     {

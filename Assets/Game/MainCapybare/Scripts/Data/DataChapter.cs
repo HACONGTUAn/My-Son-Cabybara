@@ -27,6 +27,11 @@ namespace Capybara
             EditorGUI.PropertyField(unlockedRect, property.FindPropertyRelative("isUnlocked"), new GUIContent("Is Unlocked"));
             yPos += height + spacing;
 
+            // Vẽ trường isCompleted
+            Rect completedRect = new Rect(position.x, yPos, position.width, height);
+            EditorGUI.PropertyField(completedRect, property.FindPropertyRelative("isCompleted"), new GUIContent("Is Completed"));
+            yPos += height + spacing;
+
             // Vẽ trường TaskType
             Rect typeRect = new Rect(position.x, yPos, position.width, height);
             EditorGUI.PropertyField(typeRect, property.FindPropertyRelative("type"), new GUIContent("Task Type"));
@@ -53,15 +58,48 @@ namespace Capybara
                     EditorGUI.PropertyField(fieldRect, property.FindPropertyRelative("fishingPrefab"), new GUIContent("Fishing Prefab"));
                     break;
             }
-
             EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return EditorGUIUtility.singleLineHeight * 4 + EditorGUIUtility.standardVerticalSpacing * 3;
+            return EditorGUIUtility.singleLineHeight * 5 + EditorGUIUtility.standardVerticalSpacing * 3;
         }
     }
+    [CustomEditor(typeof(DataChapter))]
+    public class DataChapterEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            DataChapter dataChapter = (DataChapter)target;
+
+            if (GUILayout.Button("Reset All Tasks"))
+            {
+                ResetTasks(dataChapter);
+            }
+        }
+
+        private void ResetTasks(DataChapter dataChapter)
+        {
+            Undo.RecordObject(dataChapter, "Reset All Tasks");
+            foreach (ListTaskChapter listTasks in dataChapter.listTasks)
+            {
+                foreach (TaskChapter tasks in listTasks.tasks)
+                {
+                    tasks.isUnlocked = false;
+                    tasks.isCompleted = false;
+                }
+            }
+
+            EditorUtility.SetDirty(dataChapter);
+            AssetDatabase.SaveAssets();
+
+            Debug.Log("All Tasks Unlocked.");
+        }
+    }
+    
 #endif
 
     [CreateAssetMenu(fileName = "Chapter", menuName = "Data/Capybara/Chapter")]
@@ -80,6 +118,7 @@ namespace Capybara
     {
         public string taskName;
         public bool isUnlocked;
+        public bool isCompleted;
 
         public TaskType type;
         
