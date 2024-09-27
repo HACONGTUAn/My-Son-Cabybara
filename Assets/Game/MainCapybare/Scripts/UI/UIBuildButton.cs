@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -21,6 +22,7 @@ namespace Capybara
         public Image imageBtn;
         public List<Sprite> spriteBtn;
         [HideInInspector] public GameObject taskObjs;
+        private SpriteRenderer[] childSprite;
         public void SpawnBuildButton(TaskChapter task, GameObject taskObj)
         {
             taskObjs = taskObj;
@@ -39,6 +41,12 @@ namespace Capybara
             imageBtn.sprite = spriteBtn[(int)task.type];
             button.sprite = sprites[task.isCompleted ? 1:0];
             Build.onClick.AddListener(() => TaskButtonClick(task, taskObj));
+            childSprite = taskObj.GetComponentsInChildren<SpriteRenderer>(true);
+            taskObj.GetComponent<SpriteRenderer>().color = new Vector4(1,1,1,0);
+            for(int i = 0; i < childSprite.Length; i++)
+            {
+                childSprite[i].color = new Vector4(1,1,1,0);
+            }
         }
         public void buttonCompleted(TaskChapter task)
         {
@@ -122,9 +130,14 @@ namespace Capybara
         {
             task.isUnlocked = true;
             taskObj.SetActive(task.isUnlocked);
-            // Sprite[] childSprite = taskObj.GetComponentInChildren<SpriteRenderer>().sprite;
+            taskObj.GetComponent<SpriteRenderer>().DOFade(1, 2f);
+            for(int i = 0; i < childSprite.Length; i++)
+            {
+                childSprite[i].DOFade(1, 2f);
+            }
             yield return new WaitForSeconds(2f); 
         }
+
         IEnumerator ThirdAction(TaskChapter task)
         {
             BuildManager.Instance.task.transform.DOScale(new Vector3(1, 1, 1), 1f);
