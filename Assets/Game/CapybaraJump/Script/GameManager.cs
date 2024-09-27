@@ -14,6 +14,8 @@ namespace CapybaraJump
         public static GameManager Instance;
         public float angleCollisonEnterThreshHole = 40f;
         public float perfectJumpThreshHole = 3f;
+
+        public float besideThreshHole = 20f;
         public GameObject gameOverPopUp;
         public CountDown countDown;
         public float startTime = 0.7f;

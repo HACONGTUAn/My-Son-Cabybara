@@ -50,7 +50,7 @@ namespace CapybaraJump
 
         public void CheckGift(Vector3 position)
         {
-            if (score%10 == 0)
+            if (score%20 == 0)
             {
                 gift.transform.localPosition = position;
                 gift.type = 1;

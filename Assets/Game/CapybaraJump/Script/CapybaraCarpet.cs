@@ -61,6 +61,16 @@ namespace CapybaraJump
                 float angle = Vector2.Angle(playerDirection, Vector2.up);
                 if (angle <= GameManager.Instance.angleCollisonEnterThreshHole)
                 {
+
+
+                    if(angle >= GameManager.Instance.besideThreshHole){
+                        Debug.Log("riaf");
+                        if(isRight)
+                            CapybaraMain.Instance.animator.SetTrigger("fallRight");
+                        else 
+                            CapybaraMain.Instance.animator.SetTrigger("fallLeft");
+                    }
+                    CapybaraMain.Instance.animator.SetTrigger("touchGround");
                     animator.SetTrigger("hit");
                     CapybaraMain.Instance.StopMove();
                     Debug.Log("OK!");
