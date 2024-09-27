@@ -55,6 +55,7 @@ namespace Merge
         {
             reviveCount = 0;
             reviveCallBack?.Invoke(false);
+            GameManager.Instance.Resume();
         }
         private void Home()
         {

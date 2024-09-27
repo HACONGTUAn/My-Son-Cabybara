@@ -11,6 +11,8 @@ namespace Merge
 {
     public class ClassicMode : GameMode
     {
+        public List<Transform> itemTransform;
+        public GameObject item;
         public List<Fruit> listFruit;
         public List<FruitType> fruitUnlocked;
         public FruitContainerSO fruitContainer;
@@ -193,6 +195,9 @@ namespace Merge
             {
                 listCombo[i].UpdateCombo(Time.deltaTime);
             }
+            item.GetComponent<SpriteRenderer>().sprite = Capybara.DataBuildManager.Instance.sprite;
+            item.transform.position = new Vector3(itemTransform[Capybara.DataBuildManager.Instance.mergeType].position.x, item.transform.position.y, item.transform.position.z);
+            item.SetActive(!Capybara.DataBuildManager.Instance.Is);
             HandleBannerCollapse();
             HandleCurrentSpawnFruit();
             HandleSelect();
@@ -325,6 +330,7 @@ namespace Merge
                     GameManager.Instance.PlayClassicMode();
                 }
                 UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
+                GameManager.Instance.Pause();
             });
         }
 
@@ -588,12 +594,7 @@ namespace Merge
             if (fruitUnlocked.Contains(fruitType)) return;
             if (GameManager.NewFruitSystem[0] == 1 && (int)fruitType >= GameManager.NewFruitSystem[1])
             {
-                var popup = UIManager.Instance.ShowPopup<UINewFruitPopup>(() =>
-                {
-                    UIManager.Instance.GetScreen<UIIngameScreen>().gameObject.SetActive(true);
-                });
-                UIManager.Instance.GetScreen<UIIngameScreen>().gameObject.SetActive(false);
-                popup.SetIcon(fruit);
+                
             }
             fruitUnlocked.Add(fruitType);
             Save();
@@ -609,19 +610,18 @@ namespace Merge
                         UIManager.Instance.GetScreen<UIIngameScreen>().HeartText();
                     }, 0, fruitTransform, (int)fruitType - 6);
             }
-            // foreach (var build in BuildManager.Instance.uIBuilds)
-            // {
-            //     if((int)build.Value.type == 2)
-            //     {
-            //         if(build.Value.mergeType == (int)fruitType)
-            //         {
-            //             build.Value.isCompleted = true;
-            //         }
-            //     }
-            // }
             if((int)fruitType == Capybara.DataBuildManager.Instance.mergeType)
             {
-                Capybara.DataBuildManager.Instance.IsCompleted(2);
+                if(!Capybara.DataBuildManager.Instance.Is)
+                {
+                    var popup = UIManager.Instance.ShowPopup<UINewItemPopup>(() =>
+                    {
+                        UIManager.Instance.GetScreen<UIIngameScreen>().gameObject.SetActive(true);
+                        Capybara.DataBuildManager.Instance.IsCompleted(2);
+                    });
+                    UIManager.Instance.GetScreen<UIIngameScreen>().gameObject.SetActive(false);
+                    popup.SetIcon(Capybara.DataBuildManager.Instance.sprite);
+                }
             }
         }
         #region Booster

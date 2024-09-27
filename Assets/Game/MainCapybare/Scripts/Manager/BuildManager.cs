@@ -74,14 +74,24 @@ namespace Capybara
                         {
                             case 1:
                                 DataBuildManager.Instance.jumpHeight = (int)task.height;
+                                PlayerPrefs.SetInt("IsCompleted", task.isCompleted ? 1 : 0);
+                                DataBuildManager.Instance.Is = PlayerPrefs.GetInt("IsCompleted") == 1;
                                 break;
                             case 2:
                                 DataBuildManager.Instance.mergeType = (int)task.mergeType;
+                                PlayerPrefs.SetInt("IsCompleted", task.isCompleted ? 1 : 0);
+                                DataBuildManager.Instance.Is = PlayerPrefs.GetInt("IsCompleted") == 1;
+                                DataBuildManager.Instance.sprite = taskObj.GetComponent<SpriteRenderer>().sprite;
                                 break;
                             case 3:
                                 DataBuildManager.Instance.fishingPref = task.fishingPrefab;
+                                PlayerPrefs.SetInt("IsCompleted", task.isCompleted ? 1 : 0);
+                                DataBuildManager.Instance.Is = PlayerPrefs.GetInt("IsCompleted") == 1;
                                 break;
                             default:
+                                DataBuildManager.Instance.jumpHeight = 0;
+                                DataBuildManager.Instance.mergeType = 0;
+                                DataBuildManager.Instance.fishingPref = null;
                                 break;
                         }
                     }
